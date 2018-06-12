@@ -1,0 +1,15 @@
+---
+title: "CSC220 - Advanced Programming"
+---
+
+**Instructor:** R. Jordan Crouser
+
+**Course meeting times:** Tuesday and Thursday 1pm - 2:50pm
+
+**Location:** Ford 240
+
+## Course Description:
+This course will serve as an opportunity to gain hands-on experience with multiple programming languages through a series of challenging programming exercises. We will explore various techniques and using multiple programming languages including python, JS, Java and Julia. Along the way, we also will discuss important attributes of these languages, such as synchrony vs. asynchrony, dynamic vs. static typing, scalability, expressiveness, and more. While it is not necessary to have familiarity in all of these languages, it is strongly recommended that students be familiar with at least two from this list. Students will also develop good working knowledge of version control, collaborative programming techniques, coding conventions, and documentation.
+
+## Prerequisites:
+CSC212, or permission of the instructor. Most importantly, I will assume you have basic "computational maturity": i.e., that you are comfortable writing and debugging code, that you have a solid working knowledge of data structures, and that you enjoy getting your hands dirty.

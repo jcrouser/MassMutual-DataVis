@@ -1,0 +1,53 @@
+---
+title: "Syllabus"
+---
+<hr>
+
+## Course Communication and Announcements
+This website will serve as the primary syllabus for this course. All course-related announcements, as well as electronic communication between students and the professor, will happen using the course's dedicated [Slack](https://csc220-s18.slack.com) team.
+
+<hr>
+## Course Materials
+There is no required textbook for the course. However, there are many online resources that some students may find helpful, e.g.:
+
+- [Google's Python Class](https://developers.google.com/edu/python/)
+-	[The Modern JavaScript Tutorial](https://javascript.info/)
+- [Intermediate Java Programming (IBM DeveloperWorks)](https://www.ibm.com/developerworks/java/tutorials/j-intermed/j-intermed.html)
+- [An Introduction to Julia (EngineersGarage)](https://www.engineersgarage.com/guest-posts/overview-julia-high-performance-scientific-computation-language)
+
+<hr>
+## Coding Challenges
+There will be weekly coding challenges throughout the semester, which will be started in class. These will be completed in groups of 3 students, and will be submitted via [Moodle](https://moodle.smith.edu/course/view.php?id=27778). 
+
+<hr>
+## Collaboration and Academic Integrity
+The following information is required for all submitted work:
+
+1.	The names of all collaborating students be listed at the top of the submission. Each team is required to submit only once.
+2. A "**References**" section, with in-line citations to any resources you used. Citations should include page numbers (if a printed resource) or a direct URL (if an online resource). If you did not use any resources in completing the assignment, please state: "*I did not utilize any external resources in completing this assignment.*"
+
+<hr>
+## Final Project
+There will be one final group project in this course.
+
+<hr>
+## Grading	
+| **Component**        | **Weight**  |
+| ------------------- |:---:|
+| Coding challenges   | 60% | 
+| Final project	      | 20% | 
+| Class participation	| 20% |
+| TOTAL               | 100%|
+
+<hr>
+## Late Policy
+Late submissions will be assessed a penalty of **20% per day**, and submissions more than 5 days late are ineligible for credit. Extensions must be requested **at least 48 hours in advance**, or with notification from a student's class dean.
+
+<hr>
+## Accommodation
+Smith is committed to providing support services and reasonable accommodations to all students with disabilities. To request an accommodation, please register with the Disability Services Office at the beginning of the semester. To do so, call (413) 585-2071 to arrange an appointment with Laura Rauscher, Director of Disability Services. 
+
+<hr>
+## Acknowledgement
+Some of the materials used in this course are derived from lectures, notes, or similar courses taught at other institutions. Appropriate references will be included on all such material.
+

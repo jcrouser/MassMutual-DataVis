@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Syllabus</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CSC220 - Spring 2018</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="schedule.html">Schedule</a>
+</li>
+<li>
+  <a href="https://moodle.smith.edu/course/view.php?id=27778">Moodle</a>
+</li>
+<li>
+  <a href="https://csc220-s18.slack.com">Slack</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Syllabus</h1>
+
+</div>
+
+
+<hr>
+<div id="course-communication-and-announcements" class="section level2">
+<h2>Course Communication and Announcements</h2>
+<p>This website will serve as the primary syllabus for this course. All course-related announcements, as well as electronic communication between students and the professor, will happen using the course’s dedicated <a href="https://csc220-s18.slack.com">Slack</a> team.</p>
+<hr>
+</div>
+<div id="course-materials" class="section level2">
+<h2>Course Materials</h2>
+<p>There is no required textbook for the course. However, there are many online resources that some students may find helpful, e.g.:</p>
+<ul>
+<li><a href="https://developers.google.com/edu/python/">Google’s Python Class</a></li>
+<li><a href="https://javascript.info/">The Modern JavaScript Tutorial</a></li>
+<li><a href="https://www.ibm.com/developerworks/java/tutorials/j-intermed/j-intermed.html">Intermediate Java Programming (IBM DeveloperWorks)</a></li>
+<li><a href="https://www.engineersgarage.com/guest-posts/overview-julia-high-performance-scientific-computation-language">An Introduction to Julia (EngineersGarage)</a></li>
+</ul>
+<hr>
+</div>
+<div id="coding-challenges" class="section level2">
+<h2>Coding Challenges</h2>
+<p>There will be weekly coding challenges throughout the semester, which will be started in class. These will be completed in groups of 3 students, and will be submitted via <a href="https://moodle.smith.edu/course/view.php?id=27778">Moodle</a>.</p>
+<hr>
+</div>
+<div id="collaboration-and-academic-integrity" class="section level2">
+<h2>Collaboration and Academic Integrity</h2>
+<p>The following information is required for all submitted work:</p>
+<ol style="list-style-type: decimal">
+<li>The names of all collaborating students be listed at the top of the submission. Each team is required to submit only once.</li>
+<li>A “<strong>References</strong>” section, with in-line citations to any resources you used. Citations should include page numbers (if a printed resource) or a direct URL (if an online resource). If you did not use any resources in completing the assignment, please state: “<em>I did not utilize any external resources in completing this assignment.</em>”</li>
+</ol>
+<hr>
+</div>
+<div id="final-project" class="section level2">
+<h2>Final Project</h2>
+<p>There will be one final group project in this course.</p>
+<hr>
+</div>
+<div id="grading" class="section level2">
+<h2>Grading</h2>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Component</strong></th>
+<th align="center"><strong>Weight</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coding challenges</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td>Final project</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td>Class participation</td>
+<td align="center">20%</td>
+</tr>
+<tr class="even">
+<td>TOTAL</td>
+<td align="center">100%</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+<div id="late-policy" class="section level2">
+<h2>Late Policy</h2>
+<p>Late submissions will be assessed a penalty of <strong>20% per day</strong>, and submissions more than 5 days late are ineligible for credit. Extensions must be requested <strong>at least 48 hours in advance</strong>, or with notification from a student’s class dean.</p>
+<hr>
+</div>
+<div id="accommodation" class="section level2">
+<h2>Accommodation</h2>
+<p>Smith is committed to providing support services and reasonable accommodations to all students with disabilities. To request an accommodation, please register with the Disability Services Office at the beginning of the semester. To do so, call (413) 585-2071 to arrange an appointment with Laura Rauscher, Director of Disability Services.</p>
+<hr>
+</div>
+<div id="acknowledgement" class="section level2">
+<h2>Acknowledgement</h2>
+<p>Some of the materials used in this course are derived from lectures, notes, or similar courses taught at other institutions. Appropriate references will be included on all such material.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

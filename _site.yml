@@ -1,0 +1,22 @@
+name: CSC220-website
+output_dir: .
+navbar:
+  title: CSC220 - Spring 2018
+  left:
+  - text: Home
+    href: index.html
+  - text: Syllabus
+    href: syllabus.html
+  - text: Schedule
+    href: schedule.html
+  - text: Moodle
+    href: https://moodle.smith.edu/course/view.php?id=27778
+  - text: Slack
+    href: https://csc220-s18.slack.com
+output:
+  html_document:
+    theme: lumen
+    css: style.css
+    lib_dir: site_libs
+    self_contained: no
+
