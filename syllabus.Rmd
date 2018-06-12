@@ -1,53 +1,164 @@
 ---
 title: "Syllabus"
+output: html_document
 ---
-<hr>
 
-## Course Communication and Announcements
-This website will serve as the primary syllabus for this course. All course-related announcements, as well as electronic communication between students and the professor, will happen using the course's dedicated [Slack](https://csc220-s18.slack.com) team.
+About the Course
+----------------
 
-<hr>
-## Course Materials
-There is no required textbook for the course. However, there are many online resources that some students may find helpful, e.g.:
+#### Instructors
 
-- [Google's Python Class](https://developers.google.com/edu/python/)
--	[The Modern JavaScript Tutorial](https://javascript.info/)
-- [Intermediate Java Programming (IBM DeveloperWorks)](https://www.ibm.com/developerworks/java/tutorials/j-intermed/j-intermed.html)
-- [An Introduction to Julia (EngineersGarage)](https://www.engineersgarage.com/guest-posts/overview-julia-high-performance-scientific-computation-language)
+- [Ben Baumer](https://www.smith.edu/academics/faculty/ben-baumer) (bbaumer@smith.edu, Burton 315, 413-585-3440).  
+  My office hours will be held on Mondays from 2:00-3:30, Thursdays from 10:00-11:30, and by appointment, in Burton 315.
+- [R. Jordan Crouser](http://www.science.smith.edu/~jcrouser) (jcrouser@smith.edu, Ford 344, 413-585-4036).  
+  My office hours will be held on Fridays from 11:00-1:00 (and by [appointment](http://www.science.smith.edu/~jcrouser/calendar.html)) in Ford 344.
 
-<hr>
-## Coding Challenges
-There will be weekly coding challenges throughout the semester, which will be started in class. These will be completed in groups of 3 students, and will be submitted via [Moodle](https://moodle.smith.edu/course/view.php?id=27778). 
 
-<hr>
-## Collaboration and Academic Integrity
-The following information is required for all submitted work:
+#### Description
 
-1.	The names of all collaborating students be listed at the top of the submission. Each team is required to submit only once.
-2. A "**References**" section, with in-line citations to any resources you used. Citations should include page numbers (if a printed resource) or a direct URL (if an online resource). If you did not use any resources in completing the assignment, please state: "*I did not utilize any external resources in completing this assignment.*"
+An introduction to data science using Python, R, and SQL. Students will learn how to scrape, process, and clean data from the web; manipulate data in a variety of formats; contextualize variation in data; construct point and interval estimates using resampling techniques; visualize multidimensional data; design accurate, clear, and appropriate data graphics; create data maps and perform basic spatial analysis; and query large relational databases. No prerequisites, but a willingness to write code is necessary. 
 
-<hr>
-## Final Project
-There will be one final group project in this course.
+#### Textbooks
 
-<hr>
-## Grading	
-| **Component**        | **Weight**  |
-| ------------------- |:---:|
-| Coding challenges   | 60% | 
-| Final project	      | 20% | 
-| Class participation	| 20% |
-| TOTAL               | 100%|
+Required:
 
-<hr>
-## Late Policy
-Late submissions will be assessed a penalty of **20% per day**, and submissions more than 5 days late are ineligible for credit. Extensions must be requested **at least 48 hours in advance**, or with notification from a student's class dean.
+- *[Modern Data Science with R](https://www.crcpress.com/Modern-Data-Science-with-R/Baumer-Horton-Kaplan/9781498724487)*, Baumer, Kaplan, and Horton, CRC Press, 2017. ~$100 ([CRC](https://www.crcpress.com/Modern-Data-Science-with-R/Baumer-Kaplan-Horton/p/book/9781498724487) | [Amazon](https://www.amazon.com/Modern-Data-Science-Download-Statistical/dp/1498724485))
 
-<hr>
-## Accommodation
+Recommended:
+
+- *[R for Data Science](http://r4ds.had.co.nz/)*, Garrett Grolemund and Hadley Wickham, O'Reilly, 2017. Available free online.
+* [DataCamp](http://www.datacamp.com), online programming courses for data science. Available for free using links on Moodle. 
+
+Suggested as supplementary references:
+
+- *[The Visual Display of Quantitative Information](http://www.edwardtufte.com/tufte/books_vdqi)*, Edward Tufte, Graphics Press, 2001. Hardcover is $27-40.
+- *Introduction to Data Technologies*, Paul Murrell, Chapman & Hall, 2013. Available free as [PDF](https://www.stat.auckland.ac.nz/~paul/ItDT/itdt-2013-03-26.pdf)
+- *Visualize This!* or *Data Points*, Nathan Yau. [Paperbacks ~$20](http://www.amazon.com/Nathan-Yau/e/B004S83IUE/)
+
+#### Classes
+
+Classes meet Monday, Wednesday and Friday from 10--10:50 in McConnell 103.
+
+#### Accommodation
+
 Smith is committed to providing support services and reasonable accommodations to all students with disabilities. To request an accommodation, please register with the Disability Services Office at the beginning of the semester. To do so, call (413) 585-2071 to arrange an appointment with Laura Rauscher, Director of Disability Services. 
 
-<hr>
-## Acknowledgement
-Some of the materials used in this course are derived from lectures, notes, or similar courses taught at other institutions. Appropriate references will be included on all such material.
+Policies {#policies .unnumbered}
+--------
+
+#### Attendance
+
+Your attendance (and punctuality) are crucial parts of the learning process. If you cannot attend a particular class we would appreciate the courtesy of advanced notice and an explanation for your absence. One necessary absence during the semester is not unusual -- having more than two is uncommon. Class participation and attendance contribute 10\% to your final grade. 
+
+We hope it goes without saying that during class, you should not use your computer or cell phone for personal email, web browsing, Facebook, or any activity that's not related to the class. 
+
+#### Collaboration
+
+Much of this course will operate on a collaborative basis, and you are
+expected and encouraged to work together with a partner or in small
+groups to study, complete homework assignments, and prepare for exams.
+However, **all work that you submit for credit must be your own**. Copying and pasting
+sentences, paragraphs, or *blocks of code* from another student or from online sources is not
+acceptable and will receive no credit. No interaction with anyone but
+the instructors is allowed on any exams or quizzes. All students, staff
+and faculty are bound by the Smith College Honor Code, which Smith has
+had since 1944.
+
+#### Academic Honor Code Statement
+
+> Smith College expects all students to be honest and committed to the principles of academic and intellectual integrity in their preparation and submission of course work and examinations.
+Students and faculty at Smith are part of an academic community defined by its commitment to scholarship, which depends on scrupulous and attentive acknowledgement of all sources of information, and honest and respectful use of college resources.
+
+Cases of dishonesty, plagiarism, etc., will be reported to the Academic
+Honor Board.
+
+Assignments {#assignments .unnumbered}
+-----------
+
+#. Homework [30%]: There will be several problem sets over the course of the semester. Problem sets will involve computational assignments in `R` and `SQL` with written explanations. In order to streamline your workflow and our ability to comprehend your work, you should complete all of your homework assignments in [R Markdown](http://rmarkdown.rstudio.com/). All homework must be submitted electronically to [Moodle](http://moodle.smith.edu) just before midnight of the due date. Late assignments will lose points at the rate of 20% per day.  
+
+#. Labs [20%]: To help students gain hands-on experience, this course will include many in-class lab sessions. The labs will be conducted primarily in R, with some supplemental exercises in other platforms at the instructor's discretion. Students are encouraged to work in pairs during these labs. To get credit for these labs, students will be expected to post a brief (3-4 sentence) response to the associated discussion prompt.
+
+#. Mini-Projects [40%]: You will work on five group projects over the course of the semester. These projects will be structured, but fairly open-ended to allow you be creative. Evaluation will emphasize originality and ingenuity in addition to sophistication and complexity. More details about the projects will follow.
+
+#. Participation [10%]: Active participation in class, engagement with group work, and regular attendance will comprise the remainder of your grade.
+
+#. Extra Credit [?]: Extra credit is available in several ways: 
+    + attending an out-of-class lecture (as will be announced) and writing a short reflection paper about it
+    + pointing out a substantial mistake in the book or a homework exercise
+    + drawing our attention to an interesting data set or news article, etc.
+    
+The extra credit is applied when a student is near the boundary of a letter grade.
+
+#### Grading
+
+When grading your written work, we are looking for solutions that are
+technically correct and reasoning that is clearly explained. Numerically
+correct answers alone are not sufficient. Neatness and organization are valued, with brief, clear answers
+that explain your thinking. If we cannot read or follow your work, we
+cannot give you full credit for it. 
+
+Resources {#resources .unnumbered}
+---------
+
+#### Moodle and course website
+
+The [course website](http://www.science.smith.edu/~bbaumer/sds192-s16/) and Moodle will be updated regularly with lecture handouts, project information, assignments, and other course resources. Homework and grades will be submitted to Moodle. Please check both regularly.
+
+#### Computing
+
+The use of the `R` statistical computing environment with the [RStudio](http://rstudio.org) interface is thoroughly integrated into the course. You have two options for using `RStudio`:
+
+* The **server** version of `RStudio` on the [web](http://rstudio.smith.edu:8787). The advantage of using the server version is that all of your work will be stored in the cloud, where it is automatically saved and backed up. This means that you can access your work from any computer with a web browser (Firefox is recommended) and an Internet connection. The downside is that there are only 2 CPUs and 8 GB of RAM allocated to this machine, and you have to share those resources with each other and with all of the MTH/SDS 220 students!
+* A **desktop** version of `RStudio` installed on your machine. This is recommended due to the computational resources this course demands and the aforementioned resource allocation problem. Your laptop likely has at least 2 CPUs and at least 4 GB of RAM. The downside to this approach is that your work is only stored locally, but I get around this problem by keeping all of my work in a [Dropbox](http://dropbox.com) folder. 
+
+Note that you do not have to choose one or the other -- you may use both. However, it is important that you understand the distinction so that you can keep track of your work. Both `R` and `RStudio` are free and open-source, and are installed on most computer labs on campus. Please see the [Resources](resources.html) page for help with `R`.  
+
+Unless otherwise noted, you should assume that it will be helpful to bring a laptop to class. <!--It is not *required*, but since there are only three workstations in the classroom, we will need a critical mass (i.e. at least $n/2$) computers in the classroom pretty much everyday.--> 
+
+#### Communication
+
+- [GitHub Classroom](https://classroom.github.com/classrooms/17416565-sds192)
+- [Slack](https://sds192.slack.com/) is the primary forum for course-related discussions of all kinds. *Please do not email us with course-related questions!* Instead, post those `#questions` on Slack. If discretion is absolutely necessary, private message us on Slack. 
+
+#### Writing
+
+Your ability to communicate results---which may be technical in nature---to your audience -- which is likely to be non-technical---is critical to
+your success as a data analyst. The assignments in this class will place
+an emphasis on the clarity of your writing.
+
+#### Extra Help
+
+There are [Statistics TAs](http://www.smith.edu/qlc/tutoring.html#S2) available from 7:00--9:00pm on Sunday--Thursday
+evenings in Burton 301. In addition, the Spinelli Center for
+Quantitative Learning (2nd Level of Neilson Library) supports students
+doing quantitative work across the curriculum, and has a Statistics
+Counselor available for appointments. Your fellow students are also an
+excellent source for explanations, tips, etc.
+
+- [Data Counselor's drop in hours](http://www.smith.edu/qlc/tutoring.html#D1)
+- (qlctutor@smith.edu)
+
+Students are welcome to email the account to make an appointment with either the Data Counselor or one of the Data Assistants.
+
+#### Tentative Schedule
+
+The following outline gives a *basic* description of the course. Please see the [detailed schedule](schedule.html) for more specific information about readings and assignments.
+
+Week | Topic | Reading | Assignments |
+-----|-------|---------|-------------|
+1 | data visualization | *MDSR*, Ch. 1 | HW #1 |
+2 | taxonomy of data graphics | *MDSR*, Ch. 2 | HW #2 |
+3 | grammar of graphics | *MDSR*, Ch. 3 | mini-project |
+4 | grammar of data wrangling | *MDSR*, Ch. 4 | HW #3 |
+5 | joining two tables | *MDSR*, Ch. 4 | HW #4 |
+6 | tidy data | *MDSR*, Ch. 5 | HW #5 |
+- | **Spring Break** | |
+7 | iteration | *MDSR*, Ch. 5 | mini-project |
+8 | ethics | *MDSR*, Ch. 6 | HW #6 |
+9 | database querying | *MDSR*, Ch. 12 | HW #7 |
+10 | SQL | *MDSR*, Ch. 12 | mini-project |
+11 | spatial data | *MDSR*, Ch. 14 | HW #8 |
+12 | static and dynamic maps | *MDSR*, Ch. 14 | HW #9 |
+13 | leaflet | *MDSR*, Ch. 14 | mini-project  |
 

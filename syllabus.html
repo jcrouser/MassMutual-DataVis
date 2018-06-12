@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -208,85 +210,223 @@ $(document).ready(function () {
 </div>
 
 
-<hr>
-<div id="course-communication-and-announcements" class="section level2">
-<h2>Course Communication and Announcements</h2>
-<p>This website will serve as the primary syllabus for this course. All course-related announcements, as well as electronic communication between students and the professor, will happen using the course’s dedicated <a href="https://csc220-s18.slack.com">Slack</a> team.</p>
-<hr>
-</div>
-<div id="course-materials" class="section level2">
-<h2>Course Materials</h2>
-<p>There is no required textbook for the course. However, there are many online resources that some students may find helpful, e.g.:</p>
+<div id="about-the-course" class="section level2">
+<h2>About the Course</h2>
+<div id="instructors" class="section level4">
+<h4>Instructors</h4>
 <ul>
-<li><a href="https://developers.google.com/edu/python/">Google’s Python Class</a></li>
-<li><a href="https://javascript.info/">The Modern JavaScript Tutorial</a></li>
-<li><a href="https://www.ibm.com/developerworks/java/tutorials/j-intermed/j-intermed.html">Intermediate Java Programming (IBM DeveloperWorks)</a></li>
-<li><a href="https://www.engineersgarage.com/guest-posts/overview-julia-high-performance-scientific-computation-language">An Introduction to Julia (EngineersGarage)</a></li>
+<li><a href="https://www.smith.edu/academics/faculty/ben-baumer">Ben Baumer</a> (<a href="mailto:bbaumer@smith.edu">bbaumer@smith.edu</a>, Burton 315, 413-585-3440).<br />
+My office hours will be held on Mondays from 2:00-3:30, Thursdays from 10:00-11:30, and by appointment, in Burton 315.</li>
+<li><a href="http://www.science.smith.edu/~jcrouser">R. Jordan Crouser</a> (<a href="mailto:jcrouser@smith.edu">jcrouser@smith.edu</a>, Ford 344, 413-585-4036).<br />
+My office hours will be held on Fridays from 11:00-1:00 (and by <a href="http://www.science.smith.edu/~jcrouser/calendar.html">appointment</a>) in Ford 344.</li>
 </ul>
-<hr>
 </div>
-<div id="coding-challenges" class="section level2">
-<h2>Coding Challenges</h2>
-<p>There will be weekly coding challenges throughout the semester, which will be started in class. These will be completed in groups of 3 students, and will be submitted via <a href="https://moodle.smith.edu/course/view.php?id=27778">Moodle</a>.</p>
-<hr>
+<div id="description" class="section level4">
+<h4>Description</h4>
+<p>An introduction to data science using Python, R, and SQL. Students will learn how to scrape, process, and clean data from the web; manipulate data in a variety of formats; contextualize variation in data; construct point and interval estimates using resampling techniques; visualize multidimensional data; design accurate, clear, and appropriate data graphics; create data maps and perform basic spatial analysis; and query large relational databases. No prerequisites, but a willingness to write code is necessary.</p>
 </div>
-<div id="collaboration-and-academic-integrity" class="section level2">
-<h2>Collaboration and Academic Integrity</h2>
-<p>The following information is required for all submitted work:</p>
-<ol style="list-style-type: decimal">
-<li>The names of all collaborating students be listed at the top of the submission. Each team is required to submit only once.</li>
-<li>A “<strong>References</strong>” section, with in-line citations to any resources you used. Citations should include page numbers (if a printed resource) or a direct URL (if an online resource). If you did not use any resources in completing the assignment, please state: “<em>I did not utilize any external resources in completing this assignment.</em>”</li>
+<div id="textbooks" class="section level4">
+<h4>Textbooks</h4>
+<p>Required:</p>
+<ul>
+<li><em><a href="https://www.crcpress.com/Modern-Data-Science-with-R/Baumer-Horton-Kaplan/9781498724487">Modern Data Science with R</a></em>, Baumer, Kaplan, and Horton, CRC Press, 2017. ~$100 (<a href="https://www.crcpress.com/Modern-Data-Science-with-R/Baumer-Kaplan-Horton/p/book/9781498724487">CRC</a> | <a href="https://www.amazon.com/Modern-Data-Science-Download-Statistical/dp/1498724485">Amazon</a>)</li>
+</ul>
+<p>Recommended:</p>
+<ul>
+<li><em><a href="http://r4ds.had.co.nz/">R for Data Science</a></em>, Garrett Grolemund and Hadley Wickham, O’Reilly, 2017. Available free online.</li>
+<li><a href="http://www.datacamp.com">DataCamp</a>, online programming courses for data science. Available for free using links on Moodle.</li>
+</ul>
+<p>Suggested as supplementary references:</p>
+<ul>
+<li><em><a href="http://www.edwardtufte.com/tufte/books_vdqi">The Visual Display of Quantitative Information</a></em>, Edward Tufte, Graphics Press, 2001. Hardcover is $27-40.</li>
+<li><em>Introduction to Data Technologies</em>, Paul Murrell, Chapman &amp; Hall, 2013. Available free as <a href="https://www.stat.auckland.ac.nz/~paul/ItDT/itdt-2013-03-26.pdf">PDF</a></li>
+<li><em>Visualize This!</em> or <em>Data Points</em>, Nathan Yau. <a href="http://www.amazon.com/Nathan-Yau/e/B004S83IUE/">Paperbacks ~$20</a></li>
+</ul>
+</div>
+<div id="classes" class="section level4">
+<h4>Classes</h4>
+<p>Classes meet Monday, Wednesday and Friday from 10–10:50 in McConnell 103.</p>
+</div>
+<div id="accommodation" class="section level4">
+<h4>Accommodation</h4>
+<p>Smith is committed to providing support services and reasonable accommodations to all students with disabilities. To request an accommodation, please register with the Disability Services Office at the beginning of the semester. To do so, call (413) 585-2071 to arrange an appointment with Laura Rauscher, Director of Disability Services.</p>
+</div>
+</div>
+<div id="policies" class="section level2 unnumbered">
+<h2>Policies</h2>
+<div id="attendance" class="section level4">
+<h4>Attendance</h4>
+<p>Your attendance (and punctuality) are crucial parts of the learning process. If you cannot attend a particular class we would appreciate the courtesy of advanced notice and an explanation for your absence. One necessary absence during the semester is not unusual – having more than two is uncommon. Class participation and attendance contribute 10% to your final grade.</p>
+<p>We hope it goes without saying that during class, you should not use your computer or cell phone for personal email, web browsing, Facebook, or any activity that’s not related to the class.</p>
+</div>
+<div id="collaboration" class="section level4">
+<h4>Collaboration</h4>
+<p>Much of this course will operate on a collaborative basis, and you are expected and encouraged to work together with a partner or in small groups to study, complete homework assignments, and prepare for exams. However, <strong>all work that you submit for credit must be your own</strong>. Copying and pasting sentences, paragraphs, or <em>blocks of code</em> from another student or from online sources is not acceptable and will receive no credit. No interaction with anyone but the instructors is allowed on any exams or quizzes. All students, staff and faculty are bound by the Smith College Honor Code, which Smith has had since 1944.</p>
+</div>
+<div id="academic-honor-code-statement" class="section level4">
+<h4>Academic Honor Code Statement</h4>
+<blockquote>
+<p>Smith College expects all students to be honest and committed to the principles of academic and intellectual integrity in their preparation and submission of course work and examinations. Students and faculty at Smith are part of an academic community defined by its commitment to scholarship, which depends on scrupulous and attentive acknowledgement of all sources of information, and honest and respectful use of college resources.</p>
+</blockquote>
+<p>Cases of dishonesty, plagiarism, etc., will be reported to the Academic Honor Board.</p>
+</div>
+</div>
+<div id="assignments" class="section level2 unnumbered">
+<h2>Assignments</h2>
+<ol>
+<li><p>Homework [30%]: There will be several problem sets over the course of the semester. Problem sets will involve computational assignments in <code>R</code> and <code>SQL</code> with written explanations. In order to streamline your workflow and our ability to comprehend your work, you should complete all of your homework assignments in <a href="http://rmarkdown.rstudio.com/">R Markdown</a>. All homework must be submitted electronically to <a href="http://moodle.smith.edu">Moodle</a> just before midnight of the due date. Late assignments will lose points at the rate of 20% per day.</p></li>
+<li><p>Labs [20%]: To help students gain hands-on experience, this course will include many in-class lab sessions. The labs will be conducted primarily in R, with some supplemental exercises in other platforms at the instructor’s discretion. Students are encouraged to work in pairs during these labs. To get credit for these labs, students will be expected to post a brief (3-4 sentence) response to the associated discussion prompt.</p></li>
+<li><p>Mini-Projects [40%]: You will work on five group projects over the course of the semester. These projects will be structured, but fairly open-ended to allow you be creative. Evaluation will emphasize originality and ingenuity in addition to sophistication and complexity. More details about the projects will follow.</p></li>
+<li><p>Participation [10%]: Active participation in class, engagement with group work, and regular attendance will comprise the remainder of your grade.</p></li>
+<li>Extra Credit [?]: Extra credit is available in several ways:
+<ul>
+<li>attending an out-of-class lecture (as will be announced) and writing a short reflection paper about it</li>
+<li>pointing out a substantial mistake in the book or a homework exercise</li>
+<li>drawing our attention to an interesting data set or news article, etc.</li>
+</ul></li>
 </ol>
-<hr>
+<p>The extra credit is applied when a student is near the boundary of a letter grade.</p>
+<div id="grading" class="section level4">
+<h4>Grading</h4>
+<p>When grading your written work, we are looking for solutions that are technically correct and reasoning that is clearly explained. Numerically correct answers alone are not sufficient. Neatness and organization are valued, with brief, clear answers that explain your thinking. If we cannot read or follow your work, we cannot give you full credit for it.</p>
 </div>
-<div id="final-project" class="section level2">
-<h2>Final Project</h2>
-<p>There will be one final group project in this course.</p>
-<hr>
 </div>
-<div id="grading" class="section level2">
-<h2>Grading</h2>
+<div id="resources" class="section level2 unnumbered">
+<h2>Resources</h2>
+<div id="moodle-and-course-website" class="section level4">
+<h4>Moodle and course website</h4>
+<p>The <a href="http://www.science.smith.edu/~bbaumer/sds192-s16/">course website</a> and Moodle will be updated regularly with lecture handouts, project information, assignments, and other course resources. Homework and grades will be submitted to Moodle. Please check both regularly.</p>
+</div>
+<div id="computing" class="section level4">
+<h4>Computing</h4>
+<p>The use of the <code>R</code> statistical computing environment with the <a href="http://rstudio.org">RStudio</a> interface is thoroughly integrated into the course. You have two options for using <code>RStudio</code>:</p>
+<ul>
+<li>The <strong>server</strong> version of <code>RStudio</code> on the <a href="http://rstudio.smith.edu:8787">web</a>. The advantage of using the server version is that all of your work will be stored in the cloud, where it is automatically saved and backed up. This means that you can access your work from any computer with a web browser (Firefox is recommended) and an Internet connection. The downside is that there are only 2 CPUs and 8 GB of RAM allocated to this machine, and you have to share those resources with each other and with all of the MTH/SDS 220 students!</li>
+<li>A <strong>desktop</strong> version of <code>RStudio</code> installed on your machine. This is recommended due to the computational resources this course demands and the aforementioned resource allocation problem. Your laptop likely has at least 2 CPUs and at least 4 GB of RAM. The downside to this approach is that your work is only stored locally, but I get around this problem by keeping all of my work in a <a href="http://dropbox.com">Dropbox</a> folder.</li>
+</ul>
+<p>Note that you do not have to choose one or the other – you may use both. However, it is important that you understand the distinction so that you can keep track of your work. Both <code>R</code> and <code>RStudio</code> are free and open-source, and are installed on most computer labs on campus. Please see the <a href="resources.html">Resources</a> page for help with <code>R</code>.</p>
+<p>Unless otherwise noted, you should assume that it will be helpful to bring a laptop to class. <!--It is not *required*, but since there are only three workstations in the classroom, we will need a critical mass (i.e. at least $n/2$) computers in the classroom pretty much everyday.--></p>
+</div>
+<div id="communication" class="section level4">
+<h4>Communication</h4>
+<ul>
+<li><a href="https://classroom.github.com/classrooms/17416565-sds192">GitHub Classroom</a></li>
+<li><a href="https://sds192.slack.com/">Slack</a> is the primary forum for course-related discussions of all kinds. <em>Please do not email us with course-related questions!</em> Instead, post those <code>#questions</code> on Slack. If discretion is absolutely necessary, private message us on Slack.</li>
+</ul>
+</div>
+<div id="writing" class="section level4">
+<h4>Writing</h4>
+<p>Your ability to communicate results—which may be technical in nature—to your audience – which is likely to be non-technical—is critical to your success as a data analyst. The assignments in this class will place an emphasis on the clarity of your writing.</p>
+</div>
+<div id="extra-help" class="section level4">
+<h4>Extra Help</h4>
+<p>There are <a href="http://www.smith.edu/qlc/tutoring.html#S2">Statistics TAs</a> available from 7:00–9:00pm on Sunday–Thursday evenings in Burton 301. In addition, the Spinelli Center for Quantitative Learning (2nd Level of Neilson Library) supports students doing quantitative work across the curriculum, and has a Statistics Counselor available for appointments. Your fellow students are also an excellent source for explanations, tips, etc.</p>
+<ul>
+<li><a href="http://www.smith.edu/qlc/tutoring.html#D1">Data Counselor’s drop in hours</a></li>
+<li>(<a href="mailto:qlctutor@smith.edu">qlctutor@smith.edu</a>)</li>
+</ul>
+<p>Students are welcome to email the account to make an appointment with either the Data Counselor or one of the Data Assistants.</p>
+</div>
+<div id="tentative-schedule" class="section level4">
+<h4>Tentative Schedule</h4>
+<p>The following outline gives a <em>basic</em> description of the course. Please see the <a href="schedule.html">detailed schedule</a> for more specific information about readings and assignments.</p>
 <table>
 <thead>
 <tr class="header">
-<th><strong>Component</strong></th>
-<th align="center"><strong>Weight</strong></th>
+<th>Week</th>
+<th>Topic</th>
+<th>Reading</th>
+<th>Assignments</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Coding challenges</td>
-<td align="center">60%</td>
+<td>1</td>
+<td>data visualization</td>
+<td><em>MDSR</em>, Ch. 1</td>
+<td>HW #1</td>
 </tr>
 <tr class="even">
-<td>Final project</td>
-<td align="center">20%</td>
+<td>2</td>
+<td>taxonomy of data graphics</td>
+<td><em>MDSR</em>, Ch. 2</td>
+<td>HW #2</td>
 </tr>
 <tr class="odd">
-<td>Class participation</td>
-<td align="center">20%</td>
+<td>3</td>
+<td>grammar of graphics</td>
+<td><em>MDSR</em>, Ch. 3</td>
+<td>mini-project</td>
 </tr>
 <tr class="even">
-<td>TOTAL</td>
-<td align="center">100%</td>
+<td>4</td>
+<td>grammar of data wrangling</td>
+<td><em>MDSR</em>, Ch. 4</td>
+<td>HW #3</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>joining two tables</td>
+<td><em>MDSR</em>, Ch. 4</td>
+<td>HW #4</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>tidy data</td>
+<td><em>MDSR</em>, Ch. 5</td>
+<td>HW #5</td>
+</tr>
+<tr class="odd">
+<td>-</td>
+<td><strong>Spring Break</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>iteration</td>
+<td><em>MDSR</em>, Ch. 5</td>
+<td>mini-project</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>ethics</td>
+<td><em>MDSR</em>, Ch. 6</td>
+<td>HW #6</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>database querying</td>
+<td><em>MDSR</em>, Ch. 12</td>
+<td>HW #7</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>SQL</td>
+<td><em>MDSR</em>, Ch. 12</td>
+<td>mini-project</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>spatial data</td>
+<td><em>MDSR</em>, Ch. 14</td>
+<td>HW #8</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>static and dynamic maps</td>
+<td><em>MDSR</em>, Ch. 14</td>
+<td>HW #9</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>leaflet</td>
+<td><em>MDSR</em>, Ch. 14</td>
+<td>mini-project</td>
 </tr>
 </tbody>
 </table>
-<hr>
 </div>
-<div id="late-policy" class="section level2">
-<h2>Late Policy</h2>
-<p>Late submissions will be assessed a penalty of <strong>20% per day</strong>, and submissions more than 5 days late are ineligible for credit. Extensions must be requested <strong>at least 48 hours in advance</strong>, or with notification from a student’s class dean.</p>
-<hr>
-</div>
-<div id="accommodation" class="section level2">
-<h2>Accommodation</h2>
-<p>Smith is committed to providing support services and reasonable accommodations to all students with disabilities. To request an accommodation, please register with the Disability Services Office at the beginning of the semester. To do so, call (413) 585-2071 to arrange an appointment with Laura Rauscher, Director of Disability Services.</p>
-<hr>
-</div>
-<div id="acknowledgement" class="section level2">
-<h2>Acknowledgement</h2>
-<p>Some of the materials used in this course are derived from lectures, notes, or similar courses taught at other institutions. Appropriate references will be included on all such material.</p>
 </div>
 
 

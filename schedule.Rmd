@@ -1,36 +1,57 @@
 ---
-title: "Schedule"
+title: 'Schedule'
 ---
-The following schedule is subject to change at any time.
 
-| **Date** | **Topic**  | **Assignment Out** |
-| ---------|------------|:----------------:|
-| 1/25/18  | Introduction ||
-| 1/30/18  | Python: language overview ||
-| 2/1/18   | Comprehensions, iterators, and generators |CC1|
-| 2/6/18   | Decorators and wrappers ||
-| 2/8/18   | Dynamic programming |CC2|
-| 2/13/18  | Multiprocessing ||
-| 2/15/18  | The Great Python Race |CC3|
-| 2/20/18  | JavaScript: language overview ||
-| 2/22/18  | JS objects |CC4|
-| 2/27/18  | Working with functions ||
-| 3/1/18   | CLASS CANCELLED ||
-| 3/6/18   | Events |[Sprint](paddleball.zip)|
-| 3/8/18   | Promises, JS + Python = :-) Demos: [Famous Smithies](requests.zip), [Can Store](canStore.zip)|CC5|
-| 3/13/18  | SPRING ||
-| 3/15/18  | BREAK ||
-| 3/20/18  | MSA, Java: language overview ||
-| 3/22/18  | Guest speaker: [Elijah Gwynn, Uptrust](http://www.uptrust.co/team-1) ||
-| 3/27/18  | Collections |CC6|
-| 3/29/18  | Hadoop, Streams and MapReduce ||
-| 4/3/18   | Student Project Workshop I ||
-| 4/5/18   | [Julia: language overview](https://www.youtube.com/watch?v=zJ_d3oWuogw)  |CC7|
-| 4/10/18  | Metaprogramming and JIT compilation  |FP1|
-| 4/12/18  | Guest speaker: [Lauren Milechin, MIT](https://www.linkedin.com/in/lauren-milechin/)  |CC8|
-| 4/17/18  | The Right Tool for the Job |FP2|
-| 4/19/18  | Student Project Workshop II ||
-| 4/24/18  | Student Project Workshop III ||
-| 4/26/18  | Student Project Demos |FP3|
-| 5/1/18   | Student Project Demos ||
-| 5/3/18   | Student Project Demos ||
+<div class="past"></div>
+
+<div class="row">
+  <div class="col-md-4">
+#### Thursday, June 8 - MORNING
+- [Introductions](lectures/01-introduction.pdf)
+- [Lab: Reading Data Graphics](http://www.science.smith.edu/~jcrouser/SDS136/labs/design/)
+  </div>
+    <div class="col-md-4">
+#### Thursday, June 8 - AFTERNOON
+- [Grammar of graphics](lectures/02-ggplot2.html)
+- [Lab: Intro to R and RStudio](lab-intro_to_r.html)
+- [Lab: `ggplot2`](lab-ggplot2.html)
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+#### Friday, June 9 - MORNING
+- [Pt. 1: Visualization Techniques](lectures/03-vis-techniques.pdf)
+- Challenge: Parallel Coordinates
+- [Pt. 2: Perception and Color](lectures/04-perception-color.pdf)
+- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html)
+  </div>
+    <div class="col-md-4">
+#### Friday, June 9 - AFTERNOON
+- [Visualizing multidimensional data](lectures/05-MultiD.pdf)
+- [Lab: visualizing multidimensional data](lab-multiD.html)
+- [Variability and uncertainty](lectures/06-Variability.pdf)
+- [Impact of parameter choices on histograms](http://tinlizzie.org/~aran/histograms/)
+- [Spatial aggregation-- Monday preview](lectures/07-SpatialPreview.pdf)
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+#### Monday, June 12 - MORNING
+- [Introduction to d3.js](lectures/08-d3.pptx)
+- Bar Chart 4 ways demo
+  </div>
+    <div class="col-md-4">
+#### Monday, June 12 - AFTERNOON
+- The role of interaction
+- Lab: `plot.ly`
+- Coordinated views and dashboards
+- Show and tell
+  </div>
+</div>
+***
+
+
+
+
