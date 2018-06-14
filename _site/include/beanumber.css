@@ -1,0 +1,22 @@
+/* define Smith-specific colors */
+
+.navbar {
+    background-color: #002f5f;
+    background-image: linear-gradient(to bottom, #002f5f, #003f80);
+    border: 0 1px 0 0 solid #f4ac00;
+}
+
+
+
+img {
+  display: block;
+  margin: auto;
+}
+
+.past {
+  color: darkgray;
+}
+
+.module {
+  border-left: darkgray 1px;
+}

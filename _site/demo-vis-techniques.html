@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Demo: Visualization Techniques in ggplot2</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="include/lab.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2018</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="schedule.html">Schedule</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Labs/Activities
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">01. Deconstructing Data Graphics</li>
+    <li>
+      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Datasets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="datasets/landdara-states.csv">Land Prices by State</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Demo: Visualization Techniques in <code>ggplot2</code></h1>
+
+</div>
+
+
+<div id="visualization-techniques" class="section level2">
+<h2>Visualization Techniques</h2>
+<p>First we’ll need some data. For this walkthrough, we’ll use <code>mtcars</code> (which comes with your <code>R</code> installation):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<div id="bar-chart" class="section level3">
+<h3>Bar Chart</h3>
+<ul>
+<li>Used for comparable variables</li>
+<li>Compares quantitative values for different categories</li>
+<li>Highlights relative amounts</li>
+<li>Grouped/stacked bars can break each category into sub-groups</li>
+</ul>
+<div id="a-simple-bar-chart-in-ggplot2" class="section level4">
+<h4>A simple Bar Chart in <code>ggplot2</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl))) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="a-slightly-prettier-bar-chart-with-color-and-labels" class="section level4">
+<h4>A slightly prettier Bar Chart with color and labels</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, 
+       <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), 
+           <span class="dt">fill =</span> <span class="kw">as.factor</span>(cyl))          <span class="co"># Dual-encode x-value with color</span>
+       ) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() +
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) +<span class="st">            </span><span class="co"># Label the x-axis</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) +<span class="st">                          </span><span class="co"># Label the y-axis</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Count of cars by cylinders&quot;</span>) +<span class="st">  </span><span class="co"># Add a title</span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)                       <span class="co"># Remove the legend</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+</div>
+<div id="histogram" class="section level3">
+<h3>Histogram</h3>
+<ul>
+<li>Looks like a bar chart… but the x-axis is continuous</li>
+<li>Y-axis shows count or relative frequency</li>
+<li>Highlights distribution</li>
+<li>Note: bin size makes a big difference!</li>
+</ul>
+<div id="a-simple-histogram-in-ggplot2" class="section level4">
+<h4>A simple Histogram in <code>ggplot2</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="a-better-histogram-with-scaling-10-bins-labels-and-color" class="section level4">
+<h4>A better Histogram with scaling, 10 bins, labels, and color</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt*<span class="dv">1000</span>)) +<span class="st">             </span><span class="co"># Scale wt to lbs</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>,                    <span class="co"># Change the number of bins to 10</span>
+                 <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)) +<span class="st">    </span><span class="co"># Color bars with a more aestetically-pleasing color</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (lb)&quot;</span>) +<span class="st">                        </span><span class="co"># Label the x-axis</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) +<span class="st">                              </span><span class="co"># Label the y-axis</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of cars by weight&quot;</span>)    <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+<div id="boxplot" class="section level3">
+<h3>Boxplot</h3>
+<ul>
+<li>Also useful for highlighting distribution</li>
+<li>Calls out key values: median, 1st &amp; 3rd quartiles, “fences”, outliers</li>
+<li>Use “jitter” to show actual values</li>
+<li>Reference lines can help provide context</li>
+<li>Can use annotations to show statistical significance</li>
+</ul>
+<div id="a-simple-boxplot-in-ggplot2" class="section level4">
+<h4>A simple boxplot in <code>ggplot2</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
+<h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></code></pre></div>
+<pre><code>## Loading required package: magrittr</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
+
+<span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                        <span class="co"># Hide outliers so they don&#39;t get plotted x2</span>
+               <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>)) +<span class="st">            </span><span class="co"># Change fill and opacity     </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>) +<span class="st">                             </span><span class="co"># Add original datapoints (narrowly scattered)</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">200</span>,                            <span class="co"># A reference line at y = 200 for illustration </span>
+             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) +<span class="st">                       </span><span class="co">#    and we&#39;ll make it dashed</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label =</span> <span class="st">&quot;hp = 200&quot;</span>,                    <span class="co"># Always good to label reference lines</span>
+           <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="dv">210</span>) +<span class="st">                            </span><span class="co"># x-axis has weird coords: 1st category = 1, etc.</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) +<span class="st">                           </span><span class="co"># Label the x-axis</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Horsepower&quot;</span>) +<span class="st">                                    </span><span class="co"># Label the y-axis</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of horsepower by # Cylinders&quot;</span>) +<span class="st">  </span><span class="co"># Add a title</span>
+<span class="st">  </span><span class="kw">stat_compare_means</span>(<span class="dt">comparisons =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;4&quot;</span>,<span class="st">&quot;6&quot;</span>),       <span class="co"># Add significance testing</span>
+                                        <span class="kw">c</span>(<span class="st">&quot;6&quot;</span>,<span class="st">&quot;8&quot;</span>)), 
+                     <span class="dt">method =</span> <span class="st">&quot;t.test&quot;</span>,
+                     <span class="kw">aes</span>(<span class="dt">label =</span> ..p.signif..))</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+</div>
+<div id="scatterplot" class="section level3">
+<h3>Scatterplot</h3>
+<ul>
+<li>Shows the relationship between two continuous variables</li>
+<li>Each point in the plot represents an observation</li>
+<li>You can change color or symbol to highlight groups</li>
+<li>Sometimes useful to show a trend line (regression)</li>
+</ul>
+<div id="a-simple-scatterplot-in-ggplot2" class="section level4">
+<h4>A simple scatterplot in <code>ggplot2</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="a-better-scatterplot-with-scaled-values-shapes-color-and-labels" class="section level4">
+<h4>A better scatterplot with scaled values, shapes, color, and labels</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt*<span class="dv">1000</span>, <span class="dt">y =</span> mpg)) +<span class="st">          </span><span class="co"># Scale the x-values</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>,                               <span class="co"># Make the points a little bigger</span>
+             <span class="kw">aes</span>(<span class="dt">shape =</span> <span class="kw">as.factor</span>(cyl),             <span class="co"># Add an aesthetic to map #cyl to shape</span>
+                 <span class="dt">color =</span> <span class="kw">as.factor</span>(cyl))) +<span class="st">          </span><span class="co">#    dual encoded with color for visibility </span>
+<span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>,                         <span class="co"># Add a quadratic regression line</span>
+              <span class="dt">formula =</span> y ~<span class="st"> </span>x +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">2</span>)) +
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co"># Relabel color/shape so that the</span>
+       <span class="dt">shape =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co">#    legend looks nice</span>
+       <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the x-axis</span>
+       <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) +<span class="st">                   </span><span class="co"># Another way to label the y-axis</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-9-1.png" width="672" /> ### Scatterplot Matrix (SPLOM)</p>
+<ul>
+<li>Scatterplots show the relationship between just two continuous variables at a time</li>
+<li>We can combine multiple scatterplots into a matrix to show additional relationships</li>
+</ul>
+</div>
+<div id="a-simple-splom-using-pairs" class="section level4">
+<h4>A simple SPLOM using <code>pairs()</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(~<span class="st"> </span>mpg +<span class="st"> </span>wt +<span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="a-better-splom-using-ggally" class="section level4">
+<h4>A better SPLOM using <code>GGally</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;GGally&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     nasa</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
+
+<span class="kw">ggpairs</span>(mtcars, 
+        <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),                                   <span class="co"># Select specific columns to compare</span>
+        <span class="dt">columnLabels =</span> <span class="kw">c</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>,                            <span class="co"># Add clearer names for each column</span>
+                         <span class="st">&quot;Displacement&quot;</span>, 
+                         <span class="st">&quot;Horsepower&quot;</span>),
+        <span class="kw">aes</span>(<span class="dt">colour =</span> <span class="kw">as.factor</span>(cyl),                                      <span class="co"># Use color to denote # cylinders</span>
+            <span class="dt">alpha =</span> <span class="fl">0.4</span>)) +<span class="st">                                               </span><span class="co"># Set to semi-transparent</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs. displacement vs. horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>
+<div id="line-charts" class="section level3">
+<h3>Line Charts</h3>
+<ul>
+<li>Shows the trend in one variable, often over time</li>
+<li>Multiple lines can show multiple variables, or the same variable for multiple observations (must have the same scale!)</li>
+<li>Highlights “position switches”</li>
+</ul>
+<p>Line charts don’t really make sense for <code>mtcars</code>, so first we’ll load a different dataset: Dr. Arbuthnot’s baptism records from 1629-1710</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> boys +<span class="st"> </span>girls)</code></pre></div>
+<div id="a-simple-line-chart-using-ggplot" class="section level4">
+<h4>A simple line chart using <code>ggplot</code></h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(arbuthnot, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) +
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="a-better-line-chart-built-with-tidy-data" class="section level4">
+<h4>A better line chart, built with tidy data</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;tidyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:magrittr&#39;:
+## 
+##     extract</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
+arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-total) %&gt;%
+<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, -year)
+
+<span class="kw">ggplot</span>(arbuthnot_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> count, 
+                           <span class="dt">color =</span> gender)) +<span class="st">     </span><span class="co"># Now we can map &#39;gender&#39; to color to get 2 lines</span>
+<span class="st">  </span><span class="kw">geom_line</span>() +
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>,                          <span class="co"># Relabel color/shape so that the legend looks nice</span>
+       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Another way to label the x-axis</span>
+       <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) +<span class="st">                 </span><span class="co"># Another way to label the y-axis</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>)</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+<div id="morning-challenge" class="section level3">
+<h3>Morning Challenge</h3>
+<p>Try building a <strong>parallel coordinates plot</strong> using <code>ggplot2</code></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,20 +1,22 @@
-name: MassMutual-DataVis
-output_dir: .
+name: "MassMutual-DataVis"
+output_dir: "."
 navbar:
-  title: Introduction to Data Visualization - Summer 2018
+  title: "Introduction to Data Visualization - Summer 2018"
   left:
-  - text: Home
+  - text: "Home"
     href: index.html
-  - text: Schedule
+  - text: "Schedule"
     href: schedule.html
-  - text: Labs/Activities
+  - text: "Labs/Activities"
     menu:
-    - text: 01. Deconstructing Data Graphics
-    - text: 02. Crash course in `ggplot2`
+    - text: "01. Deconstructing Data Graphics"
+    - text: "02. Crash course in `ggplot2`"
       href: lab-ggplot2.html
-  - text: Datasets
+    - text: "03. Visualization Techniques"
+      href: demo-vis-techniques.html
+  - text: "Datasets"
     menu:
-    - text: Land Prices by State
+    - text: "Land Prices by State"
       href: datasets/landdara-states.csv
 output:
   html_document:
