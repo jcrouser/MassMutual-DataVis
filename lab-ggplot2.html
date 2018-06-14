@@ -319,12 +319,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics</li>
-    <li>
-      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
-    </li>
-    <li class="dropdown-header">03. Parallel Coordinates</li>
+    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
   </ul>
 </li>
+<li class="dropdown-header">Slack</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -484,9 +482,9 @@ p1 +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw"
 <p><img src="lab-ggplot2_files/figure-html/other-aes-example-1.png" width="672" /></p>
 </div>
 </div>
-<div id="scales-controlling-aesthetic-mapping" class="section level2">
-<h2>Scales: Controlling Aesthetic Mapping</h2>
-<p>Aesthetic mapping (i.e., with <code>aes()</code>) only says that a variable should be mapped to an aesthetic. It doesn’t say <em>how</em> that should happy. For example, when mapping a variable to <em>shape</em> with <code>aes(shape</code> x)= you don’t say <em>what</em> shapes should be used. Similarly, <code>aes(color</code> z)= doesn’t say <em>what</em> colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding <em>scale</em>. In <code>ggplot2</code>, <code>scales</code> include:</p>
+<div id="scales-controlling-aesthetics" class="section level2">
+<h2>Scales: Controlling Aesthetics</h2>
+<p>Aesthetic mapping (i.e., with <code>aes()</code>) only says that a variable should be mapped to an aesthetic. It doesn’t say <em>how</em> that should happen. For example, when mapping a variable to <em>shape</em> with <code>aes(shape</code> x)= you don’t say <em>what</em> shapes should be used. Similarly, <code>aes(color</code> z)= doesn’t say <em>what</em> colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding <em>scale</em>. In <code>ggplot2</code>, <code>scales</code> include:</p>
 <ul>
 <li><code>position</code></li>
 <li><code>color</code> and <code>fill</code></li>

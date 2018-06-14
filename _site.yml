@@ -8,13 +8,10 @@ navbar:
   - text: Schedule
     href: schedule.html
   - text: Labs/Activities
-    menu: 
+    menu:
     - text: 01. Deconstructing Data Graphics
     - text: 02. Crash course in `ggplot2`
-      href: lab-ggplot2.html
-    - text: 03. Parallel Coordinates
-  #- text: Slack
-    # href: https://csc220-s18.slack.com
+  - text: Slack
 output:
   html_document:
     theme: lumen

@@ -48,7 +48,6 @@ title: 'Schedule'
 - Show and tell
   </div>
 </div>
-***
 
 
 
