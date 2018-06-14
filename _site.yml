@@ -11,7 +11,10 @@ navbar:
     menu:
     - text: 01. Deconstructing Data Graphics
     - text: 02. Crash course in `ggplot2`
-  - text: Slack
+  - text: Datasets
+    menu:
+    - text: Land Prices by State
+      href: datasets/landdara-states.csv
 output:
   html_document:
     theme: lumen

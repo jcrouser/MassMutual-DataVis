@@ -58,7 +58,7 @@ Using `ggplot2`, we can specify different parts of the plot, and combine them to
 Let's start by taking a look at some data on housing prices:
 
 ``` {r read-housing-data, eval = TRUE}
-housing <- read.csv("http://www.science.smith.edu/~jcrouser/SDS192/landdata-states.csv", header = T)
+housing <- read.csv("https://jcrouser.github.io/MassMutual-DataVis/datasets/landdata-states.csv", header = T)
 glimpse(housing)
 ```
 
