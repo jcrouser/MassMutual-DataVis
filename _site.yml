@@ -14,6 +14,8 @@ navbar:
       href: lab-ggplot2.html
     - text: "03. Visualization Techniques"
       href: demo-vis-techniques.html
+    - text: "04. ColorBrewer and `ggthemes`"
+      href: lab-colorbrewer-ggthemes.html
   - text: "Datasets"
     menu:
     - text: "Land Prices by State"

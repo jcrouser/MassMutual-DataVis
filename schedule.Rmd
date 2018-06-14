@@ -21,7 +21,7 @@ title: 'Schedule'
   <div class="col-md-4">
 #### Monday, June 18 - MORNING
 - [Pt. 1: Visualization Techniques](lectures/03-vis-techniques.pdf)
-- Challenge: Parallel Coordinates
+- [Challenge: Parallel Coordinates](demo-vis-techniques.html)
 - [Pt. 2: Perception and Color](lectures/04-perception-color.pdf)
 - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html)
   </div>
