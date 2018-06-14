@@ -11,7 +11,7 @@
 
 
 
-<title>Graphics with ggplot2</title>
+<title>Crash Course in ggplot2</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -319,7 +319,9 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics</li>
-    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li>
+      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -346,7 +348,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Graphics with <code>ggplot2</code></h1>
+<h1 class="title toc-ignore">Crash Course in <code>ggplot2</code></h1>
 
 </div>
 
@@ -389,7 +391,8 @@ div.tocify {
 <div id="example-data-housing-prices" class="section level3">
 <h3>Example Data: <code>Housing prices</code></h3>
 <p>Let’s start by taking a look at some data on housing prices:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">housing &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://jcrouser.github.io/MassMutual-DataVis/datasets/landdata-states.csv&quot;</span>, <span class="dt">header =</span> T)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">housing &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://jcrouser.github.io/MassMutual-DataVis/datasets/landdata-states.csv&quot;</span>, 
+                    <span class="dt">header =</span> T)
 <span class="kw">glimpse</span>(housing)</code></pre></div>
 <pre><code>## Observations: 7,803
 ## Variables: 11

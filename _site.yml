@@ -1,4 +1,4 @@
-name: CSC220-website
+name: MassMutual-DataVis
 output_dir: .
 navbar:
   title: Introduction to Data Visualization - Summer 2018
@@ -11,6 +11,7 @@ navbar:
     menu:
     - text: 01. Deconstructing Data Graphics
     - text: 02. Crash course in `ggplot2`
+      href: lab-ggplot2.html
   - text: Datasets
     menu:
     - text: Land Prices by State
