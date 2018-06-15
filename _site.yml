@@ -19,7 +19,13 @@ navbar:
   - text: "Datasets"
     menu:
     - text: "Land Prices by State"
-      href: datasets/landdara-states.csv
+      href: datasets/landdata-states.csv
+    - text: "Dr. Arbuthnot's Baptism Records"
+      href: datasets/arbuthnot.csv
+    - text: "Storm Events (detail)"
+      href: datasets/StormEvents_details-ftp_v1.0_d2016_c20160810.csv
+    - text: "Storm Events (locations)"
+      href: datasets/StormEvents_locations-ftp_v1.0_d2016_c20160810.csv
 output:
   html_document:
     theme: lumen

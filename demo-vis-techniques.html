@@ -338,7 +338,16 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="datasets/landdara-states.csv">Land Prices by State</a>
+      <a href="datasets/landdata-states.csv">Land Prices by State</a>
+    </li>
+    <li>
+      <a href="datasets/arbuthnot.csv">Dr. Arbuthnot's Baptism Records</a>
+    </li>
+    <li>
+      <a href="datasets/StormEvents_details-ftp_v1.0_d2016_c20160810.csv">Storm Events (detail)</a>
+    </li>
+    <li>
+      <a href="datasets/StormEvents_locations-ftp_v1.0_d2016_c20160810.csv">Storm Events (locations)</a>
     </li>
   </ul>
 </li>
@@ -441,9 +450,8 @@ div.tocify {
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></code></pre></div>
-<pre><code>## Loading required package: magrittr</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span>
+                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
 
 <span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                        <span class="co"># Hide outliers so they don&#39;t double-plot</span>
@@ -503,13 +511,8 @@ div.tocify {
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;GGally&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     nasa</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span>
+                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
 
 <span class="kw">ggpairs</span>(mtcars, 
         <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span>
@@ -543,13 +546,9 @@ arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;tidyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:magrittr&#39;:
-## 
-##     extract</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+
+<span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
 arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)
