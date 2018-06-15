@@ -1,0 +1,16 @@
+---
+title: "ggplot2 lab"
+author: "Jordan Crouser"
+date: "6/15/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Setting up
+
+```{r}
+library(ggplot2)
+```
+
