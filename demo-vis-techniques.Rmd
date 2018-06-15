@@ -92,13 +92,13 @@ library(ggpubr) # Useful library for making "publication-ready" graphics:
                 # We'll use the stat_compare_means(...) function to add significance
 
 ggplot(mtcars, aes(x = as.factor(cyl), y = hp)) + 
-  geom_boxplot(outlier.shape = NA,                        # Hide outliers so they don't get plotted x2
+  geom_boxplot(outlier.shape = NA,                        # Hide outliers so they don't double-plot
                fill=rgb(0.2, 0.4, 0.2, 0.6)) +            # Change fill and opacity     
-  geom_jitter(width = 0.05) +                             # Add original datapoints (narrowly scattered)
-  geom_hline(yintercept = 200,                            # A reference line at y = 200 for illustration 
+  geom_jitter(width = 0.05) +                             # Add original datapoints (jittered)
+  geom_hline(yintercept = 200,                            # A reference line at y = 200 
              linetype = "dashed") +                       #    and we'll make it dashed
   annotate("text", label = "hp = 200",                    # Always good to label reference lines
-           x = 0.7, y = 210) +                            # x-axis has weird coords: 1st category = 1, etc.
+           x = 0.7, y = 210) +                            # weird coords: 1st category = 1, etc.
   xlab("Number of cylinders") +                           # Label the x-axis
   ylab("Horsepower") +                                    # Label the y-axis
   ggtitle("Distribution of horsepower by # Cylinders") +  # Add a title
@@ -155,13 +155,15 @@ library(GGally) # Useful library that extends some of ggplot2's functionality
                 # We'll use the ggpairs(...) function to make a classy SPLOM
 
 ggpairs(mtcars, 
-        columns = c("mpg","disp","hp"),                                   # Select specific columns to compare
-        columnLabels = c("Fuel economy (mpg)",                            # Add clearer names for each column
+        columns = c("mpg","disp","hp"),         # Select specific columns to compare
+        columnLabels = c("Fuel economy (mpg)",  # Add clearer names for each column
                          "Displacement", 
                          "Horsepower"),
-        aes(colour = as.factor(cyl),                                      # Use color to denote # cylinders
-            alpha = 0.4)) +                                               # Set to semi-transparent
-  ggtitle("Fuel economy vs. displacement vs. horsepower by # cylinders")  # Add a title
+        aes(colour = as.factor(cyl),            # Use color to denote # cylinders
+            alpha = 0.4)) +                     # Set to semi-transparent
+  ggtitle("Fuel economy vs. 
+           displacement vs. 
+           horsepower by # cylinders")  # Add a title
 ```
 
 ### Line Charts
@@ -194,11 +196,15 @@ arbuthnot_tidy <- arbuthnot %>%
 ggplot(arbuthnot_tidy, aes(x = year, y = count, 
                            color = gender)) +     # Now we can map 'gender' to color to get 2 lines
   geom_line() +
-  labs(color = "Gender",                          # Relabel color/shape so that the legend looks nice
+  labs(color = "Gender",                          # Relabel color
        x = "Year",                                # Another way to label the x-axis
        y = "Number of records") +                 # Another way to label the y-axis
   ggtitle("Dr. Arbuthnot's Baptism Records from 1629-1710 (by Gender)")
 ```
 
-### Morning Challenge
-Try building a **parallel coordinates plot** using `ggplot2`
+## Morning Challenge
+Try building a **parallel coordinates plot** using `ggplot2` on a dataset of your choice!
+
+```{r}
+# Put your code here
+```

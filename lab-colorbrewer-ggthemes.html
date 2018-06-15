@@ -379,16 +379,16 @@ div.tocify {
 ## 5  6.4   VC  0.5
 ## 6 10.0   VC  0.5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ToothGrowth)</code></pre></div>
-<pre><code>##       len        supp     dose   
-##  Min.   : 4.20   OJ:30   0.5:20  
-##  1st Qu.:13.07   VC:30   1  :20  
-##  Median :19.25           2  :20  
-##  Mean   :18.81                   
-##  3rd Qu.:25.27                   
-##  Max.   :33.90</code></pre>
+<pre><code>##       len        supp         dose      
+##  Min.   : 4.20   OJ:30   Min.   :0.500  
+##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
+##  Median :19.25           Median :1.000  
+##  Mean   :18.81           Mean   :1.167  
+##  3rd Qu.:25.27           3rd Qu.:2.000  
+##  Max.   :33.90           Max.   :2.000</code></pre>
 <p>Hmm… the <code>dose</code> column looks a little funny. There are only three doseage values <code>[0.5,1,2]</code>, but <code>R</code> is interpreting them as continuous. We can tell <code>R</code> that we want to convert them to categories (a.k.a. <code>factors</code>) using <code>dplyr</code> like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-ToothGrowth &lt;-<span class="st"> </span>ToothGrowth %&gt;%
+ToothGrowth &lt;-<span class="st"> </span>ToothGrowth <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dose =</span> <span class="kw">factor</span>(dose))</code></pre></div>
 <p>Now let’s look again:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ToothGrowth)</code></pre></div>
@@ -413,7 +413,7 @@ ToothGrowth &lt;-<span class="st"> </span>ToothGrowth %&gt;%
 <div id="changing-colors-manually" class="section level2">
 <h2>Changing colors manually</h2>
 <p>The default colors <code>R</code> selects are okay, but maybe we can do better. Let’s try using colors from the Smith College official <a href="https://www.smith.edu/about-smith/interactive-style-guide/color-palette">Color Palette</a>. We can specify the color values we want using <code>scale_fill_manual()</code> like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPlot +<span class="st"> </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#004f71&quot;</span>, <span class="st">&quot;#465a01&quot;</span>, <span class="st">&quot;#981d97&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#004f71&quot;</span>, <span class="st">&quot;#465a01&quot;</span>, <span class="st">&quot;#981d97&quot;</span>))</code></pre></div>
 <p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="changing-colors-with-rcolorbrewer" class="section level2">
@@ -423,7 +423,7 @@ ToothGrowth &lt;-<span class="st"> </span>ToothGrowth %&gt;%
 <span class="kw">display.brewer.all</span>()</code></pre></div>
 <p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Ooh, so many choices! We can now use these <code>palettes</code> along with <code>scale_fill_brewer()</code> to make perceptually-optimized plots:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPlot +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set3&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set3&quot;</span>)</code></pre></div>
 <p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>That looks a little bit… Valentine-y?</p>
 <p><img src="gfx/hearts.jpg" width=50% /></p>
@@ -436,7 +436,7 @@ ToothGrowth &lt;-<span class="st"> </span>ToothGrowth %&gt;%
 <h2>Stylizing using <code>ggthemes</code></h2>
 <p>If we want even more control, we can use the <code>ggthemes</code> package to define not only the color palette, but the overall style of the plot as well. For example, if we want the minic the style used by the graphic design team at <a href="http://www.economist.com">The Economist</a>, we could say:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggthemes)
-myPlot +<span class="st"> </span><span class="kw">theme_economist</span>() +<span class="st"> </span><span class="kw">scale_fill_economist</span>()</code></pre></div>
+myPlot <span class="op">+</span><span class="st"> </span><span class="kw">theme_economist</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_economist</span>()</code></pre></div>
 <p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Notice how the background changed colors, the axes were re-styled, and the legend changed positions? You can read more about available <code>ggthemes</code> and <code>scales</code> <a href="https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html">here</a>.</p>
 </div>

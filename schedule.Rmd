@@ -7,12 +7,12 @@ title: 'Schedule'
 <div class="row">
   <div class="col-md-4">
 #### Friday, June 15 - MORNING
-- [Introduction](lectures/01-introduction.pdf)
+- [Introduction](lectures/01-visualization-intro.pdf)
 - Activity: Reading Data Graphics
   </div>
     <div class="col-md-4">
 #### Friday, June 15 - AFTERNOON
-- Grammar of graphics
+- [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf)
 - [Lab: `ggplot2`](lab-ggplot2.html)
   </div>
 </div>
@@ -20,32 +20,28 @@ title: 'Schedule'
 <div class="row">
   <div class="col-md-4">
 #### Monday, June 18 - MORNING
-- [Pt. 1: Visualization Techniques](lectures/03-vis-techniques.pdf)
+- [Visualization Techniques](lectures/03-vis-techniques.pdf)
 - [Challenge: Parallel Coordinates](demo-vis-techniques.html)
-- [Pt. 2: Perception and Color](lectures/04-perception-color.pdf)
-- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html)
   </div>
     <div class="col-md-4">
 #### Monday, June 18 - AFTERNOON
-- [Visualizing multidimensional data](lectures/05-MultiD.pdf)
-- [Lab: visualizing multidimensional data](lab-multiD.html)
-- [Variability and uncertainty](lectures/06-Variability.pdf)
-- [Impact of parameter choices on histograms](http://tinlizzie.org/~aran/histograms/)
-- [Spatial aggregation-- Monday preview](lectures/07-SpatialPreview.pdf)
+- [Perception and Color](lectures/04-perception-color.pdf)
+- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html)
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-4">
 #### Tuesday, June 19 - MORNING
-- TBD
-  </div>
-    <div class="col-md-4">
-#### Tuesday, June 19 - AFTERNOON
 - The role of interaction
 - Lab: `plot.ly`
 - Coordinated views and dashboards
 - Show and tell
+  </div>
+    <div class="col-md-4">
+#### Tuesday, June 19 - AFTERNOON
+- Geographic data
+- Lab: `leaflet`
   </div>
 </div>
 
