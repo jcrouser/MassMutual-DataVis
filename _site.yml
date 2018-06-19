@@ -18,6 +18,11 @@ navbar:
       href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"
       href: lab-colorbrewer-ggthemes.html
+    - text: "05. plotly"
+      href: lab-plotly.html
+    - text: "06. leaflet"
+      href: lab-leaflet.html
+    
   - text: "Datasets"
     menu:
     - text: "Land Prices by State"
