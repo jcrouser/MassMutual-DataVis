@@ -28,6 +28,8 @@ navbar:
       href: datasets/StormEvents_details-ftp_v1.0_d2016_c20160810.csv
     - text: "Storm Events (locations)"
       href: datasets/StormEvents_locations-ftp_v1.0_d2016_c20160810.csv
+    - text: "US State Boundary Shapefiles"
+      href: datasets/cb_2015_us_state_500k.zip
 output:
   html_document:
     theme: lumen

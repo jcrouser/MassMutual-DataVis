@@ -31,7 +31,7 @@ head(mtcars)
 
 #### A simple Bar Chart in `ggplot2`
 ```{r}
-ggplot(mtcars, aes(x = as.factor(cyl))) + 
+ggplot(mtcars, aes(x = cyl)) + 
   geom_bar()
 ```
 
@@ -65,8 +65,9 @@ ggplot(mtcars, aes(x = wt)) +
 #### A better Histogram with scaling, 10 bins, labels, and color
 ```{r}
 ggplot(mtcars, aes(x = wt*1000)) +             # Scale wt to lbs
-  geom_histogram(bins = 10,                    # Change the number of bins to 10
-                 fill=rgb(0.1, 0.4, 0.5)) +    # Color bars with a more aestetically-pleasing color
+  geom_histogram(binwidth = 500,                    # Change the number of bins to 10
+                 fill = rgb(0.1, 0.4, 0.5)
+                 ) +    # Color bars with a more aestetically-pleasing color
   xlab("Weight (lb)") +                        # Label the x-axis
   ylab("Count") +                              # Label the y-axis
   ggtitle("Distribution of cars by weight")    # Add a title
@@ -94,18 +95,18 @@ library(ggpubr) # Useful library for making "publication-ready" graphics:
 ggplot(mtcars, aes(x = as.factor(cyl), y = hp)) + 
   geom_boxplot(outlier.shape = NA,                        # Hide outliers so they don't double-plot
                fill=rgb(0.2, 0.4, 0.2, 0.6)) +            # Change fill and opacity     
-  geom_jitter(width = 0.05) +                             # Add original datapoints (jittered)
-  geom_hline(yintercept = 200,                            # A reference line at y = 200 
+  geom_jitter(width = 0.01)  +                             # Add original datapoints (jittered)
+  geom_hline(yintercept = 200,                            # A reference line at y = 200
              linetype = "dashed") +                       #    and we'll make it dashed
   annotate("text", label = "hp = 200",                    # Always good to label reference lines
-           x = 0.7, y = 210) +                            # weird coords: 1st category = 1, etc.
+           x = 0.7, y = 210)  +                            # weird coords: 1st category = 1, etc.
   xlab("Number of cylinders") +                           # Label the x-axis
   ylab("Horsepower") +                                    # Label the y-axis
-  ggtitle("Distribution of horsepower by # Cylinders") +  # Add a title
-  stat_compare_means(comparisons = list(c("4","6"),       # Add significance testing
-                                        c("6","8")), 
-                     method = "t.test",
-                     aes(label = ..p.signif..))
+   ggtitle("Distribution of horsepower by # Cylinders") #+  # Add a title
+  # stat_compare_means(comparisons = list(c("4","6"),       # Add significance testing
+  #                                       c("6","8")),
+  #                    method = "t.test",
+  #                    aes(label = ..p.signif..))
 ```
 
 ### Scatterplot
@@ -134,7 +135,7 @@ ggplot(mtcars, aes(x = wt*1000, y = mpg)) +          # Scale the x-values
        shape = "# Cylinders",                        #    legend looks nice
        x = "Weight (lb)",                            # Another way to label the x-axis
        y = "Fuel economy (mpg)") +                   # Another way to label the y-axis
-  ggtitle("Weight vs. fuel economy by # cylinders")  # Add a title
+   ggtitle("Weight vs. fuel economy by # cylinders")  # Add a title
   
 ```
 ### Scatterplot Matrix (SPLOM)
@@ -157,12 +158,13 @@ library(GGally) # Useful library that extends some of ggplot2's functionality
 ggpairs(mtcars, 
         columns = c("mpg","disp","hp"),         # Select specific columns to compare
         columnLabels = c("Fuel economy (mpg)",  # Add clearer names for each column
-                         "Displacement", 
+                         "Displacement",
                          "Horsepower"),
-        aes(colour = as.factor(cyl),            # Use color to denote # cylinders
-            alpha = 0.4)) +                     # Set to semi-transparent
-  ggtitle("Fuel economy vs. 
-           displacement vs. 
+        aes(color = as.factor(cyl),            # Use color to denote # cylinders
+            alpha = 0.4)
+        ) +                     # Set to semi-transparent
+  ggtitle("Fuel economy vs.
+           displacement vs.
            horsepower by # cylinders")  # Add a title
 ```
 
@@ -180,7 +182,10 @@ arbuthnot <- read.csv("http://www.openintro.org/stat/data/arbuthnot.csv", header
 
 #### A simple line chart using `ggplot`
 ```{r}
-ggplot(arbuthnot, aes(x = year, y = total)) +
+library(dplyr)
+
+arbuthnot %>%
+ggplot(aes(x = year, y = total)) +
   geom_line()
 ```
 
