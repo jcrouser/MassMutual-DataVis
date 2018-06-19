@@ -1,5 +1,5 @@
 ---
-title: 'Lab: Leaflet Maps'
+title: 'Lab: Plotly'
 output:
   html_document:
     css: include/lab.css

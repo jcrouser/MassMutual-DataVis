@@ -6,3 +6,4 @@ setwd("/Users/jcrouser/Google Drive/Synergistic Activities/MassMutual/2018/MassM
 
 #render site. 
 rmarkdown::render_site()
+
