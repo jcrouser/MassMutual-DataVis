@@ -121,7 +121,7 @@ subplot(
 
 ```{r}
 library(crosstalk)
-sd <- txhousing %>%
+shared_data <- txhousing %>%
   filter(city %in% c("Houston", "Dallas", "Galveston")) %>%
   SharedData$new(~year)
 ```
@@ -129,12 +129,37 @@ sd <- txhousing %>%
 As far as `ggplotly()` and `plot_ly()` are concerned, `SharedData` object(s) act just like a data frame, but with a special `key` attribute attached to graphical elements. Since both interfaces are based on the layered grammar of graphics, `key` attributes can be attached at the layer level, and those attributes can also be shared across multiple views. Let's leverage both of these features to link multiple views of median house sales in various Texan cities:
 
 ```{r}
-p <- ggplot(sd, aes(month, median)) +
+p <- ggplot(shared_data, aes(month, median)) +
   geom_line(aes(group = year)) + 
-  geom_smooth(data = txhousing, method = "gam") + 
   facet_wrap(~ city)
 
 ggplotly(p, tooltip = "year") %>%
-  highlight(defaultValues = 2015, color = "red")
+  highlight(color = "red")
+```
+We can also link different views, like those from `ggpairs`. Let's look at the `iris` dataset because it's easy on the eyes:
+```{r}
+shared_iris <- SharedData$new(iris)
+p <- GGally::ggpairs(shared_iris, aes(color = Species), columns = 1:4)
+highlight(ggplotly(p), on = "plotly_selected")
+```
+Really, we can link any collection of `htmlwidgets`:
+```{r}
+library(leaflet)
+
+shared_quakes <- SharedData$new(quakes)
+
+p <- plot_ly(shared_quakes, x = ~depth, y = ~mag) %>% 
+  add_markers(alpha = 0.5) %>%
+  highlight("plotly_selected", dynamic = TRUE)
+
+map <- leaflet(shared_quakes) %>% 
+  addTiles() %>% 
+  addCircles()
+
+bscols(widths = c(6, 6), p, map)
 ```
 
+We'll see more about `leaflet` maps this afternoon.
+
+## Your turn!
+Try some of these ideas out on your own dataset and see what you can come up with!
