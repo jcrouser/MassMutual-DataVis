@@ -397,7 +397,7 @@ div.tocify {
 <h4>A simple Bar Chart in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> cyl)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 </div>
 <div id="a-slightly-prettier-bar-chart-with-color-and-labels" class="section level4">
 <h4>A slightly prettier Bar Chart with color and labels</h4>
@@ -410,7 +410,7 @@ div.tocify {
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                          </span><span class="co"># Label the y-axis</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Count of cars by cylinders&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># Add a title</span>
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)                       <span class="co"># Remove the legend</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 </div>
 <div id="histogram" class="section level3">
@@ -426,7 +426,7 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 </div>
 <div id="a-better-histogram-with-scaling-10-bins-labels-and-color" class="section level4">
 <h4>A better Histogram with scaling, 10 bins, labels, and color</h4>
@@ -437,7 +437,7 @@ div.tocify {
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (lb)&quot;</span>) <span class="op">+</span><span class="st">                        </span><span class="co"># Label the x-axis</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                              </span><span class="co"># Label the y-axis</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of cars by weight&quot;</span>)    <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 </div>
 </div>
 <div id="boxplot" class="section level3">
@@ -453,7 +453,7 @@ div.tocify {
 <h4>A simple boxplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
@@ -471,7 +471,7 @@ div.tocify {
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">                           </span><span class="co"># Label the x-axis</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Horsepower&quot;</span>) <span class="op">+</span><span class="st">                                    </span><span class="co"># Label the y-axis</span>
 <span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of horsepower by # Cylinders&quot;</span>) <span class="co">#+  # Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># stat_compare_means(comparisons = list(c(&quot;4&quot;,&quot;6&quot;),       # Add significance testing</span>
   <span class="co">#                                       c(&quot;6&quot;,&quot;8&quot;)),</span>
   <span class="co">#                    method = &quot;t.test&quot;,</span>
@@ -490,7 +490,7 @@ div.tocify {
 <h4>A simple scatterplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="a-better-scatterplot-with-scaled-values-shapes-color-and-labels" class="section level4">
 <h4>A better scatterplot with scaled values, shapes, color, and labels</h4>
@@ -505,7 +505,7 @@ div.tocify {
        <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the x-axis</span>
        <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                   </span><span class="co"># Another way to label the y-axis</span>
 <span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-139-1.png" width="672" /> ### Scatterplot Matrix (SPLOM)</p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-58-1.png" width="672" /> ### Scatterplot Matrix (SPLOM)</p>
 <ul>
 <li>Scatterplots show the relationship between just two continuous variables at a time</li>
 <li>We can combine multiple scatterplots into a matrix to show additional relationships</li>
@@ -514,7 +514,7 @@ div.tocify {
 <div id="a-simple-splom-using-pairs" class="section level4">
 <h4>A simple SPLOM using <code>pairs()</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
@@ -532,7 +532,7 @@ div.tocify {
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs.</span>
 <span class="st">           displacement vs.</span>
 <span class="st">           horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 </div>
 </div>
 <div id="line-charts" class="section level3">
@@ -553,7 +553,7 @@ arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 arbuthnot <span class="op">%&gt;%</span>
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
@@ -571,7 +571,7 @@ arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</
        <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Another way to label the x-axis</span>
        <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span><span class="co"># Another way to label the y-axis</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>)</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 </div>
 </div>
 </div>

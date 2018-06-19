@@ -33,15 +33,14 @@ title: 'Schedule'
 <div class="row">
   <div class="col-md-4">
 #### Tuesday, June 19 - MORNING
-- The role of interaction
-- Lab: `plot.ly`
-- Coordinated views and dashboards
+- [The role of interaction](lectures/05-interaction.pdf)
+- [Lab: `plot.ly`](lab-plotly.html)
 - Show and tell
   </div>
     <div class="col-md-4">
 #### Tuesday, June 19 - AFTERNOON
-- Geographic data
-- Lab: `leaflet`
+- [Geographic data](lectures/06-geovis.pdf)
+- [Lab: `leaflet`](lab-leaflet.html)
   </div>
 </div>
 
