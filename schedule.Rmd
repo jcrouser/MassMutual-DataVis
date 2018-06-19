@@ -33,7 +33,7 @@ title: 'Schedule'
 <div class="row">
   <div class="col-md-4">
 #### Tuesday, June 19 - MORNING
-- [The role of interaction](lectures/05-interaction.pdf)
+- [The role of interaction](lectures/05-interaction-and-plotly.pdf)
 - [Lab: `plot.ly`](lab-plotly.html)
 - Show and tell
   </div>
