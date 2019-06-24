@@ -344,5 +344,5 @@ Much cleaner!
 This lab is based on the "[Introduction to R Graphics with `ggplot2`](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)" workshop, which
 is a product of the [Data Science Services](http://dss.iq.harvard.edu/) team [Harvard University](http://dss.iq.harvard.edu/). The original source is released under a 
 [Creative Commons Attribution-ShareAlike 4.0 Unported](http://creativecommons.org/licenses/by-sa/4.0). 
-This lab was adapted for SDS192: and Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual data visualization workship in Summer 2017 by Amelia McNamara.
+This lab was adapted for SDS192: an Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual Data Visualization workshop in Summer 2017 by Amelia McNamara.
 </div>
