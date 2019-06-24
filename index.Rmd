@@ -1,5 +1,5 @@
 ---
-title: "Data Visualization Workshop 2018"
+title: "Data Visualization Workshop 2019"
 ---
 
 ![](gfx/self_description.png)

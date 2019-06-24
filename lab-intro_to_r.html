@@ -26,43 +26,91 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -99,9 +147,7 @@ h6 {
 
 <link rel="stylesheet" href="include/lab.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -126,6 +172,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -140,7 +189,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -160,6 +208,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -181,18 +266,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -270,8 +412,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -280,6 +420,16 @@ div.tocify {
 
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -301,7 +451,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2018</a>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2019</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -396,41 +546,41 @@ div.tocify {
 <li><code>ggplot2</code>: for data visualization</li>
 </ul>
 <p>If these packages are not already available in your R environment, install them by typing the following lines of code into the console of your RStudio session, pressing the enter/return key after each one. Note that you can check to see which packages (and which versions) are installed by inspecting the <em>Packages</em> tab in the lower right panel of RStudio.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)
-<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</a></code></pre></div>
 <p>You may need to select a server from which to download; any of them will work. Next, you need to load these packages in your working environment. We do this with the <code>library</code> function. Run the following three lines in your console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-<span class="kw">library</span>(ggplot2)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
 <p>Note that you only need to <em>install</em> packages once, but you need to <em>load</em> them each time you relaunch RStudio.</p>
 </div>
 </div>
 <div id="dr.arbuthnots-baptism-records" class="section level2">
 <h2>Dr. Arbuthnot’s Baptism Records</h2>
 <p>To get you started, run the following command to load the data from a comma-separated value (CSV) file hosted online.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T)</a></code></pre></div>
 <p>This command instructs R to load some data: the Arbuthnot baptism counts for boys and girls. You should see that the workspace area in the upper righthand corner of the RStudio window now lists a data set called <code>arbuthnot</code> that has 82 observations on 3 variables. As you interact with R, you will create a series of objects. Sometimes you load them as we have done here, and sometimes you create them yourself as the byproduct of a computation or some analysis you have performed.</p>
 <p>The Arbuthnot data set refers to Dr. John Arbuthnot, an 18<sup>th</sup> century physician, writer, and mathematician. He was interested in the ratio of newborn boys to newborn girls, so he gathered the baptism records for children born in London for every year from 1629 to 1710. We can view the data by typing its name into the console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arbuthnot</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">arbuthnot</a></code></pre></div>
 <p>However printing the whole dataset in the console is not that useful. One advantage of RStudio is that it comes with a built-in data viewer. Click on the name <code>arbuthnot</code> in the <em>Environment</em> pane (upper right window) that lists the objects in your workspace. This will bring up an alternative display of the data set in the <em>Data Viewer</em> (upper left window). You can close the data viewer by clicking on the <code>x</code> in the upper lefthand corner.</p>
 <p>What you should see are four columns of numbers, each row representing a different year: the first entry in each row is simply the row number (an index we can use to access the data from individual years if we want), the second is the year, and the third and fourth are the numbers of boys and girls baptized that year, respectively. Use the scrollbar on the right side of the console window to examine the complete data set.</p>
 <p>Note that the row numbers in the first column are not part of Arbuthnot’s data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored Arbuthnot’s data in a kind of spreadsheet or table called a <em>data frame</em>.</p>
 <p>You can see the dimensions of this data frame as well as the names of the variables and the first few observations by typing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(arbuthnot)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">glimpse</span>(arbuthnot)</a></code></pre></div>
 <p>This command should output the following</p>
 <pre><code>## Observations: 82
 ## Variables: 3
-## $ year  &lt;int&gt; 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 16...
-## $ boys  &lt;int&gt; 5218, 4858, 4422, 4994, 5158, 5035, 5106, 4917, 4703, 53...
-## $ girls &lt;int&gt; 4683, 4457, 4102, 4590, 4839, 4820, 4928, 4605, 4457, 49...</code></pre>
+## $ year  &lt;int&gt; 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1638…
+## $ boys  &lt;int&gt; 5218, 4858, 4422, 4994, 5158, 5035, 5106, 4917, 4703, 5359…
+## $ girls &lt;int&gt; 4683, 4457, 4102, 4590, 4839, 4820, 4928, 4605, 4457, 4952…</code></pre>
 <p>We can see that there are 82 observations and 3 variables in this dataset. The variable names are <code>year</code>, <code>boys</code>, and <code>girls</code>. At this point, you might notice that many of the commands in R look a lot like functions from math class; that is, invoking R commands means supplying a function with some number of arguments inside parentheses. The <code>glimpse</code> command, for example, took a single argument, the name of a data frame.</p>
 <div id="data-visualization" class="section level3">
 <h3>Data visualization</h3>
 <p>Let’s start to examine the data a little more closely.R has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the command</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot)</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot)</a></code></pre></div>
 <p>The <code>qplot()</code> function (meaning “quick plot”) considers the type of data you have provided it and makes the decision to visualize it with a scatterplot. The plot should appear under the <em>Plots</em> tab of the lower right panel of RStudio. Notice that the command above again looks like a function, this time with three arguments separated by commas. The first two arguments in the <code>qplot()</code> function specify the variables for the x-axis and the y-axis and the third provides the name of the data set where they can be found. If we wanted to connect the data points with lines, we could add a fourth argument to specify the geometry that we’d like.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</a></code></pre></div>
 <p>You might wonder how you are supposed to know that it was possible to add that fourth argument. Thankfully, R documents all of its functions extensively. To read what a function does and learn the arguments that are available to you, just type in a question mark followed by the name of the function that you’re interested in. Try the following.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?qplot</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">?qplot</a></code></pre></div>
 <p>Notice that the help file replaces the plot in the lower right panel. You can toggle between plots and help files using the tabs at the top of that panel.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Is there an apparent trend in the number of girls baptized over the years? How would you describe it?</li>

@@ -1,7 +1,7 @@
 name: "MassMutual-DataVis"
 output_dir: "."
 navbar:
-  title: "Introduction to Data Visualization - Summer 2018"
+  title: "Introduction to Data Visualization - Summer 2019"
   left:
   - text: "Home"
     href: index.html
