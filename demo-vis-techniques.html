@@ -613,26 +613,25 @@ div.tocify {
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></a></code></pre></div>
-<pre><code>## Loading required package: magrittr</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                        <span class="co"># Hide outliers so they don&#39;t double-plot</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">               <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>)) <span class="op">+</span><span class="st">            </span><span class="co"># Change fill and opacity     </span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.01</span>)  <span class="op">+</span><span class="st">                             </span><span class="co"># Add original datapoints (jittered)</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">200</span>,                            <span class="co"># A reference line at y = 200</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st">                       </span><span class="co">#    and we&#39;ll make it dashed</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label =</span> <span class="st">&quot;hp = 200&quot;</span>,                    <span class="co"># Always good to label reference lines</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">           <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="dv">210</span>)  <span class="op">+</span><span class="st">                            </span><span class="co"># weird coords: 1st category = 1, etc.</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">                           </span><span class="co"># Label the x-axis</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Horsepower&quot;</span>) <span class="op">+</span><span class="st">                                    </span><span class="co"># Label the y-axis</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of horsepower by # Cylinders&quot;</span>) <span class="co">#+  # Add a title</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> hp)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                        <span class="co"># Hide outliers so they don&#39;t double-plot</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">               <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>)) <span class="op">+</span><span class="st">            </span><span class="co"># Change fill and opacity     </span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.01</span>)  <span class="op">+</span><span class="st">                             </span><span class="co"># Add original datapoints (jittered)</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">200</span>,                            <span class="co"># A reference line at y = 200</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st">                       </span><span class="co">#    and we&#39;ll make it dashed</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label =</span> <span class="st">&quot;hp = 200&quot;</span>,                    <span class="co"># Always good to label reference lines</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">           <span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> <span class="dv">210</span>)  <span class="op">+</span><span class="st">                            </span><span class="co"># weird coords: 1st category = 1, etc.</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">                           </span><span class="co"># Label the x-axis</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Horsepower&quot;</span>) <span class="op">+</span><span class="st">                                    </span><span class="co"># Label the y-axis</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of horsepower by # Cylinders&quot;</span>) <span class="co">#+  # Add a title</span></a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">  <span class="co"># stat_compare_means(comparisons = list(c(&quot;4&quot;,&quot;6&quot;),       # Add significance testing</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="co">#                                       c(&quot;6&quot;,&quot;8&quot;)),</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="co">#                    method = &quot;t.test&quot;,</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="co">#                    aes(label = ..p.signif..))</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">  <span class="co"># stat_compare_means(comparisons = list(c(&quot;4&quot;,&quot;6&quot;),       # Add significance testing</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="co">#                                       c(&quot;6&quot;,&quot;8&quot;)),</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">  <span class="co">#                    method = &quot;t.test&quot;,</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="co">#                    aes(label = ..p.signif..))</span></a></code></pre></div>
 </div>
 </div>
 <div id="scatterplot" class="section level3">
@@ -645,23 +644,23 @@ div.tocify {
 </ul>
 <div id="a-simple-scatterplot-in-ggplot2" class="section level4">
 <h4>A simple scatterplot in <code>ggplot2</code></h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="a-better-scatterplot-with-scaled-values-shapes-color-and-labels" class="section level4">
 <h4>A better scatterplot with scaled values, shapes, color, and labels</h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt<span class="op">*</span><span class="dv">1000</span>, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st">          </span><span class="co"># Scale the x-values</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>,                               <span class="co"># Make the points a little bigger</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">             <span class="kw">aes</span>(<span class="dt">shape =</span> <span class="kw">as.factor</span>(cyl),             <span class="co"># Add an aesthetic to map #cyl to shape</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">                 <span class="dt">color =</span> <span class="kw">as.factor</span>(cyl))) <span class="op">+</span><span class="st">          </span><span class="co">#    dual encoded with color for visibility </span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>,                         <span class="co"># Add a quadratic regression line</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">              <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co"># Relabel color/shape so that the</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">       <span class="dt">shape =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co">#    legend looks nice</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the x-axis</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">       <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                   </span><span class="co"># Another way to label the y-axis</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>)  <span class="co"># Add a title</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt<span class="op">*</span><span class="dv">1000</span>, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st">          </span><span class="co"># Scale the x-values</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>,                               <span class="co"># Make the points a little bigger</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">             <span class="kw">aes</span>(<span class="dt">shape =</span> <span class="kw">as.factor</span>(cyl),             <span class="co"># Add an aesthetic to map #cyl to shape</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">                 <span class="dt">color =</span> <span class="kw">as.factor</span>(cyl))) <span class="op">+</span><span class="st">          </span><span class="co">#    dual encoded with color for visibility </span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>,                         <span class="co"># Add a quadratic regression line</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">              <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co"># Relabel color/shape so that the</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">       <span class="dt">shape =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co">#    legend looks nice</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the x-axis</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">       <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                   </span><span class="co"># Another way to label the y-axis</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>)  <span class="co"># Add a title</span></a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-9-1.png" width="672" /> ### Scatterplot Matrix (SPLOM)</p>
 <ul>
 <li>Scatterplots show the relationship between just two continuous variables at a time</li>
@@ -670,33 +669,25 @@ div.tocify {
 </div>
 <div id="a-simple-splom-using-pairs" class="section level4">
 <h4>A simple SPLOM using <code>pairs()</code></h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">pairs</span>(<span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">pairs</span>(<span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></a></code></pre></div>
-<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
-##   method from   
-##   +.gg   ggplot2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;GGally&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     nasa</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span></a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">ggpairs</span>(mtcars, </a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">        <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5">        <span class="dt">columnLabels =</span> <span class="kw">c</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>,  <span class="co"># Add clearer names for each column</span></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6">                         <span class="st">&quot;Displacement&quot;</span>,</a>
-<a class="sourceLine" id="cb20-7" data-line-number="7">                         <span class="st">&quot;Horsepower&quot;</span>),</a>
-<a class="sourceLine" id="cb20-8" data-line-number="8">        <span class="kw">aes</span>(<span class="dt">color =</span> <span class="kw">as.factor</span>(cyl),            <span class="co"># Use color to denote # cylinders</span></a>
-<a class="sourceLine" id="cb20-9" data-line-number="9">            <span class="dt">alpha =</span> <span class="fl">0.4</span>)</a>
-<a class="sourceLine" id="cb20-10" data-line-number="10">        ) <span class="op">+</span><span class="st">                     </span><span class="co"># Set to semi-transparent</span></a>
-<a class="sourceLine" id="cb20-11" data-line-number="11"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs.</span></a>
-<a class="sourceLine" id="cb20-12" data-line-number="12"><span class="st">           displacement vs.</span></a>
-<a class="sourceLine" id="cb20-13" data-line-number="13"><span class="st">           horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="kw">ggpairs</span>(mtcars, </a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">        <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">        <span class="dt">columnLabels =</span> <span class="kw">c</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>,  <span class="co"># Add clearer names for each column</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">                         <span class="st">&quot;Displacement&quot;</span>,</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">                         <span class="st">&quot;Horsepower&quot;</span>),</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">        <span class="kw">aes</span>(<span class="dt">color =</span> <span class="kw">as.factor</span>(cyl),            <span class="co"># Use color to denote # cylinders</span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">            <span class="dt">alpha =</span> <span class="fl">0.4</span>)</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">        ) <span class="op">+</span><span class="st">                     </span><span class="co"># Set to semi-transparent</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs.</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">           displacement vs.</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="st">           horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
@@ -708,38 +699,34 @@ div.tocify {
 <li>Highlights “position switches”</li>
 </ul>
 <p>Line charts don’t really make sense for <code>mtcars</code>, so first we’ll load a different dataset: Dr. Arbuthnot’s baptism records from 1629-1710</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> boys <span class="op">+</span><span class="st"> </span>girls)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> boys <span class="op">+</span><span class="st"> </span>girls)</a></code></pre></div>
 <div id="a-simple-line-chart-using-ggplot" class="section level4">
 <h4>A simple line chart using <code>ggplot</code></h4>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">arbuthnot <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">arbuthnot <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;tidyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:magrittr&#39;:
-## 
-##     extract</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)</a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="kw">ggplot</span>(arbuthnot_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> count, </a>
-<a class="sourceLine" id="cb26-7" data-line-number="7">                           <span class="dt">color =</span> gender)) <span class="op">+</span><span class="st">     </span><span class="co"># Now we can map &#39;gender&#39; to color to get 2 lines</span></a>
-<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>,                          <span class="co"># Relabel color</span></a>
-<a class="sourceLine" id="cb26-10" data-line-number="10">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Another way to label the x-axis</span></a>
-<a class="sourceLine" id="cb26-11" data-line-number="11">       <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span><span class="co"># Another way to label the y-axis</span></a>
-<a class="sourceLine" id="cb26-12" data-line-number="12"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb17-8" data-line-number="8"><span class="kw">ggplot</span>(arbuthnot_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> count, </a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">                           <span class="dt">color =</span> gender)) <span class="op">+</span><span class="st">     </span><span class="co"># Now we can map &#39;gender&#39; to color to get 2 lines</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb17-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>,                          <span class="co"># Relabel color</span></a>
+<a class="sourceLine" id="cb17-12" data-line-number="12">       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Another way to label the x-axis</span></a>
+<a class="sourceLine" id="cb17-13" data-line-number="13">       <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span><span class="co"># Another way to label the y-axis</span></a>
+<a class="sourceLine" id="cb17-14" data-line-number="14"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>)</a></code></pre></div>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 </div>
@@ -747,7 +734,7 @@ div.tocify {
 <div id="morning-challenge" class="section level2">
 <h2>Morning Challenge</h2>
 <p>Try building a <strong>parallel coordinates plot</strong> using <code>ggplot2</code> on a dataset of your choice!</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
 </div>
 
 
