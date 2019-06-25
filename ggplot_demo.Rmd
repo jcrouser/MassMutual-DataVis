@@ -28,7 +28,8 @@ msleep %>%
   geom_image(aes(image=image), size=.05) +
   geom_text(aes(label=name), 
             nudge_y = 0.25, 
-            size = 2)
+            size = 2) +
+  theme(legend.position = "none")
   
 ```
 

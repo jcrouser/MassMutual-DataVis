@@ -9,11 +9,9 @@ navbar:
     href: schedule.html
   - text: "Labs/Activities"
     menu:
-    - text: "01. Deconstructing Data Graphics"
+    - text: "01. Deconstructing Data Graphics (no link)"
     - text: "02. Crash course in `ggplot2`"
       href: lab-ggplot2.html
-    - text: "RMD for 02. Crash course in `ggplot2`"
-      href: lab-ggplot2.Rmd
     - text: "03. Visualization Techniques"
       href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"
