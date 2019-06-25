@@ -117,7 +117,9 @@ ggplot(hp2013Q1,
 A plot constructed with `ggplot` can have more than one `geom`. In that case, the mappings established in the `ggplot()` call are plot defaults that can be added to or overridden. For example, we could add a regression line to our plot:
 
 ``` {r trend-line-example, message = FALSE, eval = TRUE}
-p1 <- ggplot(hp2013Q1, aes(x = Land.Value, y = Structure.Cost))
+p1 <- ggplot(hp2013Q1, 
+             aes(x = Land.Value, 
+                 y = Structure.Cost))
 
 p1 + geom_point(aes(color = Home.Value)) +
     geom_smooth(method="lm")
@@ -147,6 +149,7 @@ Each `geom` accepts a particualar set of mappings--for example `geom_text()` acc
 
 ``` {r text-sample, message = FALSE, eval = TRUE}
 p1 + 
+  geom_point(aes(color = Home.Value)) +
   geom_text(aes(label=State), size = 3)
 ```
 
@@ -156,8 +159,8 @@ Note that variables are mapped to aesthetics with the `aes()` function, while fi
 
 ``` {r right-vs-wrong-aes, message = FALSE, eval = TRUE}
 p1 +
-  geom_point(aes(size = 2), # incorrect! 2 is not a variable
-                color="red")   # this is fine -- turns all points red
+  geom_point(aes(), # incorrect! 2 is not a variable
+                size = 2, color="red")   # this is fine -- turns all points red
 ```
 
 ### Mapping Variables to Other Aesthetics
@@ -166,14 +169,15 @@ Other aesthetics are mapped in the same way as `x` and `y` in the previous examp
 
 ``` {r other-aes-example, message = FALSE, eval = TRUE, warning=FALSE}
 p1 +
-  geom_point(aes(color = Home.Value, 
-                 shape = region))
+  geom_point(aes(color = region, 
+                 shape = region),
+             size = 5)
 ```
 
 
 ## Scales: Controlling Aesthetics
 
-Aesthetic mapping (i.e., with `aes()`) only says that a variable should be mapped to an aesthetic. It doesn't say *how* that should happen. For example, when mapping a variable to *shape* with `aes(shape ` x)= you don't say *what* shapes should be used. Similarly, `aes(color ` z)= doesn't say *what* colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding *scale*. In `ggplot2`, `scales` include:
+Aesthetic mapping (i.e., with `aes()`) only says that a variable should be mapped to an aesthetic. It doesn't say *how* that should happen. For example, when mapping a variable to *shape* with `aes(shape = myVar)` you don't say *what* shapes should be used. Similarly, `aes(color ` z)= doesn't say *what* colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding *scale*. In `ggplot2`, `scales` include:
 
 -   `position`
 -   `color` and `fill`
@@ -207,6 +211,7 @@ p4 <- p3 + geom_point(aes(color = Date),
                       alpha = 0.5,
                       size = 1.5,
                       position = position_jitter(width = 0.25, height = 0))
+p4
 ```
 
 Now let's modify the `breaks` and `labels` for the `x` axis and color scales:
@@ -216,6 +221,7 @@ p4 + scale_x_discrete(name = "State Abbreviation") +
   scale_color_continuous(name = "",
                           breaks = c(1975.25, 1994.25, 2013.25),
                           labels = c(1971, 1994, 2013))
+p4
 ```
 
 Next change the low and high values to `blue` and `red`:
@@ -227,6 +233,7 @@ p4 +
                           breaks = c(1975.25, 1994.25, 2013.25),
                           labels = c(1971, 1994, 2013),
                           low = "blue", high = "red")
+p4
 ```
 
 ### Using different color scales
@@ -284,6 +291,7 @@ p5 <- ggplot(housing, aes(x = Date,
                           y = Home.Value))
 
 p5 + geom_line(aes(color = State))  
+
 ```
 
 There are two problems here--there are too many `states` to distinguish each one by `color`, and the `lines` obscure one another.
@@ -293,8 +301,9 @@ There are two problems here--there are too many `states` to distinguish each one
 We can fix the previous plot by `faceting` by `state` rather than mapping `state` to `color`:
 
 ``` {r faceting-example, message = FALSE, eval = TRUE}
-(p5 <- p5 + geom_line() +
-    facet_wrap(~State, ncol = 10))
+p5 <- p5 + geom_line() +
+    facet_wrap(~State, ncol = 10)
+p5
 ```
 
 There is also a `facet_grid()` function for faceting in two dimensions.

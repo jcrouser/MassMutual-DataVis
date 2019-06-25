@@ -1,0 +1,34 @@
+---
+title: "ggplot demo"
+author: "R. Jordan Crouser"
+date: "6/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Playing with ggplot
+```{r}
+library(ggplot2)
+glimpse(msleep)
+```
+
+```{r}
+library(stringr) # for string manipulation
+library(ggimage) # for custom icons
+msleep %>%
+  drop_na(vore) %>%
+  mutate(vore = paste(vore, "vore", sep = ""),
+         image = paste(vore, ".png", sep = "")) %>%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem, 
+             color = vore)) +
+  geom_image(aes(image=image), size=.05) +
+  geom_text(aes(label=name), 
+            nudge_y = 0.25, 
+            size = 2)
+  
+```
+
