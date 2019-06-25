@@ -37,7 +37,7 @@ title: 'Schedule'
 #### Tuesday, June 25 - AFTERNOON
 
 - [Perception and Color](lectures/04-perception-color.pdf)
-- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ( [.Rmd](lab-colorbrewer-ggthemes.Rmd) )
+- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd))
 
   </div>
 </div>
