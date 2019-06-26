@@ -18,7 +18,7 @@ title: 'Schedule'
 #### Monday, June 24 - AFTERNOON
 
 - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf)
-- [Lab: `ggplot2`](lab-ggplot2.html) ( [.Rmd](lab-ggplot2.Rmd) )
+- [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd))
 
   </div>
 </div>
@@ -29,7 +29,7 @@ title: 'Schedule'
 #### Tuesday, June 25 - MORNING
 
 - [Visualization Techniques](lectures/03-vis-techniques.pdf)
-- [Challenge: Parallel Coordinates](demo-vis-techniques.html) ( [.Rmd](demo-vis-techniques.Rmd) )
+- [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd))
 
   </div>
     <div class="col-md-4">
@@ -48,7 +48,7 @@ title: 'Schedule'
 #### Wednesday, June 26 - MORNING
 
 - [The role of interaction](lectures/05-interaction-and-plotly.pdf)
-- [Lab: `plot.ly`](lab-plotly.html) ( [.Rmd](lab-plotly.Rmd) )
+- [Lab: `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd))
 - Show and tell
 
   </div>
@@ -57,7 +57,7 @@ title: 'Schedule'
 #### Wednesday, June 26 - AFTERNOON
 
 - [Geographic data](lectures/06-geovis.pdf)
-- [Lab: `leaflet`](lab-leaflet.html) ( [.Rmd](lab-leaflet.Rmd) )
+- [Lab: `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd))
 
   </div>
 </div>

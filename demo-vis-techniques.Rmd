@@ -31,8 +31,9 @@ head(mtcars)
 
 #### A simple Bar Chart in `ggplot2`
 ```{r}
-ggplot(mtcars, aes(x = cyl)) + 
-  geom_bar()
+mtcars %>%
+  ggplot(aes(x = cyl)) + 
+    geom_bar()
 ```
 
 #### A slightly prettier Bar Chart with color and labels
@@ -83,7 +84,7 @@ ggplot(mtcars, aes(x = wt*1000)) +             # Scale wt to lbs
 
 #### A simple boxplot in `ggplot2`
 ```{r}
-ggplot(mtcars, aes(x = as.factor(cyl), y = hp)) + 
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot()
 ```
 
@@ -92,21 +93,21 @@ ggplot(mtcars, aes(x = as.factor(cyl), y = hp)) +
 library(ggpubr) # Useful library for making "publication-ready" graphics:
                 # We'll use the stat_compare_means(...) function to add significance
 
-ggplot(mtcars, aes(x = as.factor(cyl), y = hp)) + 
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) + 
   geom_boxplot(outlier.shape = NA,                        # Hide outliers so they don't double-plot
                fill=rgb(0.2, 0.4, 0.2, 0.6)) +            # Change fill and opacity     
   geom_jitter(width = 0.01)  +                             # Add original datapoints (jittered)
-  geom_hline(yintercept = 200,                            # A reference line at y = 200
+  geom_hline(yintercept = 30,                            # A reference line at y = 30
              linetype = "dashed") +                       #    and we'll make it dashed
-  annotate("text", label = "hp = 200",                    # Always good to label reference lines
-           x = 0.7, y = 210)  +                            # weird coords: 1st category = 1, etc.
+  annotate("text", label = "mpg = 30",                    # Always good to label reference lines
+           x = 3.3, y = 31)  +                            # weird coords: 1st category = 1, etc.
   xlab("Number of cylinders") +                           # Label the x-axis
-  ylab("Horsepower") +                                    # Label the y-axis
-   ggtitle("Distribution of horsepower by # Cylinders") #+  # Add a title
-  # stat_compare_means(comparisons = list(c("4","6"),       # Add significance testing
-  #                                       c("6","8")),
-  #                    method = "t.test",
-  #                    aes(label = ..p.signif..))
+  ylab("Fuel economy (mpg)") +                                    # Label the y-axis
+  ggtitle("Distribution of mpg by # Cylinders") +  # Add a title
+  stat_compare_means(comparisons = list(c("4","6"),       # Add significance testing
+                                         c("6","8")),
+                      method = "t.test",
+                      aes(label = ..p.signif..))
 ```
 
 ### Scatterplot
@@ -125,8 +126,10 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 
 #### A better scatterplot with scaled values, shapes, color, and labels
 ```{r}
-ggplot(mtcars, aes(x = wt*1000, y = mpg)) +          # Scale the x-values
-  geom_point(size = 4,                               # Make the points a little bigger
+mtcars %>%
+  mutate(wt = wt * 1000) %>%
+  ggplot(aes(x = wt, y = mpg)) +          # Scale the x-values
+    geom_point(size = 4,                               # Make the points a little bigger
              aes(shape = as.factor(cyl),             # Add an aesthetic to map #cyl to shape
                  color = as.factor(cyl))) +          #    dual encoded with color for visibility 
   stat_smooth(method = "lm",                         # Add a quadratic regression line
@@ -198,7 +201,8 @@ arbuthnot_tidy <- arbuthnot %>%
   select(-total) %>%
   gather(key = "gender", value = "count", -year)
 
-ggplot(arbuthnot_tidy, aes(x = year, y = count, 
+ggplot(arbuthnot_tidy, aes(x = year, 
+                           y = count, 
                            color = gender)) +     # Now we can map 'gender' to color to get 2 lines
   geom_line() +
   labs(color = "Gender",                          # Relabel color
