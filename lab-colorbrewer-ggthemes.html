@@ -13,16 +13,16 @@
 
 <title>ColorBrewer and ggthemes</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/bootstrap/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui/jquery-ui.min.js"></script>
+<link href="site_libs/tocify/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify/jquery.tocify.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -451,15 +451,12 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2019</a>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2020</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -469,21 +466,11 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics (no link)</li>
-    <li>
-      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
-    </li>
-    <li>
-      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
-    </li>
-    <li>
-      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
-    </li>
-    <li>
-      <a href="lab-plotly.html">05. plotly</a>
-    </li>
-    <li>
-      <a href="lab-leaflet.html">06. leaflet</a>
-    </li>
+    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
+    <li class="dropdown-header">05. plotly</li>
+    <li class="dropdown-header">06. leaflet</li>
   </ul>
 </li>
 <li class="dropdown">
@@ -507,6 +494,24 @@ div.tocify {
     </li>
     <li>
       <a href="datasets/cb_2015_us_state_500k.zip">US State Boundary Shapefiles</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Resources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (H. Wickham)</a>
+    </li>
+    <li>
+      <a href="https://plotly-r.com/">Interactive web-based data visualization with R, plotly, and shiny (C. Sievert)</a>
+    </li>
+    <li>
+      <a href="https://bookdown.org/robinlovelace/geocompr/">Geocomputation with R (R. Lovelace et al.)</a>
     </li>
   </ul>
 </li>
@@ -535,14 +540,35 @@ div.tocify {
 <p>For this lab, we’re going to be using the <code>ToothGrowth</code> dataset, which is one of the example datasets included in <code>R</code>. It contains data on how fast guinea pigs’ teeth grow if you give them vitamin C supplements in various forms and at various doses. You can learn more about this dataset by typing <code>?ToothGrowth</code> at the console.</p>
 <p><img src="gfx/guinea-pigs.jpg" /></p>
 <p>Let’s take a look:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">head</span>(ToothGrowth)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">summary</span>(ToothGrowth)</a></code></pre></div>
-<p>Hmm… the <code>dose</code> column looks a little funny. There are only three doseage values <code>[0.5,1,2]</code>, but <code>R</code> is interpreting them as continuous. We can tell <code>R</code> that we want to convert them to categories (a.k.a. <code>factors</code>) using <code>dplyr</code> like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">ToothGrowth &lt;-<span class="st"> </span>ToothGrowth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dose =</span> <span class="kw">factor</span>(dose))</a></code></pre></div>
-<p>Now let’s look again:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">head</span>(ToothGrowth)</a></code></pre></div>
+<pre><code>##    len supp dose
+## 1  4.2   VC  0.5
+## 2 11.5   VC  0.5
+## 3  7.3   VC  0.5
+## 4  5.8   VC  0.5
+## 5  6.4   VC  0.5
+## 6 10.0   VC  0.5</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">summary</span>(ToothGrowth)</a></code></pre></div>
+<pre><code>##       len        supp     dose   
+##  Min.   : 4.20   OJ:30   0.5:20  
+##  1st Qu.:13.07   VC:30   1  :20  
+##  Median :19.25           2  :20  
+##  Mean   :18.81                   
+##  3rd Qu.:25.27                   
+##  Max.   :33.90</code></pre>
+<p>Hmm… the <code>dose</code> column looks a little funny. There are only three doseage values <code>[0.5,1,2]</code>, but <code>R</code> is interpreting them as continuous. We can tell <code>R</code> that we want to convert them to categories (a.k.a. <code>factors</code>) using <code>dplyr</code> like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">ToothGrowth &lt;-<span class="st"> </span>ToothGrowth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">dose =</span> <span class="kw">factor</span>(dose))</a></code></pre></div>
+<p>Now let’s look again:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">summary</span>(ToothGrowth)</a></code></pre></div>
+<pre><code>##       len        supp     dose   
+##  Min.   : 4.20   OJ:30   0.5:20  
+##  1st Qu.:13.07   VC:30   1  :20  
+##  Median :19.25           2  :20  
+##  Mean   :18.81                   
+##  3rd Qu.:25.27                   
+##  Max.   :33.90</code></pre>
 <p>Much better! Now let’s draw a graph.</p>
 </div>
 </div>
@@ -552,43 +578,47 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li>Make a boxplot of the <code>ToothGrowth</code> data, with <code>x = dose</code>, <code>y = len</code>, and <code>fill = dose</code>.<br/> Store it in a variable called <code>myPlot</code>.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
 </div>
 <div id="changing-colors-manually" class="section level2">
 <h2>Changing colors manually</h2>
 <p>The default colors <code>R</code> selects are okay, but maybe we can do better. Let’s try using colors from the Smith College official <a href="https://www.smith.edu/about-smith/interactive-style-guide/color-palette">Color Palette</a>. We can specify the color values we want using <code>scale_fill_manual()</code> like this:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#004f71&quot;</span>, <span class="st">&quot;#465a01&quot;</span>, <span class="st">&quot;#981d97&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#004f71&quot;</span>, <span class="st">&quot;#465a01&quot;</span>, <span class="st">&quot;#981d97&quot;</span>))</a></code></pre></div>
+<p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="changing-colors-with-rcolorbrewer" class="section level2">
 <h2>Changing colors with <code>RColorBrewer</code></h2>
 <p>That looks pretty nice, but we could spend an awful lot of time making tiny tweaks to color palettes. Luckily Cynthia Brewer over at <a href="http://colorbrewer2.org">ColorBrewer</a> has come up with some really good ones we can borrow! Let’s load the <code>RColorBrewer</code> library and check it out. <strong>Note:</strong> you might need to <code>install.packages('RColorBrewer')</code> if you’re running <code>R</code> on your laptop.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(RColorBrewer)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">display.brewer.all</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">display.brewer.all</span>()</a></code></pre></div>
+<p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Ooh, so many choices! We can now use these <code>palettes</code> along with <code>scale_fill_brewer()</code> to make perceptually-optimized plots:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set3&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set3&quot;</span>)</a></code></pre></div>
+<p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>That looks a little bit… Valentine-y?</p>
 <p><img src="gfx/hearts.jpg" width=50% /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Try out a few other color palettes!</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
 </div>
 <div id="stylizing-using-ggthemes" class="section level2">
 <h2>Stylizing using <code>ggthemes</code></h2>
 <p>If we want even more control, we can use the <code>ggthemes</code> package to define not only the color palette, but the overall style of the plot as well. For example, if we want the minic the style used by the graphic design team at <a href="http://www.economist.com">The Economist</a>, we could say:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggthemes)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">theme_economist</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_economist</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(ggthemes)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">myPlot <span class="op">+</span><span class="st"> </span><span class="kw">theme_economist</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_economist</span>()</a></code></pre></div>
+<p><img src="lab-colorbrewer-ggthemes_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Notice how the background changed colors, the axes were re-styled, and the legend changed positions? You can read more about available <code>ggthemes</code> and <code>scales</code> <a href="https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html">here</a>.</p>
 </div>
 <div id="putting-it-all-together" class="section level2">
 <h2>Putting it all together</h2>
 <p>Now it’s time to get creative! There are many more datasets available in <code>R</code>. Let’s take a look at what we’ve got to play with:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">data</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">data</span>()</a></code></pre></div>
 <p>You can learn more about any of the datasets by running <code>?&lt;dataset&gt;</code> at the console (replacing <code>&lt;dataset&gt;</code> with the name of the dataset).</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Use <code>ggplot</code> to draw a plot of any dataset you like, and style it.<br/> Try combining both a theme and a color palette.</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Put your code here</span></a></code></pre></div>
 </div>
 
 

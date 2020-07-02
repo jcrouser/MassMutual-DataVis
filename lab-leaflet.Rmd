@@ -10,7 +10,7 @@ output:
 ---
 
 ## Making a map with points in R with leaflet
-We're going to be doing a lot of the stuff from the RStudio [leaflet tutorial](https://rstudio.github.io/leaflet/). This walkthrough is a variation of [Amelia McNamara](https://github.com/AmeliaMN)'s version (you'll meet her later this summer).
+We're going to be doing a lot of the stuff from the RStudio [leaflet tutorial](https://rstudio.github.io/leaflet/). This walkthrough is a variation of [Amelia McNamara](https://github.com/AmeliaMN)'s version.
 
 Load `leaflet` first:
 ```{r}
@@ -20,7 +20,7 @@ library(leaflet)
 Let's start with a simple map
 ```{r}
 m <- leaflet() %>%
-  setView(-72.518978, 42.381050, zoom = 6) %>%
+  setView(-72.518978, 42.381050, zoom = 1) %>%
   addTiles() %>%  # Load the default OpenStreetMap tile set (images that make up the map)
   addMarkers(lng=-72.518978, lat=42.381050, popup="DSDP!")
 
@@ -50,6 +50,9 @@ stormlocs <- read_csv(stormlocs)
 storms <- stormlocs %>%
   left_join(stormdetails, by="EVENT_ID")
 ```
+```{r}
+glimpse(storms)
+```
 Don't worry if you don't really understand the syntax above. Next week, [Ben Baumer](https://github.com/beanumber) will teach you all about SQL and joins.
 
 ## Mapping lightning strikes
@@ -58,7 +61,7 @@ Let's pull out the lightning strikes and map them as part of a `dplyr` chain
 lightning_map <- storms %>%               # Start with the storm data
   filter(EVENT_TYPE == "Lightning") %>%   # Filter down to just the lightning events
   leaflet() %>%                           # Pipe into a leaflet map
-    addMarkers(~LONGITUDE, ~LATITUDE) %>%   # Add markers at each LONGITUDE/LATITUDE pair
+    addMarkers(~LONGITUDE, ~LATITUDE, popup = "Zap!") %>%   # Add markers at each LONGITUDE/LATITUDE pair
     addProviderTiles("Stamen.Toner")        # We'll use black/white tiles for dramatic effect
 
 lightning_map

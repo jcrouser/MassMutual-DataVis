@@ -1,25 +1,24 @@
 name: "MassMutual-DataVis"
 output_dir: "."
 navbar:
-  title: "Introduction to Data Visualization - Summer 2019"
+  title: "Introduction to Data Visualization - Summer 2020"
   left:
   - text: "Home"
     href: index.html
-  - text: "Schedule"
-    href: schedule.html
+    
   - text: "Labs/Activities"
     menu:
     - text: "01. Deconstructing Data Graphics (no link)"
     - text: "02. Crash course in `ggplot2`"
-      href: lab-ggplot2.html
+      #href: lab-ggplot2.html
     - text: "03. Visualization Techniques"
-      href: demo-vis-techniques.html
+      #href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"
-      href: lab-colorbrewer-ggthemes.html
+      #href: lab-colorbrewer-ggthemes.html
     - text: "05. plotly"
-      href: lab-plotly.html
+      #href: lab-plotly.html
     - text: "06. leaflet"
-      href: lab-leaflet.html
+      #href: lab-leaflet.html
     
   - text: "Datasets"
     menu:
@@ -33,6 +32,16 @@ navbar:
       href: datasets/StormEvents_locations-ftp_v1.0_d2016_c20160810.csv
     - text: "US State Boundary Shapefiles"
       href: datasets/cb_2015_us_state_500k.zip
+      
+  - text: "Resources"
+    menu:
+    - text: "ggplot2: Elegant Graphics for Data Analysis (H. Wickham)"
+      href: https://ggplot2-book.org/
+    - text: "Interactive web-based data visualization with R, plotly, and shiny (C. Sievert)" 
+      href: https://plotly-r.com/
+    - text: "Geocomputation with R (R. Lovelace et al.)"
+      href: https://bookdown.org/robinlovelace/geocompr/
+
 output:
   html_document:
     theme: lumen

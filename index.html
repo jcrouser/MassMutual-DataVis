@@ -11,17 +11,17 @@
 
 
 
-<title>Data Visualization Workshop 2019</title>
+<title>Data Visualization Workshop 2020</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/bootstrap/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -280,15 +280,12 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2019</a>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2020</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -298,21 +295,11 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics (no link)</li>
-    <li>
-      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
-    </li>
-    <li>
-      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
-    </li>
-    <li>
-      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
-    </li>
-    <li>
-      <a href="lab-plotly.html">05. plotly</a>
-    </li>
-    <li>
-      <a href="lab-leaflet.html">06. leaflet</a>
-    </li>
+    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
+    <li class="dropdown-header">05. plotly</li>
+    <li class="dropdown-header">06. leaflet</li>
   </ul>
 </li>
 <li class="dropdown">
@@ -339,6 +326,24 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Resources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (H. Wickham)</a>
+    </li>
+    <li>
+      <a href="https://plotly-r.com/">Interactive web-based data visualization with R, plotly, and shiny (C. Sievert)</a>
+    </li>
+    <li>
+      <a href="https://bookdown.org/robinlovelace/geocompr/">Geocomputation with R (R. Lovelace et al.)</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -351,12 +356,79 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Data Visualization Workshop 2019</h1>
+<h1 class="title toc-ignore">Data Visualization Workshop 2020</h1>
 
 </div>
 
 
 <p><img src="gfx/self_description.png" /></p>
+<div class="past">
+
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 id="monday-july-6---morning">Monday, July 6 - MORNING</h4>
+<!-- - [Introduction](lectures/01-visualization-intro.pdf) -->
+<!-- - Activity: Reading Data Graphics -->
+<ul>
+<li>Introduction</li>
+<li><p>Activity: Reading Data Graphics</p>
+</div>
+<div class="col-md-6">
+</li>
+</ul>
+<h4 id="monday-july-6---afternoon">Monday, July 6 - AFTERNOON</h4>
+<!-- - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf) -->
+<!-- - [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd)) -->
+<ul>
+<li>Grammar of graphics</li>
+<li><p>Lab: <code>ggplot2</code></p>
+</div></li>
+</ul>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 id="tuesday-july-7---morning">Tuesday, July 7 - MORNING</h4>
+<!-- - [Visualization Techniques](lectures/03-vis-techniques.pdf) -->
+<!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
+<ul>
+<li>Visualization Techniques</li>
+<li><p>Challenge: Parallel Coordinates</p>
+</div>
+<div class="col-md-6">
+</li>
+</ul>
+<h4 id="tuesday-july-7---afternoon">Tuesday, July 7 - AFTERNOON</h4>
+<!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
+<!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
+<ul>
+<li>Perception and Color</li>
+<li><p>Lab: ColorBrewer and <code>ggthemes</code></p>
+</div></li>
+</ul>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 id="wednesday-july-8---morning">Wednesday, July 8 - MORNING</h4>
+<!-- - [The role of interaction](lectures/05-interaction-and-plotly.pdf) -->
+<!-- - [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd)) -->
+<ul>
+<li>The role of interaction</li>
+<li>Lab: Building interactive charts with <code>plot.ly</code></li>
+<li><p>Show and tell</p>
+</div>
+<div class="col-md-6">
+</li>
+</ul>
+<h4 id="wednesday-july-8---afternoon">Wednesday, July 8 - AFTERNOON</h4>
+<!-- - [Geographic data](lectures/06-geovis.pdf) -->
+<!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
+<ul>
+<li>Geographic data</li>
+<li><p>Lab: Interactive maps with <code>leaflet</code></p>
+</div></li>
+</ul>
+</div>
 
 
 

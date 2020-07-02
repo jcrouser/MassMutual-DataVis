@@ -1,5 +1,84 @@
 ---
-title: "Data Visualization Workshop 2019"
+title: "Data Visualization Workshop 2020"
 ---
 
 ![](gfx/self_description.png)
+
+<div class="past"></div>
+
+<div class="row">
+  <div class="col-md-6">
+  
+#### Monday, July 6 - MORNING
+
+<!-- - [Introduction](lectures/01-visualization-intro.pdf) -->
+<!-- - Activity: Reading Data Graphics -->
+
+- Introduction
+- Activity: Reading Data Graphics
+
+  </div>
+    <div class="col-md-6">
+    
+#### Monday, July 6 - AFTERNOON
+
+<!-- - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf) -->
+<!-- - [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd)) -->
+
+- Grammar of graphics
+- Lab: `ggplot2`
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  
+#### Tuesday, July 7 - MORNING
+
+<!-- - [Visualization Techniques](lectures/03-vis-techniques.pdf) -->
+<!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
+
+- Visualization Techniques
+- Challenge: Parallel Coordinates
+
+  </div>
+    <div class="col-md-6">
+    
+#### Tuesday, July 7 - AFTERNOON
+
+<!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
+<!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
+
+- Perception and Color
+- Lab: ColorBrewer and `ggthemes`
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  
+#### Wednesday, July 8 - MORNING
+
+<!-- - [The role of interaction](lectures/05-interaction-and-plotly.pdf) -->
+<!-- - [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd)) -->
+
+- The role of interaction
+- Lab: Building interactive charts with `plot.ly`
+- Show and tell
+
+
+  </div>
+  <div class="col-md-6">
+  
+#### Wednesday, July 8 - AFTERNOON
+
+<!-- - [Geographic data](lectures/06-geovis.pdf) -->
+<!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
+
+- Geographic data
+- Lab: Interactive maps with `leaflet`
+
+  </div>
+</div>
