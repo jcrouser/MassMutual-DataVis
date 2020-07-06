@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -84,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -233,6 +232,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -244,18 +244,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -280,15 +268,12 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2019</a>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2020</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -301,18 +286,10 @@ $(document).ready(function () {
     <li>
       <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
     </li>
-    <li>
-      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
-    </li>
-    <li>
-      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
-    </li>
-    <li>
-      <a href="lab-plotly.html">05. plotly</a>
-    </li>
-    <li>
-      <a href="lab-leaflet.html">06. leaflet</a>
-    </li>
+    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
+    <li class="dropdown-header">05. plotly</li>
+    <li class="dropdown-header">06. leaflet</li>
   </ul>
 </li>
 <li class="dropdown">
@@ -336,6 +313,24 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="datasets/cb_2015_us_state_500k.zip">US State Boundary Shapefiles</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Resources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (H. Wickham)</a>
+    </li>
+    <li>
+      <a href="https://plotly-r.com/">Interactive web-based data visualization with R, plotly, and shiny (C. Sievert)</a>
+    </li>
+    <li>
+      <a href="https://bookdown.org/robinlovelace/geocompr/">Geocomputation with R (R. Lovelace et al.)</a>
     </li>
   </ul>
 </li>
@@ -378,7 +373,7 @@ $(document).ready(function () {
 <li><a href="https://cran.r-project.org/web/packages/mosaic/vignettes/mosaic-resources.html">Resources Related to the mosaic Package</a>: a longer illustrated guide to using <code>mosaic</code></li>
 <li><a href="http://cran.r-project.org/web/packages/mosaic/vignettes/Resampling.pdf">Randomization-based inference using the mosaic package</a><br />
 </li>
-<li>Nick Horton’s videos <a href="http://www3.amherst.edu/~nhorton/rstudio/">introducing RStudio at Amherst</a></li>
+<li>Nick Horton's videos <a href="http://www3.amherst.edu/~nhorton/rstudio/">introducing RStudio at Amherst</a></li>
 <li>Interactive tutorials via <a href="http://swirlstats.com/students.html">swirl</a>, <a href="https://www.datacamp.com/datafest">DataCamp</a></li>
 <li>Search StackOverflow for the <a href="http://stackoverflow.com/questions/tagged/r-mosaic"><code>r-mosaic</code> tag</a></li>
 </ul></li>
@@ -417,6 +412,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -84,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -233,6 +232,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -244,18 +244,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -280,15 +268,12 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2019</a>
+      <a class="navbar-brand" href="index.html">Introduction to Data Visualization - Summer 2020</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -301,18 +286,10 @@ $(document).ready(function () {
     <li>
       <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
     </li>
-    <li>
-      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
-    </li>
-    <li>
-      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
-    </li>
-    <li>
-      <a href="lab-plotly.html">05. plotly</a>
-    </li>
-    <li>
-      <a href="lab-leaflet.html">06. leaflet</a>
-    </li>
+    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
+    <li class="dropdown-header">05. plotly</li>
+    <li class="dropdown-header">06. leaflet</li>
   </ul>
 </li>
 <li class="dropdown">
@@ -336,6 +313,24 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="datasets/cb_2015_us_state_500k.zip">US State Boundary Shapefiles</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Resources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (H. Wickham)</a>
+    </li>
+    <li>
+      <a href="https://plotly-r.com/">Interactive web-based data visualization with R, plotly, and shiny (C. Sievert)</a>
+    </li>
+    <li>
+      <a href="https://bookdown.org/robinlovelace/geocompr/">Geocomputation with R (R. Lovelace et al.)</a>
     </li>
   </ul>
 </li>
@@ -364,34 +359,32 @@ $(document).ready(function () {
 <h4 id="monday-june-24---morning">Monday, June 24 - MORNING</h4>
 <ul>
 <li><a href="lectures/01-visualization-intro.pdf">Introduction</a></li>
-<li><p>Activity: Reading Data Graphics</p>
-</div>
-<div class="col-md-4">
-</li>
+<li>Activity: Reading Data Graphics</li>
 </ul>
+</div>
+<pre><code>&lt;div class=&quot;col-md-4&quot;&gt;</code></pre>
 <h4 id="monday-june-24---afternoon">Monday, June 24 - AFTERNOON</h4>
 <ul>
 <li><a href="lectures/02-ggplot2-crash-course.pdf">Grammar of graphics</a></li>
-<li><p><a href="lab-ggplot2.html">Lab: <code>ggplot2</code></a> (<a href="lab-ggplot2.Rmd">.Rmd</a>)</p>
-</div></li>
+<li><a href="lab-ggplot2.html">Lab: <code>ggplot2</code></a> (<a href="lab-ggplot2.Rmd">.Rmd</a>)</li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-4">
 <h4 id="tuesday-june-25---morning">Tuesday, June 25 - MORNING</h4>
 <ul>
 <li><a href="lectures/03-vis-techniques.pdf">Visualization Techniques</a></li>
-<li><p><a href="demo-vis-techniques.html">Challenge: Parallel Coordinates</a> (<a href="demo-vis-techniques.Rmd">.Rmd</a>)</p>
-</div>
-<div class="col-md-4">
-</li>
+<li><a href="demo-vis-techniques.html">Challenge: Parallel Coordinates</a> (<a href="demo-vis-techniques.Rmd">.Rmd</a>)</li>
 </ul>
+</div>
+<pre><code>&lt;div class=&quot;col-md-4&quot;&gt;</code></pre>
 <h4 id="tuesday-june-25---afternoon">Tuesday, June 25 - AFTERNOON</h4>
 <ul>
 <li><a href="lectures/04-perception-color.pdf">Perception and Color</a></li>
-<li><p><a href="lab-colorbrewer-ggthemes.html">Lab: ColorBrewer and <code>ggthemes</code></a> (<a href="lab-colorbrewer-ggthemes.Rmd">.Rmd</a>)</p>
-</div></li>
+<li><a href="lab-colorbrewer-ggthemes.html">Lab: ColorBrewer and <code>ggthemes</code></a> (<a href="lab-colorbrewer-ggthemes.Rmd">.Rmd</a>)</li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-4">
@@ -399,17 +392,16 @@ $(document).ready(function () {
 <ul>
 <li><a href="lectures/05-interaction-and-plotly.pdf">The role of interaction</a></li>
 <li><a href="lab-plotly.html">Lab: <code>plot.ly</code></a> (<a href="lab-plotly.Rmd">.Rmd</a>)</li>
-<li><p>Show and tell</p>
+<li>Show and tell</li>
+</ul>
 </div>
 <div class="col-md-4">
-</li>
-</ul>
 <h4 id="wednesday-june-26---afternoon">Wednesday, June 26 - AFTERNOON</h4>
 <ul>
 <li><a href="lectures/06-geovis.pdf">Geographic data</a></li>
-<li><p><a href="lab-leaflet.html">Lab: <code>leaflet</code></a> (<a href="lab-leaflet.Rmd">.Rmd</a>)</p>
-</div></li>
+<li><a href="lab-leaflet.html">Lab: <code>leaflet</code></a> (<a href="lab-leaflet.Rmd">.Rmd</a>)</li>
 </ul>
+</div>
 </div>
 
 
@@ -429,6 +421,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

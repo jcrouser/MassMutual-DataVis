@@ -13,81 +13,55 @@
 
 <title>Introduction to R and RStudio</title>
 
-<script src="site_libs/jquery/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap/css/cerulean.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui/jquery-ui.min.js"></script>
-<link href="site_libs/tocify/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify/jquery.tocify.js"></script>
-<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 
 </style>
 <script>
@@ -433,7 +407,9 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics (no link)</li>
-    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li>
+      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
+    </li>
     <li class="dropdown-header">03. Visualization Techniques</li>
     <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
     <li class="dropdown-header">05. plotly</li>
@@ -504,8 +480,8 @@ div.tocify {
 <p>The goal of this lab is to introduce you to R and RStudio. To clarify which is which: R is the name of the programming language itself and RStudio is a convenient interface.Today we begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.</p>
 <p>Go ahead and launch RStudio. You should see a window that looks like the image shown below.</p>
 <p><img src="gfx/r-interface-2016.png" /> <br></p>
-<p>The panel on the lower left is where the action happens. It’s called the <em>console</em>. Everytime you launch RStudio, it will have the same text at the top of the console telling you the version of R that you’re running. Below that information is the <em>prompt</em>. As its name suggests, this prompt is really a request: a request for a command. Initially, interacting with R is all about typing commands and interpreting the output. These commands and their syntax have evolved over decades (literally) and now provide what many users feel is a fairly natural way to access data and organize, describe, and invoke statistical computations.</p>
-<p>The panel in the upper right contains your <em>workspace</em> as well as a history of the commands that you’ve previously entered.</p>
+<p>The panel on the lower left is where the action happens. It's called the <em>console</em>. Everytime you launch RStudio, it will have the same text at the top of the console telling you the version of R that you're running. Below that information is the <em>prompt</em>. As its name suggests, this prompt is really a request: a request for a command. Initially, interacting with R is all about typing commands and interpreting the output. These commands and their syntax have evolved over decades (literally) and now provide what many users feel is a fairly natural way to access data and organize, describe, and invoke statistical computations.</p>
+<p>The panel in the upper right contains your <em>workspace</em> as well as a history of the commands that you've previously entered.</p>
 <p>Any plots that you generate will show up in the panel in the lower right corner. This is also where you can browse your files, access help, manage packages, etc.</p>
 <div id="r-packages" class="section level3">
 <h3>R Packages</h3>
@@ -515,41 +491,41 @@ div.tocify {
 <li><code>ggplot2</code>: for data visualization</li>
 </ul>
 <p>If these packages are not already available in your R environment, install them by typing the following lines of code into the console of your RStudio session, pressing the enter/return key after each one. Note that you can check to see which packages (and which versions) are installed by inspecting the <em>Packages</em> tab in the lower right panel of RStudio.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
 <p>You may need to select a server from which to download; any of them will work. Next, you need to load these packages in your working environment. We do this with the <code>library</code> function. Run the following three lines in your console.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)</code></pre></div>
 <p>Note that you only need to <em>install</em> packages once, but you need to <em>load</em> them each time you relaunch RStudio.</p>
 </div>
 </div>
-<div id="dr.arbuthnots-baptism-records" class="section level2">
-<h2>Dr. Arbuthnot’s Baptism Records</h2>
+<div id="dr.-arbuthnots-baptism-records" class="section level2">
+<h2>Dr. Arbuthnot's Baptism Records</h2>
 <p>To get you started, run the following command to load the data from a comma-separated value (CSV) file hosted online.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T)</code></pre></div>
 <p>This command instructs R to load some data: the Arbuthnot baptism counts for boys and girls. You should see that the workspace area in the upper righthand corner of the RStudio window now lists a data set called <code>arbuthnot</code> that has 82 observations on 3 variables. As you interact with R, you will create a series of objects. Sometimes you load them as we have done here, and sometimes you create them yourself as the byproduct of a computation or some analysis you have performed.</p>
-<p>The Arbuthnot data set refers to Dr. John Arbuthnot, an 18<sup>th</sup> century physician, writer, and mathematician. He was interested in the ratio of newborn boys to newborn girls, so he gathered the baptism records for children born in London for every year from 1629 to 1710. We can view the data by typing its name into the console.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">arbuthnot</a></code></pre></div>
+<p>The Arbuthnot data set refers to Dr. John Arbuthnot, an 18<sup>th</sup> century physician, writer, and mathematician. He was interested in the ratio of newborn boys to newborn girls, so he gathered the baptism records for children born in London for every year from 1629 to 1710. We can view the data by typing its name into the console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arbuthnot</code></pre></div>
 <p>However printing the whole dataset in the console is not that useful. One advantage of RStudio is that it comes with a built-in data viewer. Click on the name <code>arbuthnot</code> in the <em>Environment</em> pane (upper right window) that lists the objects in your workspace. This will bring up an alternative display of the data set in the <em>Data Viewer</em> (upper left window). You can close the data viewer by clicking on the <code>x</code> in the upper lefthand corner.</p>
 <p>What you should see are four columns of numbers, each row representing a different year: the first entry in each row is simply the row number (an index we can use to access the data from individual years if we want), the second is the year, and the third and fourth are the numbers of boys and girls baptized that year, respectively. Use the scrollbar on the right side of the console window to examine the complete data set.</p>
-<p>Note that the row numbers in the first column are not part of Arbuthnot’s data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored Arbuthnot’s data in a kind of spreadsheet or table called a <em>data frame</em>.</p>
+<p>Note that the row numbers in the first column are not part of Arbuthnot's data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored Arbuthnot's data in a kind of spreadsheet or table called a <em>data frame</em>.</p>
 <p>You can see the dimensions of this data frame as well as the names of the variables and the first few observations by typing:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">glimpse</span>(arbuthnot)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(arbuthnot)</code></pre></div>
 <p>This command should output the following</p>
-<pre><code>## Observations: 82
-## Variables: 3
-## $ year  &lt;int&gt; 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1638…
-## $ boys  &lt;int&gt; 5218, 4858, 4422, 4994, 5158, 5035, 5106, 4917, 4703, 5359…
-## $ girls &lt;int&gt; 4683, 4457, 4102, 4590, 4839, 4820, 4928, 4605, 4457, 4952…</code></pre>
+<pre><code>## Rows: 82
+## Columns: 3
+## $ year  &lt;int&gt; 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1638, 1639, 16…
+## $ boys  &lt;int&gt; 5218, 4858, 4422, 4994, 5158, 5035, 5106, 4917, 4703, 5359, 5366, 55…
+## $ girls &lt;int&gt; 4683, 4457, 4102, 4590, 4839, 4820, 4928, 4605, 4457, 4952, 4784, 53…</code></pre>
 <p>We can see that there are 82 observations and 3 variables in this dataset. The variable names are <code>year</code>, <code>boys</code>, and <code>girls</code>. At this point, you might notice that many of the commands in R look a lot like functions from math class; that is, invoking R commands means supplying a function with some number of arguments inside parentheses. The <code>glimpse</code> command, for example, took a single argument, the name of a data frame.</p>
 <div id="data-visualization" class="section level3">
 <h3>Data visualization</h3>
-<p>Let’s start to examine the data a little more closely.R has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the command</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot)</a></code></pre></div>
-<p>The <code>qplot()</code> function (meaning “quick plot”) considers the type of data you have provided it and makes the decision to visualize it with a scatterplot. The plot should appear under the <em>Plots</em> tab of the lower right panel of RStudio. Notice that the command above again looks like a function, this time with three arguments separated by commas. The first two arguments in the <code>qplot()</code> function specify the variables for the x-axis and the y-axis and the third provides the name of the data set where they can be found. If we wanted to connect the data points with lines, we could add a fourth argument to specify the geometry that we’d like.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</a></code></pre></div>
-<p>You might wonder how you are supposed to know that it was possible to add that fourth argument. Thankfully, R documents all of its functions extensively. To read what a function does and learn the arguments that are available to you, just type in a question mark followed by the name of the function that you’re interested in. Try the following.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">?qplot</a></code></pre></div>
+<p>Let's start to examine the data a little more closely.R has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the command</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot)</code></pre></div>
+<p>The <code>qplot()</code> function (meaning &quot;quick plot&quot;) considers the type of data you have provided it and makes the decision to visualize it with a scatterplot. The plot should appear under the <em>Plots</em> tab of the lower right panel of RStudio. Notice that the command above again looks like a function, this time with three arguments separated by commas. The first two arguments in the <code>qplot()</code> function specify the variables for the x-axis and the y-axis and the third provides the name of the data set where they can be found. If we wanted to connect the data points with lines, we could add a fourth argument to specify the geometry that we'd like.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> girls, <span class="dt">data =</span> arbuthnot, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p>You might wonder how you are supposed to know that it was possible to add that fourth argument. Thankfully, R documents all of its functions extensively. To read what a function does and learn the arguments that are available to you, just type in a question mark followed by the name of the function that you're interested in. Try the following.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?qplot</code></pre></div>
 <p>Notice that the help file replaces the plot in the lower right panel. You can toggle between plots and help files using the tabs at the top of that panel.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Is there an apparent trend in the number of girls baptized over the years? How would you describe it?</li>
@@ -563,7 +539,7 @@ div.tocify {
 <div id="resources-for-learning-r-and-working-in-rstudio" class="section level2">
 <h2>Resources for learning R and working in RStudio</h2>
 <p>That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses.</p>
-<p>In this course we will be using R packages called <code>dplyr</code> for data wrangling and <code>ggplot2</code> for data visualization. If you are googling for R code, make sure to also include these package names in your search query. For example, instead of googling “scatterplot in R”, google “scatterplot in R with ggplot2”.</p>
+<p>In this course we will be using R packages called <code>dplyr</code> for data wrangling and <code>ggplot2</code> for data visualization. If you are googling for R code, make sure to also include these package names in your search query. For example, instead of googling &quot;scatterplot in R&quot;, google &quot;scatterplot in R with ggplot2&quot;.</p>
 <p>These cheatsheets may come in handy throughout the semester:</p>
 <ul>
 <li><a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RMarkdown cheatsheet</a></li>

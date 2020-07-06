@@ -10,7 +10,7 @@ navbar:
     menu:
     - text: "01. Deconstructing Data Graphics (no link)"
     - text: "02. Crash course in `ggplot2`"
-      #href: lab-ggplot2.html
+      href: lab-ggplot2.html
     - text: "03. Visualization Techniques"
       #href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"

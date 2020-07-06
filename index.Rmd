@@ -20,11 +20,8 @@ title: "Data Visualization Workshop 2020"
     
 #### Monday, July 6 - AFTERNOON
 
-<!-- - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf) -->
-<!-- - [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd)) -->
-
-- Grammar of graphics
-- Lab: `ggplot2`
+- [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf)
+- [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd))
 
   </div>
 </div>

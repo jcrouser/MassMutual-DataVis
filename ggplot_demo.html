@@ -14,15 +14,15 @@
 
 <title>ggplot demo</title>
 
-<script src="site_libs/jquery/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap/css/lumen.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap/shim/respond.min.js"></script>
-<script src="site_libs/navigation/tabsets.js"></script>
-<link href="site_libs/highlightjs/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs/highlight.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -284,7 +284,9 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics (no link)</li>
-    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li>
+      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
+    </li>
     <li class="dropdown-header">03. Visualization Techniques</li>
     <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
     <li class="dropdown-header">05. plotly</li>
@@ -356,19 +358,6 @@ $(document).ready(function () {
 <h2>Playing with ggplot</h2>
 <pre class="r"><code>library(ggplot2)
 glimpse(msleep)</code></pre>
-<pre><code>## Observations: 83
-## Variables: 11
-## $ name         &lt;chr&gt; &quot;Cheetah&quot;, &quot;Owl monkey&quot;, &quot;Mountain beaver&quot;, &quot;Greate…
-## $ genus        &lt;chr&gt; &quot;Acinonyx&quot;, &quot;Aotus&quot;, &quot;Aplodontia&quot;, &quot;Blarina&quot;, &quot;Bos&quot;…
-## $ vore         &lt;chr&gt; &quot;carni&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;herbi&quot;,…
-## $ order        &lt;chr&gt; &quot;Carnivora&quot;, &quot;Primates&quot;, &quot;Rodentia&quot;, &quot;Soricomorpha&quot;…
-## $ conservation &lt;chr&gt; &quot;lc&quot;, NA, &quot;nt&quot;, &quot;lc&quot;, &quot;domesticated&quot;, NA, &quot;vu&quot;, NA,…
-## $ sleep_total  &lt;dbl&gt; 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1, …
-## $ sleep_rem    &lt;dbl&gt; NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0.6,…
-## $ sleep_cycle  &lt;dbl&gt; NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.3833…
-## $ awake        &lt;dbl&gt; 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9, 2…
-## $ brainwt      &lt;dbl&gt; NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07…
-## $ bodywt       &lt;dbl&gt; 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490…</code></pre>
 <pre class="r"><code>library(stringr) # for string manipulation
 library(ggimage) # for custom icons
 msleep %&gt;%
@@ -383,9 +372,6 @@ msleep %&gt;%
             nudge_y = 0.25, 
             size = 2) +
   theme(legend.position = &quot;none&quot;)</code></pre>
-<pre><code>## Warning: Removed 20 rows containing missing values (geom_image).</code></pre>
-<pre><code>## Warning: Removed 20 rows containing missing values (geom_text).</code></pre>
-<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 
 
