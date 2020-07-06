@@ -107,8 +107,10 @@ Now that we know about geometric objects and aesthetic mapping, we're ready to m
 
 ``` {r scatterplot-example, message = FALSE, eval = TRUE}
 hp2013Q1 <- housing %>% filter(Date == 2013.25) 
+
 ggplot(hp2013Q1,
-       aes(y = Structure.Cost, x = Land.Value)) +
+       aes(y = Structure.Cost, 
+           x = Land.Value)) +
   geom_point()
 ```
 
@@ -118,29 +120,31 @@ A plot constructed with `ggplot` can have more than one `geom`. In that case, th
 
 ``` {r trend-line-example, message = FALSE, eval = TRUE}
 p1 <- ggplot(hp2013Q1, 
-             aes(x = Land.Value, 
-                 y = Structure.Cost))
+             aes(x = Land.Value,      # x and y will have this mapping for all geoms
+                 y = Structure.Cost)) # unless we explicitly override them
 
 p1 + geom_point(aes(color = Home.Value)) +
-    geom_smooth(method="lm")
+    geom_smooth(method = "lm")
 ```
 
 ### Smoothers
 
-Not all geometric objects are simple shapes -- the `smooth` `geom` includes both a line and a ribbon.
+Not all geometric objects are simple shapes -- as we saw above, `geom_smooth` includes both a line and a ribbon.
 
 ``` {r smoother-example, message = FALSE, eval = TRUE}
 p1 +
   geom_point(aes(color = Home.Value)) +
-  geom_smooth()
+  geom_smooth() # If we don't specify the method, what happens? 
+                # Check the docs for more details (?geom_smooth)
 ```
 
 ### Removing standard errors
 
+If you don't need the error bands, just set `se = FALSE` inside the call to `geom_smooth` to remove them:
 ``` {r smoother-noSE, message = FALSE, eval = TRUE}
 p1 +
   geom_point(aes(color = Home.Value)) +
-  geom_smooth(se=FALSE)
+  geom_smooth(se = FALSE)
 ```
 
 ### Text
@@ -150,8 +154,10 @@ Each `geom` accepts a particualar set of mappings--for example `geom_text()` acc
 ``` {r text-sample, message = FALSE, eval = TRUE}
 p1 + 
   geom_point(aes(color = Home.Value)) +
-  geom_text(aes(label=State), size = 3)
+  geom_text(aes(label = State), size = 3)
 ```
+
+#. Try playing around with the `position` or `nudge_x/nudge_y` arguments to `geom_text` to see if you can offset the label from the associated point a bit.
 
 ### Aesthetic Mapping VS Assignment
 
@@ -159,9 +165,12 @@ Note that variables are mapped to aesthetics with the `aes()` function, while fi
 
 ``` {r right-vs-wrong-aes, message = FALSE, eval = TRUE}
 p1 +
-  geom_point(aes(), # incorrect! 2 is not a variable
-                size = 2, color="red")   # this is fine -- turns all points red
+  geom_point(aes(size = 2),     # not quite right! 2 is not a variable, but rather a fixed value
+                 color = "red") # this is fine -- turns all points red
 ```
+Notice how we get a pretty useless legend for size? That's because `R` is interpreting the constant `2` as a variable (just a boring one containing a single value) and so produces a levend by default.
+
+#. Modify the code above to get rid of the legend by assigning the `size` attribute outside the call to `aes()`. While you're at it, try mapping `region` to `color` to see if there are any interesting patterns!
 
 ### Mapping Variables to Other Aesthetics
 
@@ -177,7 +186,7 @@ p1 +
 
 ## Scales: Controlling Aesthetics
 
-Aesthetic mapping (i.e., with `aes()`) only says that a variable should be mapped to an aesthetic. It doesn't say *how* that should happen. For example, when mapping a variable to *shape* with `aes(shape = myVar)` you don't say *what* shapes should be used. Similarly, `aes(color ` z)= doesn't say *what* colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding *scale*. In `ggplot2`, `scales` include:
+Aesthetic mapping (i.e., with `aes()`) only says that a variable should be mapped to an aesthetic. It doesn't say *how* that should happen. For example, when mapping a variable to *shape* with `aes(shape = myVar)` you don't say *which* shapes should be used. Similarly, `aes(color = z)` doesn't say *which* colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding *scale*. In `ggplot2`, `scales` include:
 
 -   `position`
 -   `color` and `fill`
@@ -185,7 +194,7 @@ Aesthetic mapping (i.e., with `aes()`) only says that a variable should be mappe
 -   `shape`
 -   `linetype`
 
-Scales are modified with a series of functions using a `scale_<aesthetic>_<type>` naming scheme. Try typing `scale_<tab>` to see a list of scale modification functions.
+#.  Scales are modified with a series of functions using a `scale_<aesthetic>_<type>` naming scheme. Try typing `scale_<tab>` to see a list of scale modification functions, then play around to make the plot above look a little nicer.
 
 ### Common Scale Arguments
 
@@ -196,7 +205,13 @@ The following arguments are common to most `scales` in `ggplot2`:
 -   `breaks`:  the points along the scale where labels should appear
 -   `labels`: the text that appear at each break
 
-Specific scale functions may have additional arguments; for example, the `scale_color_continuous` function has arguments `low` and `high` for setting the colors at the low and high end of the scale.
+#. Specific scale functions may have additional arguments; for example, the `scale_color_continuous` function has arguments `low` and `high` for setting the colors at the low and high end of the scale. Try playing around with the color scale to keep the outliers from dominating in this plot:
+
+```{r color-sample, message = FALSE, eval = TRUE}
+# Tweak the color scale!
+p1 + 
+  geom_point(aes(color = Home.Value))
+```
 
 ### Scale Modification Examples
 
@@ -211,7 +226,6 @@ p4 <- p3 + geom_point(aes(color = Date),
                       alpha = 0.5,
                       size = 1.5,
                       position = position_jitter(width = 0.25, height = 0))
-p4
 ```
 
 Now let's modify the `breaks` and `labels` for the `x` axis and color scales:
@@ -221,7 +235,6 @@ p4 + scale_x_discrete(name = "State Abbreviation") +
   scale_color_continuous(name = "",
                           breaks = c(1975.25, 1994.25, 2013.25),
                           labels = c(1971, 1994, 2013))
-p4
 ```
 
 Next change the low and high values to `blue` and `red`:
@@ -233,7 +246,6 @@ p4 +
                           breaks = c(1975.25, 1994.25, 2013.25),
                           labels = c(1971, 1994, 2013),
                           low = "blue", high = "red")
-p4
 ```
 
 ### Using different color scales
@@ -278,8 +290,8 @@ Here's a (partial) combination matrix of available scales:
 -   Faceting is `ggplot2` parlance for **small multiples**
 -   The idea is to create separate graphs for subsets of data
 -   `ggplot2` offers two functions for creating small multiples:
-    1.  `facet_wrap()`: define subsets as the levels of a single grouping variable
-    2.  `facet_grid()`: define subsets as the crossing of two grouping variables
+    -  `facet_wrap()`: define subsets as the levels of a single grouping variable
+    -  `facet_grid()`: define subsets as the crossing of two grouping variables
 -   Facilitates comparison among plots, not just of `geoms` within a plot
 
 ### Example: what is the trend in housing prices in each state?
@@ -291,28 +303,27 @@ p5 <- ggplot(housing, aes(x = Date,
                           y = Home.Value))
 
 p5 + geom_line(aes(color = State))  
-
 ```
 
 There are two problems here--there are too many `states` to distinguish each one by `color`, and the `lines` obscure one another.
 
 ### Faceting to the rescue!
 
-We can fix the previous plot by `faceting` by `state` rather than mapping `state` to `color`:
+We can fix the previous plot by `faceting` by `State` rather than mapping `State` to `color`:
 
 ``` {r faceting-example, message = FALSE, eval = TRUE}
-p5 <- p5 + geom_line() +
+p5 + geom_line() +
     facet_wrap(~State, ncol = 10)
-p5
 ```
 
-There is also a `facet_grid()` function for faceting in two dimensions.
+Remember, there is also a `facet_grid()` function for faceting in two dimensions.
+
 
 ## The \#1 FAQ
 
-### Map Aesthetic to Different Columns
+### Map 2 (or more) Different Columns to one Aesthetic
 
-The most frequently asked question goes something like this: *I have two variables in my data.frame, and I'd like to plot them as separate points, with different color depending on which variable it is. How do I do that?*
+The most frequently asked question I get from `ggplot` beginners goes something like this: *I have two variables in my dataframe, and I'd like to plot them as separate points, with different colors depending on which variable it is. How do I do that?*
 
 ### First try: draw two separate lines
 
@@ -325,17 +336,23 @@ ggplot(housing_byyear,
   geom_line(aes(y = Land.Value), color="blue")
 ```
 
-This is not so great, because if I later add another dimension, I'll have to remember that I hard-coded these lines separately.
+This is not so great, because if I later add another dimension, I'll have to remember that I hard-coded these lines separately. Plus because I didn't use an `aes()` mappting, I don't get a legend. Wah wah.
 
 ### A tidier way:
 
-First we'll `gather` up the values we want to plot:
-``` {r tidy-gather-example, message = FALSE, eval = TRUE}
+First we'll `pivot_longer` (or `gather`) the values we want to plot:
+``` {r tidy-gather-example, message = FALSE, eval = TRUE, warning = FALSE}
 library(tidyr)
-home_land_byyear <- gather(housing_byyear,
-                            value = "value",
-                            key = "type",
-                            Home.Value, Land.Value)
+home_land_byyear <- pivot_longer(housing_byyear,
+                            values_to = "value",
+                            names_to = "type",
+                            cols = c("Home.Value", "Land.Value"))
+
+# OLD SCHOOL VERSION with gather
+# home_land_byyear <- gather(housing_byyear,
+#                            value = "value",
+#                            key = "type",
+#                            Home.Value, Land.Value)
 ```
 
 Then we'll plot them:
@@ -349,9 +366,16 @@ ggplot(home_land_byyear,
 
 Much cleaner!
 
+## Your turn!
+Now let's try building a few visualizations of your own dataset. Don't have one? Try answering these questions using the `housing` dataset we've been using so far.
+
+> #. What is the distribution of land values in each region? (Hint: try a boxplot!)
+#. How has the housing market evolved in your home state?
+#. Identify a few places where the housing market has been especially volatile. What do you think was driving these fluctuations?
+
 <div id="license">
 This lab is based on the "[Introduction to R Graphics with `ggplot2`](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)" workshop, which
 is a product of the [Data Science Services](http://dss.iq.harvard.edu/) team [Harvard University](http://dss.iq.harvard.edu/). The original source is released under a 
 [Creative Commons Attribution-ShareAlike 4.0 Unported](http://creativecommons.org/licenses/by-sa/4.0). 
-This lab was adapted for SDS192: an Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual Data Visualization workshop in Summer 2017 by Amelia McNamara.
+This lab was adapted for SDS192: an Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual Data Visualization workshop in Summer 2017 by Amelia McNamara, with minor revisions in Summer 2020 by R. Jordan Crouser.
 </div>

@@ -1,93 +1,67 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Crash Course in ggplot2</title>
 
-<script src="site_libs/jquery/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap/css/cerulean.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui/jquery-ui.min.js"></script>
-<link href="site_libs/tocify/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify/jquery.tocify.js"></script>
-<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 
 </style>
 <script>
@@ -103,7 +77,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -161,7 +135,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -310,6 +283,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -322,48 +296,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -377,6 +312,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -538,7 +479,7 @@ div.tocify {
 <div id="setting-up" class="section level3">
 <h3>Setting up</h3>
 <p><strong>Remember</strong>: before we can use a library like <code>ggplot2</code>, we have to load it:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
 </div>
 <div id="why-ggplot2" class="section level3">
 <h3>Why <code>ggplot2</code>?</h3>
@@ -569,23 +510,23 @@ div.tocify {
 </div>
 <div id="example-data-housing-prices" class="section level3">
 <h3>Example Data: <code>Housing prices</code></h3>
-<p>Let’s start by taking a look at some data on housing prices:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">housing &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://jcrouser.github.io/MassMutual-DataVis/datasets/landdata-states.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">                    <span class="dt">header =</span> T)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">glimpse</span>(housing)</a></code></pre></div>
-<pre><code>## Observations: 7,803
-## Variables: 11
-## $ State            &lt;fct&gt; AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, AK,…
-## $ region           &lt;fct&gt; West, West, West, West, West, West, West, West,…
-## $ Date             &lt;dbl&gt; 2010.25, 2010.50, 2009.75, 2010.00, 2008.00, 20…
-## $ Home.Value       &lt;int&gt; 224952, 225511, 225820, 224994, 234590, 233714,…
-## $ Structure.Cost   &lt;int&gt; 160599, 160252, 163791, 161787, 155400, 157458,…
-## $ Land.Value       &lt;int&gt; 64352, 65259, 62029, 63207, 79190, 76256, 72906…
-## $ Land.Share..Pct. &lt;dbl&gt; 28.6, 28.9, 27.5, 28.1, 33.8, 32.6, 31.3, 29.9,…
-## $ Home.Price.Index &lt;dbl&gt; 1.481, 1.484, 1.486, 1.481, 1.544, 1.538, 1.534…
-## $ Land.Price.Index &lt;dbl&gt; 1.552, 1.576, 1.494, 1.524, 1.885, 1.817, 1.740…
-## $ Year             &lt;int&gt; 2010, 2010, 2009, 2009, 2007, 2008, 2008, 2008,…
-## $ Qrtr             &lt;int&gt; 1, 2, 3, 4, 4, 1, 2, 3, 4, 1, 2, 2, 3, 4, 1, 2,…</code></pre>
+<p>Let's start by taking a look at some data on housing prices:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">housing &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://jcrouser.github.io/MassMutual-DataVis/datasets/landdata-states.csv&quot;</span>, 
+                    <span class="dt">header =</span> T)
+<span class="kw">glimpse</span>(housing)</code></pre></div>
+<pre><code>## Rows: 7,803
+## Columns: 11
+## $ State            &lt;fct&gt; AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, AK, …
+## $ region           &lt;fct&gt; West, West, West, West, West, West, West, West, West…
+## $ Date             &lt;dbl&gt; 2010.25, 2010.50, 2009.75, 2010.00, 2008.00, 2008.25…
+## $ Home.Value       &lt;int&gt; 224952, 225511, 225820, 224994, 234590, 233714, 2329…
+## $ Structure.Cost   &lt;int&gt; 160599, 160252, 163791, 161787, 155400, 157458, 1600…
+## $ Land.Value       &lt;int&gt; 64352, 65259, 62029, 63207, 79190, 76256, 72906, 694…
+## $ Land.Share..Pct. &lt;dbl&gt; 28.6, 28.9, 27.5, 28.1, 33.8, 32.6, 31.3, 29.9, 28.7…
+## $ Home.Price.Index &lt;dbl&gt; 1.481, 1.484, 1.486, 1.481, 1.544, 1.538, 1.534, 1.5…
+## $ Land.Price.Index &lt;dbl&gt; 1.552, 1.576, 1.494, 1.524, 1.885, 1.817, 1.740, 1.6…
+## $ Year             &lt;int&gt; 2010, 2010, 2009, 2009, 2007, 2008, 2008, 2008, 2008…
+## $ Qrtr             &lt;int&gt; 1, 2, 3, 4, 4, 1, 2, 3, 4, 1, 2, 2, 3, 4, 1, 2, 3, 4…</code></pre>
 <p>(Data from <a href="https://www.lincolninst.edu/subcenters/land-values/land-prices-by-state.asp" class="uri">https://www.lincolninst.edu/subcenters/land-values/land-prices-by-state.asp</a>)</p>
 </div>
 </div>
@@ -598,90 +539,100 @@ div.tocify {
 <li>points (<code>geom_point</code>, for scatter plots, dot plots, etc)</li>
 <li>lines (<code>geom_line</code>, for time series, trend lines, etc)</li>
 <li>boxplot (<code>geom_boxplot</code>, for, well, boxplots!)</li>
-<li>… and many more!</li>
+<li>... and many more!</li>
 </ul>
 <p>A plot must have at least one <code>geom</code>; there is no upper limit. You can add a <code>geom</code> to a plot using the <code>+</code> operator.</p>
 <p>You can get a list of available geometric objects by looking at the package documentation, available through the help interface:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">?ggplot2</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?ggplot2</code></pre></div>
 <p>or simply type <code>geom_&lt;tab&gt;</code> in any good R IDE (such as Rstudio) to see a list of functions starting with <code>geom_</code>.</p>
 </div>
 <div id="aesthetic-mapping-aes" class="section level3">
 <h3>Aesthetic Mapping (<code>aes</code>)</h3>
-<p>In <code>ggplot2</code>-land, <em>aesthetic</em> means “something you can see”. Examples include:</p>
+<p>In <code>ggplot2</code>-land, <em>aesthetic</em> means &quot;something you can see&quot;. Examples include:</p>
 <ul>
 <li>position (i.e., on the x and y axes)</li>
-<li>color (“outside” color)</li>
-<li>fill (“inside” color)</li>
+<li>color (&quot;outside&quot; color)</li>
+<li>fill (&quot;inside&quot; color)</li>
 <li>shape (of points)</li>
 <li>line type</li>
 <li>size</li>
 </ul>
-<p>Each type of <code>geom</code> accepts only a subset of all aesthetics – refer to the <code>geom</code> help pages to see what mappings each <code>geom</code> accepts. Aesthetic mappings are set with the <code>aes()</code> function, short for aesthetic.</p>
+<p>Each type of <code>geom</code> accepts only a subset of all aesthetics -- refer to the <code>geom</code> help pages to see what mappings each <code>geom</code> accepts. Aesthetic mappings are set with the <code>aes()</code> function, short for aesthetic.</p>
 </div>
 <div id="points" class="section level3">
 <h3>Points</h3>
-<p>Now that we know about geometric objects and aesthetic mapping, we’re ready to make our first <code>ggplot</code>: a scatterplot. We’ll use <code>geom_point</code> to do this, which requires <code>aes</code> mappings for <code>x</code> and <code>y</code>; all others are optional.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">hp2013Q1 &lt;-<span class="st"> </span>housing <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Date <span class="op">==</span><span class="st"> </span><span class="fl">2013.25</span>) </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">ggplot</span>(hp2013Q1,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">       <span class="kw">aes</span>(<span class="dt">y =</span> Structure.Cost, <span class="dt">x =</span> Land.Value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p>Now that we know about geometric objects and aesthetic mapping, we're ready to make our first <code>ggplot</code>: a scatterplot. We'll use <code>geom_point</code> to do this, which requires <code>aes</code> mappings for <code>x</code> and <code>y</code>; all others are optional.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hp2013Q1 &lt;-<span class="st"> </span>housing <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Date <span class="op">==</span><span class="st"> </span><span class="fl">2013.25</span>) 
+
+<span class="kw">ggplot</span>(hp2013Q1,
+       <span class="kw">aes</span>(<span class="dt">y =</span> Structure.Cost, 
+           <span class="dt">x =</span> Land.Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/scatterplot-example-1.png" width="672" /></p>
 </div>
 <div id="lines" class="section level3">
 <h3>Lines</h3>
 <p>A plot constructed with <code>ggplot</code> can have more than one <code>geom</code>. In that case, the mappings established in the <code>ggplot()</code> call are plot defaults that can be added to or overridden. For example, we could add a regression line to our plot:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(hp2013Q1, </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">             <span class="kw">aes</span>(<span class="dt">x =</span> Land.Value, </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">                 <span class="dt">y =</span> Structure.Cost))</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">p1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(hp2013Q1, 
+             <span class="kw">aes</span>(<span class="dt">x =</span> Land.Value,      <span class="co"># x and y will have this mapping for all geoms</span>
+                 <span class="dt">y =</span> Structure.Cost)) <span class="co"># unless we explicitly override them</span>
+
+p1 <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/trend-line-example-1.png" width="672" /></p>
 </div>
 <div id="smoothers" class="section level3">
 <h3>Smoothers</h3>
-<p>Not all geometric objects are simple shapes – the <code>smooth</code> <code>geom</code> includes both a line and a ribbon.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">p1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<p>Not all geometric objects are simple shapes -- as we saw above, <code>geom_smooth</code> includes both a line and a ribbon.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>() <span class="co"># If we don&#39;t specify the method, what happens? </span></code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/smoother-example-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># Check the docs for more details (?geom_smooth)</span></code></pre></div>
 </div>
 <div id="removing-standard-errors" class="section level3">
 <h3>Removing standard errors</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p>If you don't need the error bands, just set <code>se = FALSE</code> inside the call to <code>geom_smooth</code> to remove them:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/smoother-noSE-1.png" width="672" /></p>
 </div>
 <div id="text" class="section level3">
 <h3>Text</h3>
-<p>Each <code>geom</code> accepts a particualar set of mappings–for example <code>geom_text()</code> accepts a <code>labels</code> mapping.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">p1 <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span>State), <span class="dt">size =</span> <span class="dv">3</span>)</a></code></pre></div>
+<p>Each <code>geom</code> accepts a particualar set of mappings--for example <code>geom_text()</code> accepts a <code>labels</code> mapping.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> State), <span class="dt">size =</span> <span class="dv">3</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/text-sample-1.png" width="672" /></p>
+<ol>
+<li>Try playing around with the <code>position</code> or <code>nudge_x/nudge_y</code> arguments to <code>geom_text</code> to see if you can offset the label from the associated point a bit.</li>
+</ol>
 </div>
 <div id="aesthetic-mapping-vs-assignment" class="section level3">
 <h3>Aesthetic Mapping VS Assignment</h3>
 <p>Note that variables are mapped to aesthetics with the <code>aes()</code> function, while fixed aesthetics are set outside the <code>aes()</code> call. This sometimes leads to confusion, as in this example:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">p1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(), <span class="co"># incorrect! 2 is not a variable</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">                <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>)   <span class="co"># this is fine -- turns all points red</span></a></code></pre></div>
-<p><img src="lab-ggplot2_files/figure-html/right-vs-wrong-aes-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> <span class="dv">2</span>),     <span class="co"># not quite right! 2 is not a variable, but rather a fixed value</span>
+                 <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="co"># this is fine -- turns all points red</span></code></pre></div>
+<p><img src="lab-ggplot2_files/figure-html/right-vs-wrong-aes-1.png" width="672" /> Notice how we get a pretty useless legend for size? That's because <code>R</code> is interpreting the constant <code>2</code> as a variable (just a boring one containing a single value) and so produces a levend by default.</p>
+<ol>
+<li>Modify the code above to get rid of the legend by assigning the <code>size</code> attribute outside the call to <code>aes()</code>. While you're at it, try mapping <code>region</code> to <code>color</code> to see if there are any interesting patterns!</li>
+</ol>
 </div>
 <div id="mapping-variables-to-other-aesthetics" class="section level3">
 <h3>Mapping Variables to Other Aesthetics</h3>
 <p>Other aesthetics are mapped in the same way as <code>x</code> and <code>y</code> in the previous example.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">p1 <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> region, </a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                 <span class="dt">shape =</span> region),</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">             <span class="dt">size =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> region, 
+                 <span class="dt">shape =</span> region),
+             <span class="dt">size =</span> <span class="dv">5</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/other-aes-example-1.png" width="672" /></p>
 </div>
 </div>
 <div id="scales-controlling-aesthetics" class="section level2">
 <h2>Scales: Controlling Aesthetics</h2>
-<p>Aesthetic mapping (i.e., with <code>aes()</code>) only says that a variable should be mapped to an aesthetic. It doesn’t say <em>how</em> that should happen. For example, when mapping a variable to <em>shape</em> with <code>aes(shape = myVar)</code> you don’t say <em>what</em> shapes should be used. Similarly, <code>aes(color</code> z)= doesn’t say <em>what</em> colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding <em>scale</em>. In <code>ggplot2</code>, <code>scales</code> include:</p>
+<p>Aesthetic mapping (i.e., with <code>aes()</code>) only says that a variable should be mapped to an aesthetic. It doesn't say <em>how</em> that should happen. For example, when mapping a variable to <em>shape</em> with <code>aes(shape = myVar)</code> you don't say <em>which</em> shapes should be used. Similarly, <code>aes(color = z)</code> doesn't say <em>which</em> colors should be used. Describing what colors/shapes/sizes etc. to use is done by modifying the corresponding <em>scale</em>. In <code>ggplot2</code>, <code>scales</code> include:</p>
 <ul>
 <li><code>position</code></li>
 <li><code>color</code> and <code>fill</code></li>
@@ -689,7 +640,9 @@ div.tocify {
 <li><code>shape</code></li>
 <li><code>linetype</code></li>
 </ul>
-<p>Scales are modified with a series of functions using a <code>scale_&lt;aesthetic&gt;_&lt;type&gt;</code> naming scheme. Try typing <code>scale_&lt;tab&gt;</code> to see a list of scale modification functions.</p>
+<ol>
+<li>Scales are modified with a series of functions using a <code>scale_&lt;aesthetic&gt;_&lt;type&gt;</code> naming scheme. Try typing <code>scale_&lt;tab&gt;</code> to see a list of scale modification functions, then play around to make the plot above look a little nicer.</li>
+</ol>
 <div id="common-scale-arguments" class="section level3">
 <h3>Common Scale Arguments</h3>
 <p>The following arguments are common to most <code>scales</code> in <code>ggplot2</code>:</p>
@@ -699,56 +652,56 @@ div.tocify {
 <li><code>breaks</code>: the points along the scale where labels should appear</li>
 <li><code>labels</code>: the text that appear at each break</li>
 </ul>
-<p>Specific scale functions may have additional arguments; for example, the <code>scale_color_continuous</code> function has arguments <code>low</code> and <code>high</code> for setting the colors at the low and high end of the scale.</p>
+<ol>
+<li>Specific scale functions may have additional arguments; for example, the <code>scale_color_continuous</code> function has arguments <code>low</code> and <code>high</code> for setting the colors at the low and high end of the scale. Try playing around with the color scale to keep the outliers from dominating in this plot:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tweak the color scale!</span>
+p1 <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Home.Value))</code></pre></div>
+<p><img src="lab-ggplot2_files/figure-html/color-sample-1.png" width="672" /></p>
 </div>
 <div id="scale-modification-examples" class="section level3">
 <h3>Scale Modification Examples</h3>
 <p>Start by constructing a dotplot showing the distribution of home values by <code>Date</code> and <code>State</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(housing,</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">             <span class="kw">aes</span>(<span class="dt">x =</span> State,</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">                 <span class="dt">y =</span> Home.Price.Index))</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">p4 &lt;-<span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Date),</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">                      <span class="dt">alpha =</span> <span class="fl">0.5</span>,</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">                      <span class="dt">size =</span> <span class="fl">1.5</span>,</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">                      <span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.25</span>, <span class="dt">height =</span> <span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb12-9" data-line-number="9">p4</a></code></pre></div>
-<p><img src="lab-ggplot2_files/figure-html/dotplot-example-1.png" width="672" /></p>
-<p>Now let’s modify the <code>breaks</code> and <code>labels</code> for the <code>x</code> axis and color scales:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">p4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;State Abbreviation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_color_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">                          <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p3 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(housing,
+             <span class="kw">aes</span>(<span class="dt">x =</span> State,
+                 <span class="dt">y =</span> Home.Price.Index))
+
+p4 &lt;-<span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Date),
+                      <span class="dt">alpha =</span> <span class="fl">0.5</span>,
+                      <span class="dt">size =</span> <span class="fl">1.5</span>,
+                      <span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.25</span>, <span class="dt">height =</span> <span class="dv">0</span>))</code></pre></div>
+<p>Now let's modify the <code>breaks</code> and <code>labels</code> for the <code>x</code> axis and color scales:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p4 <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;State Abbreviation&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,
+                          <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),
+                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>))</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/changing-scale-example-1.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">p4</a></code></pre></div>
-<p><img src="lab-ggplot2_files/figure-html/changing-scale-example-2.png" width="672" /></p>
 <p>Next change the low and high values to <code>blue</code> and <code>red</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">p4 <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;State Abbreviation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_color_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">                          <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>),</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">                          <span class="dt">low =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p4 <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;State Abbreviation&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,
+                          <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),
+                          <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>),
+                          <span class="dt">low =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/changing-color-example-1.png" width="672" /></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">p4</a></code></pre></div>
-<p><img src="lab-ggplot2_files/figure-html/changing-color-example-2.png" width="672" /></p>
 </div>
 <div id="using-different-color-scales" class="section level3">
 <h3>Using different color scales</h3>
 <p><code>ggplot2</code> has a wide variety of color <code>scales</code>; here is an example using <code>scale_color_gradient2</code> to interpolate between three different colors:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">p4 <span class="op">+</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">scale_color_gradient2</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">                        <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">                        <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>),</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">                        <span class="dt">low =</span> <span class="st">&quot;blue&quot;</span>,</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">                        <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>,</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">                        <span class="dt">mid =</span> <span class="st">&quot;gray60&quot;</span>,</a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">                        <span class="dt">midpoint =</span> <span class="fl">1994.25</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p4 <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_gradient2</span>(<span class="dt">name =</span> <span class="st">&quot;&quot;</span>,
+                        <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">1975.25</span>, <span class="fl">1994.25</span>, <span class="fl">2013.25</span>),
+                        <span class="dt">labels =</span> <span class="kw">c</span>(<span class="dv">1971</span>, <span class="dv">1994</span>, <span class="dv">2013</span>),
+                        <span class="dt">low =</span> <span class="st">&quot;blue&quot;</span>,
+                        <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>,
+                        <span class="dt">mid =</span> <span class="st">&quot;gray60&quot;</span>,
+                        <span class="dt">midpoint =</span> <span class="fl">1994.25</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/color-scale-midpoint-example-1.png" width="672" /></p>
 </div>
 <div id="available-scales" class="section level3">
 <h3>Available Scales</h3>
-<p>Here’s a (partial) combination matrix of available scales:</p>
+<p>Here's a (partial) combination matrix of available scales:</p>
 <table>
 <thead>
 <tr class="header">
@@ -834,68 +787,84 @@ div.tocify {
 <li>Faceting is <code>ggplot2</code> parlance for <strong>small multiples</strong></li>
 <li>The idea is to create separate graphs for subsets of data</li>
 <li><code>ggplot2</code> offers two functions for creating small multiples:
-<ol style="list-style-type: decimal">
+<ul>
 <li><code>facet_wrap()</code>: define subsets as the levels of a single grouping variable</li>
 <li><code>facet_grid()</code>: define subsets as the crossing of two grouping variables</li>
-</ol></li>
+</ul></li>
 <li>Facilitates comparison among plots, not just of <code>geoms</code> within a plot</li>
 </ul>
 <div id="example-what-is-the-trend-in-housing-prices-in-each-state" class="section level3">
 <h3>Example: what is the trend in housing prices in each state?</h3>
-<p>Let’s start by using a technique we already know – map <code>State</code> to <code>color</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">p5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(housing, <span class="kw">aes</span>(<span class="dt">x =</span> Date, </a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">                          <span class="dt">y =</span> Home.Value))</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">p5 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color =</span> State))  </a></code></pre></div>
+<p>Let's start by using a technique we already know -- map <code>State</code> to <code>color</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p5 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(housing, <span class="kw">aes</span>(<span class="dt">x =</span> Date, 
+                          <span class="dt">y =</span> Home.Value))
+
+p5 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color =</span> State))  </code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/line-plot-example-1.png" width="672" /></p>
-<p>There are two problems here–there are too many <code>states</code> to distinguish each one by <code>color</code>, and the <code>lines</code> obscure one another.</p>
+<p>There are two problems here--there are too many <code>states</code> to distinguish each one by <code>color</code>, and the <code>lines</code> obscure one another.</p>
 </div>
 <div id="faceting-to-the-rescue" class="section level3">
 <h3>Faceting to the rescue!</h3>
-<p>We can fix the previous plot by <code>faceting</code> by <code>state</code> rather than mapping <code>state</code> to <code>color</code>:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">p5 &lt;-<span class="st"> </span>p5 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>State, <span class="dt">ncol =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">p5</a></code></pre></div>
+<p>We can fix the previous plot by <code>faceting</code> by <code>State</code> rather than mapping <code>State</code> to <code>color</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p5 <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>State, <span class="dt">ncol =</span> <span class="dv">10</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/faceting-example-1.png" width="672" /></p>
-<p>There is also a <code>facet_grid()</code> function for faceting in two dimensions.</p>
+<p>Remember, there is also a <code>facet_grid()</code> function for faceting in two dimensions.</p>
 </div>
 </div>
 <div id="the-1-faq" class="section level2">
 <h2>The #1 FAQ</h2>
-<div id="map-aesthetic-to-different-columns" class="section level3">
-<h3>Map Aesthetic to Different Columns</h3>
-<p>The most frequently asked question goes something like this: <em>I have two variables in my data.frame, and I’d like to plot them as separate points, with different color depending on which variable it is. How do I do that?</em></p>
+<div id="map-2-or-more-different-columns-to-one-aesthetic" class="section level3">
+<h3>Map 2 (or more) Different Columns to one Aesthetic</h3>
+<p>The most frequently asked question I get from <code>ggplot</code> beginners goes something like this: <em>I have two variables in my dataframe, and I'd like to plot them as separate points, with different colors depending on which variable it is. How do I do that?</em></p>
 </div>
 <div id="first-try-draw-two-separate-lines" class="section level3">
 <h3>First try: draw two separate lines</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">housing_byyear &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="kw">cbind</span>(Home.Value, Land.Value) <span class="op">~</span><span class="st"> </span>Date, <span class="dt">data =</span> housing, mean)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">ggplot</span>(housing_byyear,</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">        <span class="kw">aes</span>(<span class="dt">x=</span>Date)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Home.Value), <span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Land.Value), <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">housing_byyear &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="kw">cbind</span>(Home.Value, Land.Value) <span class="op">~</span><span class="st"> </span>Date, <span class="dt">data =</span> housing, mean)
+
+<span class="kw">ggplot</span>(housing_byyear,
+        <span class="kw">aes</span>(<span class="dt">x=</span>Date)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Home.Value), <span class="dt">color=</span><span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Land.Value), <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/two-line-example-1.png" width="672" /></p>
-<p>This is not so great, because if I later add another dimension, I’ll have to remember that I hard-coded these lines separately.</p>
+<p>This is not so great, because if I later add another dimension, I'll have to remember that I hard-coded these lines separately. Plus because I didn't use an <code>aes()</code> mappting, I don't get a legend. Wah wah.</p>
 </div>
 <div id="a-tidier-way" class="section level3">
 <h3>A tidier way:</h3>
-<p>First we’ll <code>gather</code> up the values we want to plot:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">library</span>(tidyr)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">home_land_byyear &lt;-<span class="st"> </span><span class="kw">gather</span>(housing_byyear,</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">                            <span class="dt">value =</span> <span class="st">&quot;value&quot;</span>,</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">                            <span class="dt">key =</span> <span class="st">&quot;type&quot;</span>,</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">                            Home.Value, Land.Value)</a></code></pre></div>
-<p>Then we’ll plot them:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ggplot</span>(home_land_byyear,</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">        <span class="kw">aes</span>(<span class="dt">x =</span> Date,</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">            <span class="dt">y =</span> value,</a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">            <span class="dt">color =</span> type)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p>First we'll <code>pivot_longer</code> (or <code>gather</code>) the values we want to plot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+home_land_byyear &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(housing_byyear,
+                            <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>,
+                            <span class="dt">names_to =</span> <span class="st">&quot;type&quot;</span>,
+                            <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Home.Value&quot;</span>, <span class="st">&quot;Land.Value&quot;</span>))
+
+<span class="co"># OLD SCHOOL VERSION with gather</span>
+<span class="co"># home_land_byyear &lt;- gather(housing_byyear,</span>
+<span class="co">#                            value = &quot;value&quot;,</span>
+<span class="co">#                            key = &quot;type&quot;,</span>
+<span class="co">#                            Home.Value, Land.Value)</span></code></pre></div>
+<p>Then we'll plot them:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(home_land_byyear,
+        <span class="kw">aes</span>(<span class="dt">x =</span> Date,
+            <span class="dt">y =</span> value,
+            <span class="dt">color =</span> type)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
 <p><img src="lab-ggplot2_files/figure-html/plot-gathered-data-example-1.png" width="672" /></p>
 <p>Much cleaner!</p>
-<div id="license">
-<p>This lab is based on the “<a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Introduction to R Graphics with <code>ggplot2</code></a>” workshop, which is a product of the <a href="http://dss.iq.harvard.edu/">Data Science Services</a> team <a href="http://dss.iq.harvard.edu/">Harvard University</a>. The original source is released under a <a href="http://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 Unported</a>. This lab was adapted for SDS192: an Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual Data Visualization workshop in Summer 2017 by Amelia McNamara.</p>
 </div>
+</div>
+<div id="your-turn" class="section level2">
+<h2>Your turn!</h2>
+<p>Now let's try building a few visualizations of your own dataset. Don't have one? Try answering these questions using the <code>housing</code> dataset we've been using so far.</p>
+<blockquote>
+<ol>
+<li>What is the distribution of land values in each region? (Hint: try a boxplot!)</li>
+<li>How has the housing market evolved in your home state?</li>
+<li>Identify a few places where the housing market has been especially volatile. What do you think was driving these fluctuations?</li>
+</ol>
+</blockquote>
+<div id="license">
+<p>This lab is based on the &quot;<a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Introduction to R Graphics with <code>ggplot2</code></a>&quot; workshop, which is a product of the <a href="http://dss.iq.harvard.edu/">Data Science Services</a> team <a href="http://dss.iq.harvard.edu/">Harvard University</a>. The original source is released under a <a href="http://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 Unported</a>. This lab was adapted for SDS192: an Introduction to Data Science in Spring 2017 by R. Jordan Crouser at Smith College, and for the MassMutual Data Visualization workshop in Summer 2017 by Amelia McNamara, with minor revisions in Summer 2020 by R. Jordan Crouser.</p>
 </div>
 </div>
 
@@ -917,6 +886,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
