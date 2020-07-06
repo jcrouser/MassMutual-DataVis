@@ -11,14 +11,12 @@ title: "Data Visualization Workshop 2020"
   
 #### Monday, July 6 - MORNING
 
-<!-- - [Introduction](lectures/01-visualization-intro.pdf) -->
-<!-- - Activity: Reading Data Graphics -->
-
-- Introduction
+- [Introduction](lectures/01-visualization-intro.pdf)
 - Activity: Reading Data Graphics
 
+
   </div>
-    <div class="col-md-6">
+  <div class="col-md-6">
     
 #### Monday, July 6 - AFTERNOON
 
@@ -43,7 +41,7 @@ title: "Data Visualization Workshop 2020"
 - Challenge: Parallel Coordinates
 
   </div>
-    <div class="col-md-6">
+  <div class="col-md-6">
     
 #### Tuesday, July 7 - AFTERNOON
 

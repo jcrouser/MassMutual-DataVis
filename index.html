@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -84,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -233,6 +232,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -244,18 +244,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -361,30 +349,30 @@ $(document).ready(function () {
 </div>
 
 
-<p><img src="gfx/self_description.png" /></p>
+<div class="figure">
+<img src="gfx/self_description.png" />
+
+</div>
 <div class="past">
 
 </div>
 <div class="row">
 <div class="col-md-6">
 <h4 id="monday-july-6---morning">Monday, July 6 - MORNING</h4>
-<!-- - [Introduction](lectures/01-visualization-intro.pdf) -->
-<!-- - Activity: Reading Data Graphics -->
 <ul>
-<li>Introduction</li>
-<li><p>Activity: Reading Data Graphics</p>
+<li><a href="lectures/01-visualization-intro.pdf">Introduction</a></li>
+<li>Activity: Reading Data Graphics</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="monday-july-6---afternoon">Monday, July 6 - AFTERNOON</h4>
 <!-- - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf) -->
 <!-- - [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd)) -->
 <ul>
 <li>Grammar of graphics</li>
-<li><p>Lab: <code>ggplot2</code></p>
-</div></li>
+<li>Lab: <code>ggplot2</code></li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-6">
@@ -393,19 +381,18 @@ $(document).ready(function () {
 <!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
 <ul>
 <li>Visualization Techniques</li>
-<li><p>Challenge: Parallel Coordinates</p>
+<li>Challenge: Parallel Coordinates</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="tuesday-july-7---afternoon">Tuesday, July 7 - AFTERNOON</h4>
 <!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
 <!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
 <ul>
 <li>Perception and Color</li>
-<li><p>Lab: ColorBrewer and <code>ggthemes</code></p>
-</div></li>
+<li>Lab: ColorBrewer and <code>ggthemes</code></li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-6">
@@ -415,19 +402,18 @@ $(document).ready(function () {
 <ul>
 <li>The role of interaction</li>
 <li>Lab: Building interactive charts with <code>plot.ly</code></li>
-<li><p>Show and tell</p>
+<li>Show and tell</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="wednesday-july-8---afternoon">Wednesday, July 8 - AFTERNOON</h4>
 <!-- - [Geographic data](lectures/06-geovis.pdf) -->
 <!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
 <ul>
 <li>Geographic data</li>
-<li><p>Lab: Interactive maps with <code>leaflet</code></p>
-</div></li>
+<li>Lab: Interactive maps with <code>leaflet</code></li>
 </ul>
+</div>
 </div>
 
 
@@ -447,6 +433,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
