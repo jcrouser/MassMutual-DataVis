@@ -502,7 +502,7 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cyl)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="a-slightly-prettier-bar-chart-with-color-and-labels" class="section level4">
 <h4>A slightly prettier Bar Chart with color and labels</h4>
@@ -518,7 +518,7 @@ div.tocify {
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Count of cars by cylinders&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># Add a title</span>
 <span class="st">  </span>
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>)                     <span class="co"># Remove the legend</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
 <div id="histogram" class="section level3">
@@ -534,20 +534,20 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="a-better-histogram-with-scaling-10-bins-labels-and-color" class="section level4">
 <h4>A better Histogram with scaling, 10 bins, labels, and color</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt<span class="op">*</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st">             </span><span class="co"># Scale wt to lbs</span>
 <span class="st">  </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>,               <span class="co"># Change the number of bins to 10</span>
-                 <span class="dt">fill =</span> <span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)) <span class="op">+</span><span class="st">  </span><span class="co">#    and fill with a more aesthetically-pleasing color</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>,                    <span class="co"># Change the number of bins to 10</span>
+                 <span class="dt">fill =</span> <span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)) <span class="op">+</span><span class="st">  </span><span class="co">#    and fill with more aesthetically-pleasing color</span>
 <span class="st">  </span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (lb)&quot;</span>) <span class="op">+</span><span class="st">                        </span><span class="co"># Label the axes</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                             </span>
 <span class="st">  </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of cars by weight&quot;</span>)    <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 <div id="boxplot" class="section level3">
@@ -563,12 +563,13 @@ div.tocify {
 <h4>A simple boxplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span>
-                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></code></pre></div>
+<pre><code>## Warning: package &#39;ggpubr&#39; was built under R version 3.6.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
 
 <span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span>
@@ -594,7 +595,10 @@ div.tocify {
                                          <span class="kw">c</span>(<span class="st">&quot;6&quot;</span>,<span class="st">&quot;8&quot;</span>)),
                       <span class="dt">method =</span> <span class="st">&quot;t.test&quot;</span>,
                       <span class="kw">aes</span>(<span class="dt">label =</span> ..p.signif..))</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<pre><code>## Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+## Please use `as_label()` or `as_name()` instead.
+## This warning is displayed once per session.</code></pre>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
 <div id="scatterplot" class="section level3">
@@ -609,7 +613,7 @@ div.tocify {
 <h4>A simple scatterplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="a-better-scatterplot-with-scaled-values-shapes-color-and-labels" class="section level4">
 <h4>A better scatterplot with scaled values, shapes, color, and labels</h4>
@@ -631,7 +635,7 @@ div.tocify {
        <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                  </span>
 <span class="st">  </span>
 <span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>) <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
 <div id="scatterplot-matrix-splom" class="section level3">
@@ -643,12 +647,16 @@ div.tocify {
 <div id="a-simple-splom-using-pairs" class="section level4">
 <h4>A simple SPLOM using <code>pairs()</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span>
-                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></code></pre></div>
+<pre><code>## Warning: package &#39;GGally&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
 
 <span class="kw">ggpairs</span>(mtcars, 
         <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span>
@@ -661,7 +669,7 @@ div.tocify {
             <span class="dt">alpha =</span> <span class="fl">0.4</span>)) <span class="op">+</span><span class="st">                    </span><span class="co"># Set to semi-transparent</span>
 <span class="st">  </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs. displacement vs. horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 </div>
 <div id="line-chart" class="section level3">
@@ -682,13 +690,13 @@ arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 arbuthnot <span class="op">%&gt;%</span>
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
-
-<span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)</code></pre></div>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
 arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)
@@ -702,7 +710,7 @@ arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</
        <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Label the axes</span>
        <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>) <span class="co"># Add a title</span></code></pre></div>
-<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 </div>
 </div>

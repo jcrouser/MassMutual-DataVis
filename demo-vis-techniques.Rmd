@@ -72,8 +72,8 @@ ggplot(mtcars, aes(x = wt)) +
 ```{r}
 ggplot(mtcars, aes(x = wt*1000)) +             # Scale wt to lbs
   
-  geom_histogram(binwidth = 500,               # Change the number of bins to 10
-                 fill = rgb(0.1, 0.4, 0.5)) +  #    and fill with a more aesthetically-pleasing color
+  geom_histogram(bins = 10,                    # Change the number of bins to 10
+                 fill = rgb(0.1, 0.4, 0.5)) +  #    and fill with more aesthetically-pleasing color
   
   xlab("Weight (lb)") +                        # Label the axes
   ylab("Count") +                             
