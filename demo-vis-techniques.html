@@ -410,7 +410,9 @@ div.tocify {
     <li>
       <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
     </li>
-    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li>
+      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
+    </li>
     <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
     <li class="dropdown-header">05. plotly</li>
     <li class="dropdown-header">06. leaflet</li>
@@ -475,10 +477,18 @@ div.tocify {
 </div>
 
 
+<p>In this walkthrough, we'll explore a bunch of standrd visualization types on a pair of simple datasets. For each visualization type, we'll start with a bare-bones example, and then move on to a more complex version to show off some of what <code>ggplot2</code> and its friends can do. Feel free to move at your own pace; play around with each vis technique on your own datasets, or if you're feeling adventurous take a crack at the <strong>Challenge Problem</strong> at the very end.</p>
 <div id="visualization-techniques" class="section level2">
 <h2>Visualization Techniques</h2>
-<p>First we'll need some data. For this walkthrough, we'll use <code>mtcars</code> (which comes with your <code>R</code> installation):</p>
+<p>First we'll need some data. For this walkthrough, we'll use <code>mtcars</code> (which comes preinstalled with your <code>R</code> installation):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <div id="bar-chart" class="section level3">
 <h3>Bar Chart</h3>
 <ul>
@@ -492,18 +502,23 @@ div.tocify {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cyl)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 </div>
 <div id="a-slightly-prettier-bar-chart-with-color-and-labels" class="section level4">
 <h4>A slightly prettier Bar Chart with color and labels</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, 
-       <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), 
-           <span class="dt">fill =</span> <span class="kw">as.factor</span>(cyl))          <span class="co"># Dual-encode x-value with color</span>
-       ) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">            </span><span class="co"># Label the x-axis</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                          </span><span class="co"># Label the y-axis</span>
+       <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl),             <span class="co"># Dual-encode x-value with color</span>
+           <span class="dt">fill =</span> <span class="kw">as.factor</span>(cyl))) <span class="op">+</span><span class="st">       </span><span class="co">#   (just because it&#39;s pretty)</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span><span class="st">                             </span><span class="co"># Add bars</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">            </span><span class="co"># Label the axes</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                          </span>
+<span class="st">  </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Count of cars by cylinders&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># Add a title</span>
-<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)                       <span class="co"># Remove the legend</span></code></pre></div>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>)                     <span class="co"># Remove the legend</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 </div>
 </div>
 <div id="histogram" class="section level3">
@@ -518,16 +533,21 @@ div.tocify {
 <h4>A simple Histogram in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 </div>
 <div id="a-better-histogram-with-scaling-10-bins-labels-and-color" class="section level4">
 <h4>A better Histogram with scaling, 10 bins, labels, and color</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt<span class="op">*</span><span class="dv">1000</span>)) <span class="op">+</span><span class="st">             </span><span class="co"># Scale wt to lbs</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>,                    <span class="co"># Change the number of bins to 10</span>
-                 <span class="dt">fill =</span> <span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)
-                 ) <span class="op">+</span><span class="st">    </span><span class="co"># Color bars with a more aestetically-pleasing color</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (lb)&quot;</span>) <span class="op">+</span><span class="st">                        </span><span class="co"># Label the x-axis</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                              </span><span class="co"># Label the y-axis</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">500</span>,               <span class="co"># Change the number of bins to 10</span>
+                 <span class="dt">fill =</span> <span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>)) <span class="op">+</span><span class="st">  </span><span class="co">#    and fill with a more aesthetically-pleasing color</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Weight (lb)&quot;</span>) <span class="op">+</span><span class="st">                        </span><span class="co"># Label the axes</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="op">+</span><span class="st">                             </span>
+<span class="st">  </span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of cars by weight&quot;</span>)    <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 </div>
 <div id="boxplot" class="section level3">
@@ -543,6 +563,7 @@ div.tocify {
 <h4>A simple boxplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
@@ -550,20 +571,30 @@ div.tocify {
                 <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
 
 <span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                        <span class="co"># Hide outliers so they don&#39;t double-plot</span>
-               <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>)) <span class="op">+</span><span class="st">            </span><span class="co"># Change fill and opacity     </span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.01</span>)  <span class="op">+</span><span class="st">                             </span><span class="co"># Add original datapoints (jittered)</span>
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">30</span>,                            <span class="co"># A reference line at y = 30</span>
-             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st">                       </span><span class="co">#    and we&#39;ll make it dashed</span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label =</span> <span class="st">&quot;mpg = 30&quot;</span>,                    <span class="co"># Always good to label reference lines</span>
-           <span class="dt">x =</span> <span class="fl">3.3</span>, <span class="dt">y =</span> <span class="dv">31</span>)  <span class="op">+</span><span class="st">                            </span><span class="co"># weird coords: 1st category = 1, etc.</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">                           </span><span class="co"># Label the x-axis</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                                    </span><span class="co"># Label the y-axis</span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of mpg by # Cylinders&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># Add a title</span>
-<span class="st">  </span><span class="kw">stat_compare_means</span>(<span class="dt">comparisons =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;4&quot;</span>,<span class="st">&quot;6&quot;</span>),       <span class="co"># Add significance testing</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>,                    <span class="co"># Hide outliers so they don&#39;t double-plot</span>
+               <span class="dt">fill=</span><span class="kw">rgb</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>)) <span class="op">+</span><span class="st">        </span><span class="co">#    and change fill and opacity</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.01</span>,                           <span class="co"># Add original datapoints (jittered)</span>
+              <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st">                          </span><span class="co">#    using transparency to avoid overplotting</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">30</span>,                         <span class="co"># A reference line at y = 30</span>
+             <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span><span class="st">                   </span><span class="co">#    and we&#39;ll make it dashed</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label =</span> <span class="st">&quot;mpg = 30&quot;</span>,                <span class="co"># Always good to label reference lines,</span>
+           <span class="dt">x =</span> <span class="fl">3.3</span>, <span class="dt">y =</span> <span class="dv">31</span>)  <span class="op">+</span><span class="st">                        </span><span class="co">#    but boxplots have weird x-coords: </span>
+<span class="st">                                                      </span><span class="co">#    1st category = 1, etc.</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Number of cylinders&quot;</span>) <span class="op">+</span><span class="st">                       </span><span class="co"># Label the axes</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                            </span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distribution of mpg by # Cylinders&quot;</span>) <span class="op">+</span><span class="st">     </span><span class="co"># Add a title</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">stat_compare_means</span>(<span class="dt">comparisons =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;4&quot;</span>,<span class="st">&quot;6&quot;</span>),   <span class="co"># Add significance testing</span>
                                          <span class="kw">c</span>(<span class="st">&quot;6&quot;</span>,<span class="st">&quot;8&quot;</span>)),
                       <span class="dt">method =</span> <span class="st">&quot;t.test&quot;</span>,
                       <span class="kw">aes</span>(<span class="dt">label =</span> ..p.signif..))</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 </div>
 </div>
 <div id="scatterplot" class="section level3">
@@ -578,22 +609,29 @@ div.tocify {
 <h4>A simple scatterplot in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 </div>
 <div id="a-better-scatterplot-with-scaled-values-shapes-color-and-labels" class="section level4">
 <h4>A better scatterplot with scaled values, shapes, color, and labels</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wt =</span> wt <span class="op">*</span><span class="st"> </span><span class="dv">1000</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st">          </span><span class="co"># Scale the x-values</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>,                               <span class="co"># Make the points a little bigger</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wt =</span> wt <span class="op">*</span><span class="st"> </span><span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st">                         </span><span class="co"># Scale the x-values</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>,                             <span class="co"># Make the points a little bigger</span>
+               
              <span class="kw">aes</span>(<span class="dt">shape =</span> <span class="kw">as.factor</span>(cyl),             <span class="co"># Add an aesthetic to map #cyl to shape</span>
-                 <span class="dt">color =</span> <span class="kw">as.factor</span>(cyl))) <span class="op">+</span><span class="st">          </span><span class="co">#    dual encoded with color for visibility </span>
+                 <span class="dt">color =</span> <span class="kw">as.factor</span>(cyl))) <span class="op">+</span><span class="st">          </span><span class="co">#    dual encoded with color for visibility</span>
+<span class="st">  </span>
 <span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>,                         <span class="co"># Add a quadratic regression line</span>
               <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">2</span>)) <span class="op">+</span>
+<span class="st">  </span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co"># Relabel color/shape so that the</span>
        <span class="dt">shape =</span> <span class="st">&quot;# Cylinders&quot;</span>,                        <span class="co">#    legend looks nice</span>
-       <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the x-axis</span>
-       <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                   </span><span class="co"># Another way to label the y-axis</span>
-<span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
+       <span class="dt">x =</span> <span class="st">&quot;Weight (lb)&quot;</span>,                            <span class="co"># Another way to label the axes</span>
+       <span class="dt">y =</span> <span class="st">&quot;Fuel economy (mpg)&quot;</span>) <span class="op">+</span><span class="st">                  </span>
+<span class="st">  </span>
+<span class="st">   </span><span class="kw">ggtitle</span>(<span class="st">&quot;Weight vs. fuel economy by # cylinders&quot;</span>) <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 </div>
 <div id="scatterplot-matrix-splom" class="section level3">
@@ -605,6 +643,7 @@ div.tocify {
 <div id="a-simple-splom-using-pairs" class="section level4">
 <h4>A simple SPLOM using <code>pairs()</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>disp, <span class="dt">data =</span> mtcars)</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
@@ -613,27 +652,28 @@ div.tocify {
 
 <span class="kw">ggpairs</span>(mtcars, 
         <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span>
+        
         <span class="dt">columnLabels =</span> <span class="kw">c</span>(<span class="st">&quot;Fuel economy (mpg)&quot;</span>,  <span class="co"># Add clearer names for each column</span>
                          <span class="st">&quot;Displacement&quot;</span>,
                          <span class="st">&quot;Horsepower&quot;</span>),
+        
         <span class="kw">aes</span>(<span class="dt">color =</span> <span class="kw">as.factor</span>(cyl),            <span class="co"># Use color to denote # cylinders</span>
-            <span class="dt">alpha =</span> <span class="fl">0.4</span>)
-        ) <span class="op">+</span><span class="st">                     </span><span class="co"># Set to semi-transparent</span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs.</span>
-<span class="st">           displacement vs.</span>
-<span class="st">           horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
+            <span class="dt">alpha =</span> <span class="fl">0.4</span>)) <span class="op">+</span><span class="st">                    </span><span class="co"># Set to semi-transparent</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fuel economy vs. displacement vs. horsepower by # cylinders&quot;</span>)  <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 </div>
 </div>
-<div id="line-charts" class="section level3">
-<h3>Line Charts</h3>
+<div id="line-chart" class="section level3">
+<h3>Line Chart</h3>
 <ul>
 <li>Shows the trend in one variable, often over time</li>
 <li>Multiple lines can show multiple variables, or the same variable for multiple observations (must have the same scale!)</li>
 <li>Highlights “position switches”</li>
 </ul>
-<p>Line charts don't really make sense for <code>mtcars</code>, so first we'll load a different dataset: Dr. Arbuthnot's baptism records from 1629-1710</p>
+<p>Line charts don't really make sense for <code>mtcars</code>, so first we'll load a different dataset: Dr. Arbuthnot's baptism records from 1629-1710.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>, <span class="dt">header=</span>T) <span class="op">%&gt;%</span>
+arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.openintro.org/stat/data/arbuthnot.csv&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> boys <span class="op">+</span><span class="st"> </span>girls)</code></pre></div>
 <div id="a-simple-line-chart-using-ggplot" class="section level4">
 <h4>A simple line chart using <code>ggplot</code></h4>
@@ -642,6 +682,7 @@ arbuthnot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span c
 arbuthnot <span class="op">%&gt;%</span>
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> year, <span class="dt">y =</span> total)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
@@ -650,22 +691,24 @@ arbuthnot <span class="op">%&gt;%</span>
 <span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
 arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)
+<span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)
 
 <span class="kw">ggplot</span>(arbuthnot_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> year, 
                            <span class="dt">y =</span> count, 
                            <span class="dt">color =</span> gender)) <span class="op">+</span><span class="st">     </span><span class="co"># Now we can map &#39;gender&#39; to color to get 2 lines</span>
 <span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;Gender&quot;</span>,                          <span class="co"># Relabel color</span>
-       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Another way to label the x-axis</span>
-       <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span><span class="co"># Another way to label the y-axis</span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>)</code></pre></div>
+       <span class="dt">x =</span> <span class="st">&quot;Year&quot;</span>,                                <span class="co"># Label the axes</span>
+       <span class="dt">y =</span> <span class="st">&quot;Number of records&quot;</span>) <span class="op">+</span><span class="st">                 </span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Dr. Arbuthnot&#39;s Baptism Records from 1629-1710 (by Gender)&quot;</span>) <span class="co"># Add a title</span></code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 </div>
 </div>
 </div>
-<div id="morning-challenge" class="section level2">
-<h2>Morning Challenge</h2>
-<p>Try building a <strong>parallel coordinates plot</strong> using <code>ggplot2</code> on a dataset of your choice!</p>
+<div id="challenge-problem" class="section level2">
+<h2>Challenge Problem</h2>
+<p>Try building a <a href="https://en.wikipedia.org/wiki/Parallel_coordinates"><strong>parallel coordinates plot</strong></a> using <code>ggplot2</code> on a dataset of your choice! <strong>Hint: you can accomplish this using some of the packages we've already loaded, or try building it on your own using <code>geom_line</code>s and some clever data wrangling!</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Put your code here</span></code></pre></div>
 </div>
 

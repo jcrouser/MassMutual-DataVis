@@ -287,7 +287,9 @@ $(document).ready(function () {
     <li>
       <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
     </li>
-    <li class="dropdown-header">03. Visualization Techniques</li>
+    <li>
+      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
+    </li>
     <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
     <li class="dropdown-header">05. plotly</li>
     <li class="dropdown-header">06. leaflet</li>
@@ -356,22 +358,120 @@ $(document).ready(function () {
 
 <div id="playing-with-ggplot" class="section level2">
 <h2>Playing with ggplot</h2>
-<pre class="r"><code>library(ggplot2)
+<pre class="r"><code>library(tidyr)
+library(dplyr)
+library(ggplot2)
 glimpse(msleep)</code></pre>
-<pre class="r"><code>library(stringr) # for string manipulation
-library(ggimage) # for custom icons
-msleep %&gt;%
-  drop_na(vore) %&gt;%
-  mutate(vore = paste(vore, &quot;vore&quot;, sep = &quot;&quot;),
-         image = paste(vore, &quot;.png&quot;, sep = &quot;&quot;)) %&gt;%
+<pre><code>## Rows: 83
+## Columns: 11
+## $ name         [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Cheetah&quot;, &quot;Owl monkey&quot;, &quot;Mountain beaver&quot;, &quot;Greater short-tailed shrew&quot;, &quot;Cow&quot;…
+## $ genus        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Acinonyx&quot;, &quot;Aotus&quot;, &quot;Aplodontia&quot;, &quot;Blarina&quot;, &quot;Bos&quot;, &quot;Bradypus&quot;, &quot;Callorhinus&quot;,…
+## $ vore         [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;carni&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;herbi&quot;, &quot;carni&quot;, NA, &quot;carni&quot;, &quot;herb…
+## $ order        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Carnivora&quot;, &quot;Primates&quot;, &quot;Rodentia&quot;, &quot;Soricomorpha&quot;, &quot;Artiodactyla&quot;, &quot;Pilosa&quot;, …
+## $ conservation [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;lc&quot;, NA, &quot;nt&quot;, &quot;lc&quot;, &quot;domesticated&quot;, NA, &quot;vu&quot;, NA, &quot;domesticated&quot;, &quot;lc&quot;, &quot;lc&quot;,…
+## $ sleep_total  [3m[38;5;246m&lt;dbl&gt;[39m[23m 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1, 3.0, 5.3, 9.4, 10.0, 12.5, 1…
+## $ sleep_rem    [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0.6, 0.8, 0.7, 1.5, 2.2, 2.0, 1.…
+## $ sleep_cycle  [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.3833333, NA, 0.3333333, NA, NA, …
+## $ awake        [3m[38;5;246m&lt;dbl&gt;[39m[23m 11.90, 7.00, 9.60, 9.10, 20.00, 9.60, 15.30, 17.00, 13.90, 21.00, 18.70, 14.60,…
+## $ brainwt      [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07000, 0.09820, 0.11500, 0.005…
+## $ bodywt       [3m[38;5;246m&lt;dbl&gt;[39m[23m 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490, 0.045, 14.000, 14.800, 33.…</code></pre>
+</div>
+<div id="first-attempt-basic-scatterplot" class="section level2">
+<h2>First attempt: basic scatterplot</h2>
+<p>How does <code>sleep_rem</code> compare to <code>sleep_total</code> across species?</p>
+<pre class="r"><code>msleep %&gt;%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem)) +
+  geom_point()</code></pre>
+<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="second-attempt-color-coded-scatterplot" class="section level2">
+<h2>Second attempt: color-coded scatterplot</h2>
+<p>Any relation to what they eat?</p>
+<pre class="r"><code>msleep %&gt;%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem,
+             color = vore)) +
+  geom_point()</code></pre>
+<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="third-attempt-whos-who" class="section level2">
+<h2>Third attempt: who's who?</h2>
+<p>Who are those outliers?</p>
+<pre class="r"><code>msleep %&gt;%
   ggplot(aes(x = sleep_total, 
              y = sleep_rem, 
              color = vore)) +
-  geom_image(aes(image=image), size=.05) +
   geom_text(aes(label=name), 
             nudge_y = 0.25, 
+            size = 2)</code></pre>
+<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="final-attempt-icons-instead-of-color-coding" class="section level2">
+<h2>Final attempt: icons instead of color coding</h2>
+<p>Can I save space on the legend by using icons to encode <code>vore</code>?</p>
+<pre class="r"><code>library(stringr) # for string manipulation
+library(ggimage) # for custom icons
+msleep %&gt;%
+  
+  # Get rid of rows with missing `vore` values
+  drop_na(vore) %&gt;%
+  
+  # Slight re-encoding of `vore` values (adding &quot;vore&quot; to the end)
+  #   and then adding an image column to map each species to the appropriate icon
+  mutate(vore = paste(vore, &quot;vore&quot;, sep = &quot;&quot;),
+         image = paste(vore, &quot;.png&quot;, sep = &quot;&quot;)) %&gt;%
+  
+  # And now we plot!
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem, 
+             color = vore)) +
+  
+  # Add the image
+  geom_image(aes(image = image), size=.03) +
+  
+  # And the text, nudged just a bit so it doesn&#39;t overlap the image
+  geom_text(aes(label = name), 
+            nudge_y = 0.25, 
             size = 2) +
+  
+  # Drop the legend
   theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="bonus-facet_grid-on-vore" class="section level2">
+<h2>Bonus: <code>facet_grid</code> on <code>vore</code></h2>
+<p>Can I fix the overplotting by faceting on <code>vore</code>?</p>
+<pre class="r"><code>library(stringr) # for string manipulation
+library(ggimage) # for custom icons
+msleep %&gt;%
+  
+  # Get rid of rows with missing `vore` values
+  drop_na(vore) %&gt;%
+  
+  # Slight re-encoding of `vore` values (adding &quot;vore&quot; to the end)
+  #   and then adding an image column to map each species to the appropriate icon
+  mutate(vore = paste(vore, &quot;vore&quot;, sep = &quot;&quot;),
+         image = paste(vore, &quot;.png&quot;, sep = &quot;&quot;)) %&gt;%
+  
+  # And now we plot!
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem, 
+             color = vore)) +
+  
+  # Add the image
+  geom_image(aes(image = image), size=.03) +
+  
+  # And the text, nudged just a bit so it doesn&#39;t overlap the image
+  geom_text(aes(label = name), 
+            nudge_y = 0.25, 
+            size = 2) +
+  
+  # Drop the legend
+  theme(legend.position = &quot;none&quot;) +
+  
+  facet_grid(~vore)</code></pre>
+<p><img src="ggplot_demo_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 
 

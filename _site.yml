@@ -12,7 +12,7 @@ navbar:
     - text: "02. Crash course in `ggplot2`"
       href: lab-ggplot2.html
     - text: "03. Visualization Techniques"
-      #href: demo-vis-techniques.html
+      href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"
       #href: lab-colorbrewer-ggthemes.html
     - text: "05. plotly"

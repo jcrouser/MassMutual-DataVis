@@ -31,11 +31,8 @@ title: "Data Visualization Workshop 2020"
   
 #### Tuesday, July 7 - MORNING
 
-<!-- - [Visualization Techniques](lectures/03-vis-techniques.pdf) -->
-<!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
-
-- Visualization Techniques
-- Challenge: Parallel Coordinates
+- [Visualization Techniques](lectures/03-vis-techniques.pdf)
+- [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd))
 
   </div>
   <div class="col-md-6">

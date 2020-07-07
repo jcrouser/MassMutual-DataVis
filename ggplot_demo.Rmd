@@ -5,31 +5,116 @@ date: "6/24/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 ## Playing with ggplot
 ```{r}
+library(tidyr)
+library(dplyr)
 library(ggplot2)
 glimpse(msleep)
 ```
+
+## First attempt: basic scatterplot
+
+How does `sleep_rem` compare to `sleep_total` across species?
+```{r}
+msleep %>%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem)) +
+  geom_point()
+```
+
+## Second attempt: color-coded scatterplot
+
+Any relation to what they eat?
+```{r}
+msleep %>%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem,
+             color = vore)) +
+  geom_point()
+```
+
+## Third attempt: who's who?
+
+Who are those outliers?
+```{r}
+msleep %>%
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem, 
+             color = vore)) +
+  geom_text(aes(label=name), 
+            nudge_y = 0.25, 
+            size = 2)
+```
+
+## Final attempt: icons instead of color coding
+Can I save space on the legend by using icons to encode `vore`?
 
 ```{r}
 library(stringr) # for string manipulation
 library(ggimage) # for custom icons
 msleep %>%
+  
+  # Get rid of rows with missing `vore` values
   drop_na(vore) %>%
+  
+  # Slight re-encoding of `vore` values (adding "vore" to the end)
+  #   and then adding an image column to map each species to the appropriate icon
   mutate(vore = paste(vore, "vore", sep = ""),
          image = paste(vore, ".png", sep = "")) %>%
+  
+  # And now we plot!
   ggplot(aes(x = sleep_total, 
              y = sleep_rem, 
              color = vore)) +
-  geom_image(aes(image=image), size=.05) +
-  geom_text(aes(label=name), 
+  
+  # Add the image
+  geom_image(aes(image = image), size=.03) +
+  
+  # And the text, nudged just a bit so it doesn't overlap the image
+  geom_text(aes(label = name), 
             nudge_y = 0.25, 
             size = 2) +
-  theme(legend.position = "none")
   
+  # Drop the legend
+  theme(legend.position = "none")
 ```
 
+## Bonus: `facet_grid` on `vore`
+Can I fix the overplotting by faceting on `vore`?
+
+```{r}
+library(stringr) # for string manipulation
+library(ggimage) # for custom icons
+msleep %>%
+  
+  # Get rid of rows with missing `vore` values
+  drop_na(vore) %>%
+  
+  # Slight re-encoding of `vore` values (adding "vore" to the end)
+  #   and then adding an image column to map each species to the appropriate icon
+  mutate(vore = paste(vore, "vore", sep = ""),
+         image = paste(vore, ".png", sep = "")) %>%
+  
+  # And now we plot!
+  ggplot(aes(x = sleep_total, 
+             y = sleep_rem, 
+             color = vore)) +
+  
+  # Add the image
+  geom_image(aes(image = image), size=.03) +
+  
+  # And the text, nudged just a bit so it doesn't overlap the image
+  geom_text(aes(label = name), 
+            nudge_y = 0.25, 
+            size = 2) +
+  
+  # Drop the legend
+  theme(legend.position = "none") +
+  
+  facet_grid(~vore)
+```
