@@ -413,7 +413,9 @@ div.tocify {
     <li>
       <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
     </li>
-    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
+    <li>
+      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
+    </li>
     <li class="dropdown-header">05. plotly</li>
     <li class="dropdown-header">06. leaflet</li>
   </ul>
@@ -567,9 +569,8 @@ div.tocify {
 </div>
 <div id="a-better-boxplot-with-original-points-semi-transparent-fill-and-labels" class="section level4">
 <h4>A better boxplot with original points, semi-transparent fill, and labels</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span></code></pre></div>
-<pre><code>## Warning: package &#39;ggpubr&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr) <span class="co"># Useful library for making &quot;publication-ready&quot; graphics:</span>
+                <span class="co"># We&#39;ll use the stat_compare_means(...) function to add significance</span>
 
 <span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.factor</span>(cyl), <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span>
@@ -595,9 +596,6 @@ div.tocify {
                                          <span class="kw">c</span>(<span class="st">&quot;6&quot;</span>,<span class="st">&quot;8&quot;</span>)),
                       <span class="dt">method =</span> <span class="st">&quot;t.test&quot;</span>,
                       <span class="kw">aes</span>(<span class="dt">label =</span> ..p.signif..))</code></pre></div>
-<pre><code>## Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-## Please use `as_label()` or `as_name()` instead.
-## This warning is displayed once per session.</code></pre>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 </div>
@@ -651,12 +649,8 @@ div.tocify {
 </div>
 <div id="a-better-splom-using-ggally" class="section level4">
 <h4>A better SPLOM using <code>GGally</code></h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span></code></pre></div>
-<pre><code>## Warning: package &#39;GGally&#39; was built under R version 3.6.2</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
-##   method from   
-##   +.gg   ggplot2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GGally) <span class="co"># Useful library that extends some of ggplot2&#39;s functionality</span>
+                <span class="co"># We&#39;ll use the ggpairs(...) function to make a classy SPLOM</span>
 
 <span class="kw">ggpairs</span>(mtcars, 
         <span class="dt">columns =</span> <span class="kw">c</span>(<span class="st">&quot;mpg&quot;</span>,<span class="st">&quot;disp&quot;</span>,<span class="st">&quot;hp&quot;</span>),         <span class="co"># Select specific columns to compare</span>
@@ -694,9 +688,9 @@ arbuthnot <span class="op">%&gt;%</span>
 </div>
 <div id="a-better-line-chart-built-with-tidy-data" class="section level4">
 <h4>A better line chart, built with tidy data</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)</code></pre></div>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+
+<span class="co"># First, let&#39;s tidy up our data so it&#39;s tall instead of wide</span>
 arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;gender&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;count&quot;</span>, <span class="op">-</span>year)
@@ -717,7 +711,10 @@ arbuthnot_tidy &lt;-<span class="st"> </span>arbuthnot <span class="op">%&gt;%</
 <div id="challenge-problem" class="section level2">
 <h2>Challenge Problem</h2>
 <p>Try building a <a href="https://en.wikipedia.org/wiki/Parallel_coordinates"><strong>parallel coordinates plot</strong></a> using <code>ggplot2</code> on a dataset of your choice! <strong>Hint: you can accomplish this using some of the packages we've already loaded, or try building it on your own using <code>geom_line</code>s and some clever data wrangling!</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Put your code here</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># With ggparacoord from GGally</span>
+iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggparcoord</span>(<span class="dt">columns =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">groupColumn =</span> <span class="st">&quot;Species&quot;</span>) </code></pre></div>
+<p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 
 

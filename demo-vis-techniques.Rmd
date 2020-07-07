@@ -238,5 +238,7 @@ ggplot(arbuthnot_tidy, aes(x = year,
 Try building a [**parallel coordinates plot**](https://en.wikipedia.org/wiki/Parallel_coordinates) using `ggplot2` on a dataset of your choice! __Hint: you can accomplish this using some of the packages we've already loaded, or try building it on your own using `geom_line`s and some clever data wrangling!__
 
 ```{r}
-# Put your code here
+# With ggparacoord from GGally
+iris %>%
+  ggparcoord(columns = 1:4, groupColumn = "Species") 
 ```

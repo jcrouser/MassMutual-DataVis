@@ -39,11 +39,8 @@ title: "Data Visualization Workshop 2020"
     
 #### Tuesday, July 7 - AFTERNOON
 
-<!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
-<!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
-
-- Perception and Color
-- Lab: ColorBrewer and `ggthemes`
+- [Perception and Color](lectures/04-perception-color.pdf)
+- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd))
 
   </div>
 </div>
