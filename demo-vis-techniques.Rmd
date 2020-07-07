@@ -9,7 +9,7 @@ output:
     toc_float: true
 ---
 
-```{r global_options, include=FALSE}
+```{r global_options, include = FALSE, warning = FALSE}
 library(dplyr)
 library(ggplot2)
 ```
