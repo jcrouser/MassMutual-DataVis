@@ -50,11 +50,8 @@ title: "Data Visualization Workshop 2020"
   
 #### Wednesday, July 8 - MORNING
 
-<!-- - [The role of interaction](lectures/05-interaction-and-plotly.pdf) -->
-<!-- - [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd)) -->
-
-- The role of interaction
-- Lab: Building interactive charts with `plot.ly`
+- [The role of interaction](lectures/05-interaction-and-plotly.pdf)
+- [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd))
 - Show and tell
 
 

@@ -13,7 +13,7 @@ output:
 
 This tutorial comes from Carson Sievert's [Plotly for R Master Class](https://plotly-book.cpsievert.me/index.html).
 
-## 1.1 A case study of housing sales in Texas
+## A case study of housing sales in Texas
 The `plotly` package depends on `ggplot2` which bundles a data set on monthly housing sales in Texan cities acquired from the [TAMU](http://recenter.tamu.edu/) real estate center. After the loading the package, the data is "lazily loaded"" into your session, so you may reference it by name:
 
 ```{r}

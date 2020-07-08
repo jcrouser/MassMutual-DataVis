@@ -293,7 +293,9 @@ $(document).ready(function () {
     <li>
       <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
     </li>
-    <li class="dropdown-header">05. plotly</li>
+    <li>
+      <a href="lab-plotly.html">05. plotly</a>
+    </li>
     <li class="dropdown-header">06. leaflet</li>
   </ul>
 </li>
@@ -413,13 +415,8 @@ glimpse(msleep)</code></pre>
 <h2>Final attempt: icons instead of color coding</h2>
 <p>Can I save space on the legend by using icons to encode <code>vore</code>?</p>
 <pre class="r"><code>library(stringr) # for string manipulation
-library(ggimage) # for custom icons</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggimage&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggpubr&#39;:
-## 
-##     theme_transparent</code></pre>
-<pre class="r"><code>msleep %&gt;%
+library(ggimage) # for custom icons
+msleep %&gt;%
   
   # Get rid of rows with missing `vore` values
   drop_na(vore) %&gt;%
