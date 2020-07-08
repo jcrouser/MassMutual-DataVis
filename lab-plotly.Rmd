@@ -89,7 +89,7 @@ Check out [The Plotly Cookbook](https://plotly-book.cpsievert.me/the-plotly-cook
 
 ### With `htmlwidgets`
 
-Since `plotly` objects inherit properties from an `htmlwidget` object, any method that works for arranging `htmlwidgets` also works for plotly objects. In some sense, an `htmlwidget` object is just a collection of HTML tags, and the htmltools package provides some useful functions for working with HTML tags ( [RStudio and Inc. 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-htmltools) ). The `tagList()` function gathers multiple HTML tags into a tag list, and when printing a tag list inside of a knitr/rmarkdown document () [Xie 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-knitr); [Allaire et al. 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-rmarkdown) ), it knows to render as HTML:
+Since `plotly` objects inherit properties from an `htmlwidget` object, any method that works for arranging `htmlwidgets` also works for plotly objects. In some sense, an `htmlwidget` object is just a collection of HTML tags, and the htmltools package provides some useful functions for working with HTML tags ([RStudio and Inc. 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-htmltools)). The `tagList()` function gathers multiple HTML tags into a tag list, and when printing a tag list inside of a knitr/rmarkdown document ([Xie 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-knitr); [Allaire et al. 2016](https://plotly-book.cpsievert.me/arranging-htmlwidgets.html#ref-rmarkdown)), it knows to render as HTML:
 
 ```{r}
 library(htmltools)
