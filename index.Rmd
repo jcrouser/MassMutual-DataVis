@@ -60,11 +60,8 @@ title: "Data Visualization Workshop 2020"
   
 #### Wednesday, July 8 - AFTERNOON
 
-<!-- - [Geographic data](lectures/06-geovis.pdf) -->
-<!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
-
-- Geographic data
-- Lab: Interactive maps with `leaflet`
+- [Geographic data](lectures/06-geovis.pdf)
+- [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd))
 
   </div>
 </div>
