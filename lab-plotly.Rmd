@@ -103,7 +103,9 @@ tags$div(
   tags$div(p2, style = "width: 45%; padding: 1em;")
 )
 ```
+
 ### With `shiny`
+
 Another way to arrange multiple `htmlwidget` objects on a single page is to leverage the `fluidPage()`, `fluidRow()`, and `column()` functions from the `shiny` package:
 ```{r}
 library(shiny)
@@ -124,7 +126,7 @@ subplot(
 )
 ```
 
-## Linking multiple views with `crosstalk`
+### With `crosstalk`
 `crosstalk` is the R implementation of the powerful [crossfilter](http://square.github.io/crossfilter/) JS library. Though this dataset isn't very large, we'll use it to create a `SharedData` object that allows us to propagate interaction.
 
 ```{r}
