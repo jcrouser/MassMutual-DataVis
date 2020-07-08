@@ -16,7 +16,7 @@ This tutorial comes from Carson Sievert's [Plotly for R Master Class](https://pl
 ## A case study of housing sales in Texas
 The `plotly` package depends on `ggplot2` which bundles a data set on monthly housing sales in Texan cities acquired from the [TAMU](http://recenter.tamu.edu/) real estate center. After the loading the package, the data is "lazily loaded"" into your session, so you may reference it by name:
 
-```{r}
+```{r warning = FALSE, message = FALSE}
 library(plotly)
 txhousing
 ```
@@ -166,4 +166,7 @@ bscols(widths = c(6, 6), p, map)
 We'll see more about `leaflet` maps this afternoon.
 
 ## Your turn!
-Try some of these ideas out on your own dataset and see what you can come up with!
+Try some of these ideas out on your own dataset and see what you can come up with. Consider trying one of the following:
+- `plotly`-fying a visualization you've made earlier in this workshop
+- designing a new interactive visualization
+- recreating something you found on the web
