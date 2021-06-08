@@ -1,7 +1,7 @@
 name: "MassMutual-DataVis"
 output_dir: "."
 navbar:
-  title: "Introduction to Data Visualization - Summer 2020"
+  title: "Introduction to Data Visualization - Summer 2021"
   left:
   - text: "Home"
     href: index.html
@@ -10,15 +10,15 @@ navbar:
     menu:
     - text: "01. Deconstructing Data Graphics (no link)"
     - text: "02. Crash course in `ggplot2`"
-      href: lab-ggplot2.html
+      #href: lab-ggplot2.html
     - text: "03. Visualization Techniques"
-      href: demo-vis-techniques.html
+      #href: demo-vis-techniques.html
     - text: "04. ColorBrewer and `ggthemes`"
-      href: lab-colorbrewer-ggthemes.html
+      #href: lab-colorbrewer-ggthemes.html
     - text: "05. plotly"
-      href: lab-plotly.html
+      #href: lab-plotly.html
     - text: "06. leaflet"
-      href: lab-leaflet.html
+      #href: lab-leaflet.html
     
   - text: "Datasets"
     menu:
