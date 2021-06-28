@@ -19,16 +19,29 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,32 +54,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -77,10 +65,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -97,40 +81,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 54px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
-.section h2 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
-.section h3 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
-.section h4 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
-.section h5 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
-.section h6 {
-  padding-top: 59px;
-  margin-top: -59px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -158,7 +115,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -170,7 +127,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -181,10 +138,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -196,7 +166,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -283,7 +252,9 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">01. Deconstructing Data Graphics (no link)</li>
-    <li class="dropdown-header">02. Crash course in `ggplot2`</li>
+    <li>
+      <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
+    </li>
     <li class="dropdown-header">03. Visualization Techniques</li>
     <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
     <li class="dropdown-header">05. plotly</li>
@@ -340,7 +311,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -349,29 +320,28 @@ $(document).ready(function () {
 </div>
 
 
-<p><img src="gfx/self_description.png" /></p>
+<div class="figure">
+<img src="gfx/self_description.png" />
+
+</div>
 <div class="past">
 
 </div>
 <div class="row">
 <div class="col-md-6">
 <h4 id="monday-june-28---morning">Monday, June 28 - MORNING</h4>
-<!-- - [Introduction](lectures/01-visualization-intro.pdf) -->
 <ul>
-<li>Introduction</li>
-<li><p>Activity: Reading Data Graphics</p>
+<li><a href="lectures/01-visualization-intro.pdf">Introduction</a></li>
+<li>Activity: Reading Data Graphics</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="monday-june-28---afternoon">Monday, June 28 - AFTERNOON</h4>
-<!-- - [Grammar of graphics](lectures/02-ggplot2-crash-course.pdf) -->
-<!-- - [Lab: `ggplot2`](lab-ggplot2.html) ([.Rmd](lab-ggplot2.Rmd)) -->
 <ul>
-<li>Grammar of graphics</li>
-<li><p>Lab: <code>ggplot2</code></p>
-</div></li>
+<li><a href="lectures/02-ggplot2-crash-course.pdf">Grammar of graphics</a></li>
+<li><a href="lab-ggplot2.html">Lab: <code>ggplot2</code></a> (<a href="lab-ggplot2.Rmd">.Rmd</a>)</li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-6">
@@ -380,19 +350,18 @@ $(document).ready(function () {
 <!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
 <ul>
 <li>Visualization Techniques</li>
-<li><p>Challenge: Parallel Coordinates</p>
+<li>Challenge: Parallel Coordinates</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="tuesday-june-29---afternoon">Tuesday, June 29 - AFTERNOON</h4>
 <!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
 <!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
 <ul>
 <li>Perception and Color</li>
-<li><p>Lab: ColorBrewer and <code>ggthemes</code></p>
-</div></li>
+<li>Lab: ColorBrewer and <code>ggthemes</code></li>
 </ul>
+</div>
 </div>
 <div class="row">
 <div class="col-md-6">
@@ -402,19 +371,18 @@ $(document).ready(function () {
 <ul>
 <li>The role of interaction</li>
 <li>Lab: Building interactive charts with <code>plot.ly</code></li>
-<li><p>Show and tell</p>
+<li>Show and tell</li>
+</ul>
 </div>
 <div class="col-md-6">
-</li>
-</ul>
 <h4 id="wednesday-june-30---afternoon">Wednesday, June 30 - AFTERNOON</h4>
 <!-- - [Geographic data](lectures/06-geovis.pdf) -->
 <!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
 <ul>
 <li>Geographic data</li>
-<li><p>Lab: Interactive maps with <code>leaflet</code></p>
-</div></li>
+<li>Lab: Interactive maps with <code>leaflet</code></li>
 </ul>
+</div>
 </div>
 
 
@@ -426,7 +394,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -444,7 +412,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
