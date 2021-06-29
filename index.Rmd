@@ -28,20 +28,16 @@
   
 #### Tuesday, June 29 - MORNING
 
-<!-- - [Visualization Techniques](lectures/03-vis-techniques.pdf) -->
-<!-- - [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd)) -->
-- Visualization Techniques
-- Challenge: Parallel Coordinates
+- [Visualization Techniques](lectures/03-vis-techniques.pdf)
+- [Challenge: Parallel Coordinates](demo-vis-techniques.html) ([.Rmd](demo-vis-techniques.Rmd))
 
   </div>
   <div class="col-md-6">
     
 #### Tuesday, June 29 - AFTERNOON
 
-<!-- - [Perception and Color](lectures/04-perception-color.pdf) -->
-<!-- - [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd)) -->
-- Perception and Color
-- Lab: ColorBrewer and `ggthemes`
+- [Perception and Color](lectures/04-perception-color.pdf)
+- [Lab: ColorBrewer and `ggthemes`](lab-colorbrewer-ggthemes.html) ([.Rmd](lab-colorbrewer-ggthemes.Rmd))
 
   </div>
 </div>
