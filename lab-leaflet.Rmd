@@ -9,6 +9,10 @@ output:
     toc_float: true
 ---
 
+```{r global options, include = FALSE}
+knitr::opts_chunk$set(warning=FALSE, message = FALSE)
+```
+
 ## Making a map with points in R with leaflet
 We're going to be doing a lot of the stuff from the RStudio [leaflet tutorial](https://rstudio.github.io/leaflet/). This walkthrough is a variation of [Amelia McNamara](https://github.com/AmeliaMN)'s version.
 
@@ -118,14 +122,13 @@ If you want, the zipfile of the shapes I used is [here](https://jcrouser.github.
 We're going to use the `maptools` package to deal with shapefiles.
 ```{r}
 library(maptools)
+library(rgdal)
 
-# Remember when we talked about map projections?
-crswgs84 = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+states = readOGR("datasets/cb_2015_us_state_500k/cb_2015_us_state_500k.shp", verbose = TRUE)
 
-# Now we can load the shapefile using the correct projection
-states = readShapePoly("datasets/cb_2015_us_state_500k/cb_2015_us_state_500k.shp",
-                       proj4string = crswgs84,
-                       verbose = TRUE)
+# Convert strings to numbers
+states$AWATER = as.numeric(states$AWATER)
+states$ALAND = as.numeric(states$ALAND)
 ```
 
 In RStudio, you can click on the `states` object to see what a `Large SpatialPolygonsDataFrame` looks like. It contains both `@data` and `@polygons`. 
