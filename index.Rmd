@@ -47,10 +47,8 @@
   
 #### Wednesday, June 30 - MORNING
 
-<!-- - [The role of interaction](lectures/05-interaction-and-plotly.pdf) -->
-<!-- - [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd)) -->
-- The role of interaction
-- Lab: Building interactive charts with `plot.ly`
+- [The role of interaction](lectures/05-interaction-and-plotly.pdf)
+- [Lab: Building interactive charts with `plot.ly`](lab-plotly.html) ([.Rmd](lab-plotly.Rmd))
 - Show and tell
 
 
@@ -59,10 +57,8 @@
   
 #### Wednesday, June 30 - AFTERNOON
 
-<!-- - [Geographic data](lectures/06-geovis.pdf) -->
-<!-- - [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd)) -->
-- Geographic data
-- Lab: Interactive maps with `leaflet`
+- [Geographic data](lectures/06-geovis.pdf)
+- [Lab: Interactive maps with `leaflet`](lab-leaflet.html) ([.Rmd](lab-leaflet.Rmd))
 
   </div>
 </div>

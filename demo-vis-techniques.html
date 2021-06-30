@@ -386,10 +386,18 @@ div.tocify {
     <li>
       <a href="lab-ggplot2.html">02. Crash course in `ggplot2`</a>
     </li>
-    <li class="dropdown-header">03. Visualization Techniques</li>
-    <li class="dropdown-header">04. ColorBrewer and `ggthemes`</li>
-    <li class="dropdown-header">05. plotly</li>
-    <li class="dropdown-header">06. leaflet</li>
+    <li>
+      <a href="demo-vis-techniques.html">03. Visualization Techniques</a>
+    </li>
+    <li>
+      <a href="lab-colorbrewer-ggthemes.html">04. ColorBrewer and `ggthemes`</a>
+    </li>
+    <li>
+      <a href="lab-plotly.html">05. plotly</a>
+    </li>
+    <li>
+      <a href="lab-leaflet.html">06. leaflet</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -456,13 +464,20 @@ div.tocify {
 <h2>Visualization Techniques</h2>
 <p>First we'll need some data. For this walkthrough, we'll use <code>mtcars</code> (which comes preinstalled with your <code>R</code> installation):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
-<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02
+## Valiant           18.1   6  225 105 2.76 3.460 20.22
+##                   vs am gear carb
+## Mazda RX4          0  1    4    4
+## Mazda RX4 Wag      0  1    4    4
+## Datsun 710         1  1    4    1
+## Hornet 4 Drive     1  0    3    1
+## Hornet Sportabout  0  0    3    2
+## Valiant            1  0    3    1</code></pre>
 <div id="bar-chart" class="section level3">
 <h3>Bar Chart</h3>
 <ul>
@@ -492,8 +507,8 @@ div.tocify {
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Count of cars by cylinders&quot;</span>) <span class="op">+</span><span class="st">  </span><span class="co"># Add a title</span>
 <span class="st">  </span>
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="ot">FALSE</span>)                     <span class="co"># Remove the legend</span></code></pre></div>
-<pre><code>## Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; =
-## &quot;none&quot;)` instead.</code></pre>
+<pre><code>## Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated.
+## Please use `guides(&lt;scale&gt; = &quot;none&quot;)` instead.</code></pre>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 </div>
@@ -509,7 +524,8 @@ div.tocify {
 <h4>A simple Histogram in <code>ggplot2</code></h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
 <p><img src="demo-vis-techniques_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="a-better-histogram-with-scaling-10-bins-labels-and-color" class="section level4">
